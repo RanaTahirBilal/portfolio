@@ -46,8 +46,8 @@
 
     /* --- ink --- */
     --ivory:#F4F0E8;      /* primary   14.3:1 on pine */
-    --ivory-2:#C9C8C0;    /* secondary  9.7:1 on pine */
-    --ivory-3:#A8A69C;    /* tertiary   6.6:1 on pine */
+    --ivory-2:#DAD7CD;    /* secondary 11.3:1 on pine, was 9.7 */
+    --ivory-3:#BFBCB1;    /* tertiary   8.5:1 on pine, was 6.6 */
     --gold:#C9A34E;       /* accent     6.8:1 on pine */
     --gold-lift:#D9B665;
 
@@ -58,15 +58,15 @@
     --sans:'Manrope',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;
 
     /* --- one type scale, used everywhere --- */
-    --t-hero:clamp(46px,6.5vw,92px);
-    --t-h2:clamp(34px,4.2vw,56px);
-    --t-h2-sm:clamp(30px,3.3vw,44px);
-    --t-h3:clamp(20px,1.7vw,24px);
-    --t-lead:clamp(17.5px,1.35vw,20.5px);
-    --t-body:clamp(16px,1vw,17.5px);
-    --t-small:16px;   /* floor: no running prose below 16px */
-    --t-nav:14px;
-    --t-label:12px;
+    --t-hero:clamp(52px,7.6vw,112px);   /* the first screen should dominate */
+    --t-statement:clamp(38px,4.8vw,68px); /* the four big statements only */
+    --t-h2:clamp(28px,2.7vw,38px);        /* sans section headings */
+    --t-h3:clamp(21px,1.75vw,25px);
+    --t-lead:clamp(19px,1.55vw,23px);
+    --t-body:clamp(17px,1.15vw,19px);     /* was 16-17.5; +20% at the top */
+    --t-small:17px;   /* floor: no running prose below 17px */
+    --t-nav:14.5px;
+    --t-label:12.5px;
 
     --measure:60ch;
 
@@ -192,7 +192,7 @@ h1 em{ font-style:italic; color:var(--gold); }
     margin:0; font-family:var(--display); font-weight:400;
     font-size:clamp(19px,1.7vw,23px); line-height:1.32; color:var(--ivory); letter-spacing:-.006em;
 }
-.band dd i{ font-style:normal; color:var(--gold); }
+.band dd i{ font-style:normal; color:var(--ivory); }
 @media (max-width:820px){
     .band{ grid-template-columns:1fr; }
     .band div{ border-right:0; border-bottom:1px solid var(--rule); padding-right:0; }
@@ -200,14 +200,21 @@ h1 em{ font-style:italic; color:var(--gold); }
 }
 
 /* ---------- headings ---------- */
+/* Level 2 is a strong sans, not the serif. The serif is reserved for the
+   four large statements, which is what makes them read as statements. */
 h2{
+    font-family:var(--sans); font-weight:600;
+    font-size:var(--t-h2); line-height:1.22; letter-spacing:-.008em; margin:0;
+    max-width:22ch; text-wrap:balance; color:var(--ivory);
+}
+h2.statement{
     font-family:var(--display); font-weight:400;
-    font-size:var(--t-h2-sm); line-height:1.1; letter-spacing:-.014em; margin:0;
-    max-width:20ch; text-wrap:balance; color:var(--ivory);
+    font-size:var(--t-statement); line-height:1.08; letter-spacing:-.018em;
+    max-width:16ch;
 }
 h3{
-    font-family:var(--display); font-weight:400;
-    font-size:var(--t-h3); line-height:1.22; letter-spacing:-.008em; margin:0 0 9px;
+    font-family:var(--sans); font-weight:600;
+    font-size:var(--t-h3); line-height:1.3; letter-spacing:-.004em; margin:0 0 10px;
     color:var(--ivory);
 }
 .section-head{
@@ -217,10 +224,11 @@ h3{
 .section-head p{ margin:0; color:var(--ivory-2); font-size:var(--t-body); max-width:36ch; }
 
 /* ---------- the search problem ---------- */
-.search{ padding:clamp(60px,9vw,128px) 0; }
+.search{ padding:clamp(76px,11vw,164px) 0; }
 .search-grid{ display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.08fr); gap:clamp(32px,5.5vw,88px); align-items:start; }
 @media (max-width:900px){ .search-grid{ grid-template-columns:1fr; gap:clamp(28px,5vw,40px); } }
-.search h2{ font-size:var(--t-h2); max-width:17ch; }
+.search h2{ max-width:18ch; }
+.search .note-small{ margin-top:28px; }
 .search p{ color:var(--ivory-2); font-size:var(--t-body); line-height:1.65; margin:0 0 18px; max-width:var(--measure); }
 .search p:last-child{ margin:0; }
 .search b{ color:var(--ivory); font-weight:600; }
@@ -232,41 +240,50 @@ h3{
     display:grid; grid-template-columns:auto minmax(0,1fr); gap:16px; align-items:baseline;
 }
 .searchers li:first-child{ border-top:1px solid var(--rule); }
-.searchers span{ font-size:var(--t-label); font-weight:600; letter-spacing:.14em; color:var(--gold); }
+.searchers span{ font-size:var(--t-label); font-weight:600; letter-spacing:.14em; color:var(--ivory-3); }
 
-.fragments{
-    display:grid; grid-template-columns:minmax(0,1fr) auto minmax(0,.92fr);
-    gap:clamp(18px,3vw,44px); align-items:center;
-    margin:clamp(32px,4vw,52px) 0 0; padding:clamp(24px,3vw,36px) 0;
-    border-top:1px solid var(--rule); border-bottom:1px solid var(--rule);
+/* A representation of the search itself, not a dashboard. A query line, the
+   fragmented results it returns today, and the single authoritative result
+   that replaces the guesswork. Set entirely in type and rules. */
+.serp{ margin:clamp(44px,6vw,76px) 0 0; display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:clamp(24px,3.5vw,56px); }
+@media (max-width:900px){ .serp{ grid-template-columns:1fr; gap:34px; } }
+
+.serp-col > .label{ display:block; margin:0 0 16px; }
+.query{
+    display:flex; align-items:center; gap:12px;
+    border:1px solid var(--rule); padding:15px 18px; margin:0 0 22px;
+    background:var(--pine-deep);
 }
-.frag-list{ list-style:none; margin:10px 0 0; padding:0; columns:2; column-gap:26px; }
-.frag-list li{ font-size:var(--t-small); color:var(--ivory-2); padding:4px 0; break-inside:avoid; }
-.frag-arrow{ color:var(--gold); font-size:22px; }
-.frag-home b{
-    display:block; font-family:var(--display); font-weight:400;
-    font-size:clamp(19px,1.8vw,24px); line-height:1.32; color:var(--ivory); margin:10px 0 0;
-}
-@media (max-width:820px){
-    .fragments{ grid-template-columns:1fr; gap:20px; }
-    .frag-arrow{ transform:rotate(90deg); width:22px; }
-}
-@media (max-width:420px){ .frag-list{ columns:1; } }
+.query svg{ flex:none; }
+.query span{ font-size:var(--t-body); color:var(--ivory); letter-spacing:.01em; }
+.query i{ font-style:normal; color:var(--ivory-3); }
+
+.res{ border-top:1px solid var(--rule); padding:15px 0; }
+.res:last-child{ border-bottom:1px solid var(--rule); }
+.res b{ display:block; font-size:var(--t-body); font-weight:600; color:var(--ivory-2); line-height:1.35; }
+.res span{ display:block; font-size:14.5px; color:var(--ivory-3); margin-top:4px; }
+.res.dim b{ color:var(--ivory-3); font-weight:500; }
+
+.res.own{ border:1px solid var(--gold); padding:20px; background:var(--pine-raise); }
+.res.own b{ color:var(--ivory); font-size:clamp(18px,1.4vw,21px); }
+.res.own span{ color:var(--ivory-2); font-size:15.5px; margin-top:6px; }
+.res.own .label{ display:block; margin:0 0 10px; color:var(--gold); }
+.serp-note{ font-size:15.5px; color:var(--ivory-3); margin:16px 0 0; line-height:1.55; }
 
 /* p.pull, not .pull: the section rule .search p outranks a bare class, and
    was collapsing the largest statement on the page to body size. */
+/* One of the two central ideas of the practice. It gets the room. */
 p.pull{
-    margin:clamp(44px,6vw,76px) 0 0; padding:clamp(26px,3.2vw,40px) 0 0;
-    max-width:24ch;
-    border-top:2px solid var(--gold);
+    margin:clamp(72px,10vw,140px) 0 clamp(20px,3vw,40px); padding:clamp(40px,5vw,64px) 0 0;
+    border-top:1px solid var(--rule);
     font-family:var(--display); font-weight:400;
-    font-size:var(--t-h2); line-height:1.16; letter-spacing:-.016em;
-    color:var(--ivory); max-width:24ch;
+    font-size:clamp(36px,4.6vw,66px); line-height:1.1; letter-spacing:-.018em;
+    color:var(--ivory); max-width:20ch;
 }
-.pull i{ font-style:italic; color:var(--gold); }
+.pull i{ font-style:italic; color:var(--ivory); }
 
 /* ---------- who this is for ---------- */
-.audience{ padding:clamp(56px,8vw,116px) 0; border-top:1px solid var(--rule); }
+.audience{ padding:clamp(64px,9vw,124px) 0; border-top:1px solid var(--rule); }
 .aud-grid{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:clamp(26px,3vw,48px); }
 @media (max-width:900px){ .aud-grid{ grid-template-columns:repeat(2,minmax(0,1fr)); } }
 @media (max-width:560px){ .aud-grid{ grid-template-columns:1fr; } }
@@ -309,8 +326,8 @@ p.pull{
     color:var(--ivory);
 }
 .role{
-    font-size:13.5px; font-weight:600; letter-spacing:.11em; text-transform:uppercase;
-    color:var(--gold); margin:0 0 12px; line-height:1.4;
+    font-size:14px; font-weight:600; letter-spacing:.1em; text-transform:uppercase;
+    color:var(--ivory-3); margin:0 0 14px; line-height:1.4;
 }
 .note{ font-size:var(--t-body); line-height:1.6; color:var(--ivory-2); margin:0; max-width:46ch; }
 
@@ -340,6 +357,7 @@ p.pull{
 .duo{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:clamp(20px,2.4vw,34px); margin:0 0 clamp(48px,6vw,84px); }
 @media (max-width:760px){ .duo{ grid-template-columns:1fr; } }
 
+.grid-sm .meta{ padding:14px 0 0; }
 .index-head{
     display:flex; align-items:baseline; justify-content:space-between; gap:20px; flex-wrap:wrap;
     border-top:1px solid var(--rule-night); padding-top:18px; margin:0 0 clamp(26px,3vw,38px);
@@ -348,24 +366,26 @@ p.pull{
 @media (max-width:1120px){ .grid-sm{ grid-template-columns:repeat(3,minmax(0,1fr)); } }
 @media (max-width:840px){ .grid-sm{ grid-template-columns:repeat(2,minmax(0,1fr)); } }
 @media (max-width:540px){ .grid-sm{ grid-template-columns:1fr; } }
-.grid-sm .name{ font-size:20px; }
-.grid-sm .role{ font-size:13px; margin-bottom:10px; }
-.grid-sm .note{ font-size:var(--t-body); }
+/* Index cards carry name and role only, set in the sans: at this size
+   the serif costs legibility and buys nothing. */
+.grid-sm .name{ font-family:var(--sans); font-weight:600; font-size:18.5px; letter-spacing:-.002em; }
+.grid-sm .role{ font-size:13px; margin:0; }
+
 
 /* ---------- the promise ---------- */
-.creed{ padding:clamp(60px,9vw,128px) 0; border-bottom:1px solid var(--rule); }
+.creed{ padding:clamp(84px,12vw,180px) 0; border-bottom:1px solid var(--rule); }
 .creed-in{ display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.15fr); gap:clamp(30px,5vw,80px); align-items:start; }
 @media (max-width:900px){ .creed-in{ grid-template-columns:1fr; gap:28px; } }
-.creed h2{ font-size:var(--t-h2); max-width:13ch; }
+.creed h2{ max-width:13ch; }
 .creed p{ margin:0 0 18px; color:var(--ivory-2); font-size:var(--t-body); line-height:1.65; max-width:var(--measure); }
 .creed p:last-child{ margin:0; }
 .creed b{ color:var(--ivory); font-weight:600; }
 
 /* ---------- what we examine ---------- */
-.examine{ padding:clamp(56px,8vw,116px) 0; border-top:1px solid var(--rule); }
+.examine{ padding:clamp(76px,11vw,156px) 0; border-top:1px solid var(--rule); }
 .exam-grid{ display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.05fr); gap:clamp(32px,5vw,80px); align-items:start; }
 @media (max-width:900px){ .exam-grid{ grid-template-columns:1fr; gap:30px; } }
-.exam-grid h2{ font-size:var(--t-h2-sm); }
+
 .exam-grid p{ color:var(--ivory-2); font-size:var(--t-body); line-height:1.65; margin:18px 0 0; max-width:var(--measure); }
 .exam-list{ list-style:none; margin:12px 0 0; padding:0; columns:2; column-gap:clamp(20px,3vw,40px); }
 .exam-list li{
@@ -376,7 +396,7 @@ p.pull{
 .note-small{ font-size:var(--t-small); line-height:1.6; color:var(--ivory-2); max-width:46ch; margin-top:22px; }
 
 /* ---------- process ---------- */
-.process{ padding:clamp(56px,8vw,116px) 0; border-bottom:1px solid var(--rule); }
+.process{ padding:clamp(76px,11vw,156px) 0; border-bottom:1px solid var(--rule); }
 .steps{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:clamp(26px,3.4vw,56px); }
 @media (max-width:820px){ .steps{ grid-template-columns:1fr; } }
 .step{ border-top:1px solid var(--rule); padding-top:22px; }
@@ -385,26 +405,26 @@ p.pull{
 .step a{ color:var(--gold); text-underline-offset:3px; }
 
 /* ---------- proof placeholders ---------- */
-.proof{ padding:clamp(52px,8vw,104px) 0; border-top:1px solid var(--rule); }
+.proof{ padding:clamp(64px,9vw,120px) 0; border-top:1px solid var(--rule); }
 .proof-grid{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:clamp(18px,2.4vw,30px); }
 @media (max-width:820px){ .proof-grid{ grid-template-columns:1fr; } }
 .slot{
     border:1px dashed var(--rule); padding:clamp(24px,2.8vw,32px);
     min-height:148px; display:flex; flex-direction:column; justify-content:space-between;
 }
-.slot .k{ font-size:var(--t-label); font-weight:600; letter-spacing:.14em; text-transform:uppercase; color:var(--gold); }
+.slot .k{ font-size:var(--t-label); font-weight:600; letter-spacing:.14em; text-transform:uppercase; color:var(--ivory-3); }
 .slot p{ margin:14px 0 0; font-size:var(--t-body); line-height:1.55; color:var(--ivory-2); }
 
 /* ---------- contact ---------- */
-.contact{ padding:clamp(60px,9vw,132px) 0 clamp(48px,7vw,92px); }
-.contact h2{ font-size:clamp(32px,4.8vw,62px); max-width:15ch; margin:0 0 24px; }
-.contact p{ color:var(--ivory-2); font-size:var(--t-lead); line-height:1.58; max-width:52ch; margin:0 0 clamp(28px,4vw,42px); }
+.contact{ padding:clamp(96px,14vw,208px) 0 clamp(64px,9vw,116px); }
+.contact h2{ max-width:15ch; margin:0 0 32px; }
+.contact p{ color:var(--ivory-2); font-size:clamp(20px,1.7vw,25px); line-height:1.55; max-width:50ch; margin:0 0 clamp(34px,4.5vw,50px); }
 .links{ display:flex; flex-wrap:wrap; gap:16px; }
 
 .btn{
     display:inline-block; text-decoration:none;
-    font-family:var(--sans); font-size:14.5px; font-weight:700; letter-spacing:.03em;
-    padding:16px 28px; border:1px solid var(--gold); background:var(--gold); color:#14100A;
+    font-family:var(--sans); font-size:15.5px; font-weight:700; letter-spacing:.02em;
+    padding:19px 32px; border:1px solid var(--gold); background:var(--gold); color:#14100A;
     transition:background .18s ease, color .18s ease, border-color .18s ease;
 }
 .btn.ghost{ background:transparent; color:var(--ivory); border-color:var(--rule); }
@@ -473,7 +493,7 @@ footer{
     <section id="search" class="search">
       <div class="search-grid">
         <div>
-          <h2>What happens when someone Googles your name?</h2>
+          <h2 class="statement">What happens when someone Googles your name?</h2>
           <p class="note-small">Most people will search you before they meet you. What they find is the version of you they act on.</p>
         </div>
         <div>
@@ -489,18 +509,28 @@ footer{
         </div>
       </div>
 
-      <div class="fragments">
-        <div>
-          <span class="label">Today, your name returns</span>
-          <ul class="frag-list">
-            <li>LinkedIn</li><li>Company bio</li><li>Directories</li><li>Old interviews</li>
-            <li>Social profiles</li><li>Conference pages</li><li>Third party listings</li><li>Scattered mentions</li>
-          </ul>
+      <div class="serp">
+        <div class="serp-col">
+          <span class="label">What your name returns today</span>
+          <div class="query">
+            <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="7" cy="7" r="5" stroke="#BFBCB1" stroke-width="1.4"/><path d="M11 11l4 4" stroke="#BFBCB1" stroke-width="1.4" stroke-linecap="round"/></svg>
+            <span>&ldquo;<i>your name</i>&rdquo;</span>
+          </div>
+          <div class="res dim"><b>LinkedIn</b><span>A profile you last edited some years ago</span></div>
+          <div class="res dim"><b>Company biography</b><span>Accurate until the day you leave</span></div>
+          <div class="res dim"><b>Professional directory</b><span>Written by someone who has never met you</span></div>
+          <div class="res dim"><b>An interview from 2019</b><span>Still the first thing many people read</span></div>
+          <p class="serp-note">None of it is wrong. Together it is incoherent, and the person searching has to assemble you from pieces.</p>
         </div>
-        <div class="frag-arrow" aria-hidden="true">&#8594;</div>
-        <div class="frag-home">
+
+        <div class="serp-col">
           <span class="label">What we build</span>
-          <b>One authoritative destination that holds the record together and connects the rest of it.</b>
+          <div class="res own">
+            <span class="label">Yourname.com</span>
+            <b>The authoritative home for your name</b>
+            <span>Your history, expertise, accomplishments and work, held in one place you control and connected to everything else that carries your name.</span>
+          </div>
+          <p class="serp-note">It does not replace the other results. It gives them somewhere to point.</p>
         </div>
       </div>
 
@@ -565,7 +595,6 @@ footer{
           <div class="meta">
             <p class="name">John W. Fisher</p>
             <p class="role">Poet &middot; Composer &middot; Teacher</p>
-            <p class="note">Three bodies of work presented as one coherent identity.</p>
           </div>
         </a>
         <a class="card sm rv" href="https://ranatahirbilal.github.io/ana-ferreira/" target="_blank" rel="noopener noreferrer">
@@ -573,7 +602,6 @@ footer{
           <div class="meta">
             <p class="name">Ana Eugenia Ferreira, PhD</p>
             <p class="role">Clinical psychologist</p>
-            <p class="note">Forty years of practice, written for the person deciding whether to call.</p>
           </div>
         </a>
         <a class="card sm rv" href="https://ranatahirbilal.github.io/elery-shoemaker/" target="_blank" rel="noopener noreferrer">
@@ -581,7 +609,6 @@ footer{
           <div class="meta">
             <p class="name">Elery M. &ldquo;Rusty&rdquo; Shoemaker</p>
             <p class="role">Nuclear power executive</p>
-            <p class="note">A safety career told as a sequence of decisions rather than a job list.</p>
           </div>
         </a>
         <a class="card sm rv" href="https://ranatahirbilal.github.io/kathleen-werner/" target="_blank" rel="noopener noreferrer">
@@ -589,7 +616,6 @@ footer{
           <div class="meta">
             <p class="name">Kathleen M. Werner, JD</p>
             <p class="role">Law firm owner</p>
-            <p class="note">Ownership and tenure moved to the front, where they belong.</p>
           </div>
         </a>
         <a class="card sm rv" href="https://ranatahirbilal.github.io/gabriela-torres/" target="_blank" rel="noopener noreferrer">
@@ -597,7 +623,6 @@ footer{
           <div class="meta">
             <p class="name">Gabriela Torres</p>
             <p class="role">Foundation executive</p>
-            <p class="note">Systems change work made legible outside the sector.</p>
           </div>
         </a>
         <a class="card sm rv" href="https://ranatahirbilal.github.io/philip-berry/" target="_blank" rel="noopener noreferrer">
@@ -605,7 +630,6 @@ footer{
           <div class="meta">
             <p class="name">Philip Berry</p>
             <p class="role">Executive coach</p>
-            <p class="note">A substantial client history presented without inflation.</p>
           </div>
         </a>
         <a class="card sm rv" href="https://ranatahirbilal.github.io/frances-iger-laterman/" target="_blank" rel="noopener noreferrer">
@@ -613,7 +637,6 @@ footer{
           <div class="meta">
             <p class="name">Frances Iger Laterman</p>
             <p class="role">Private art dealer</p>
-            <p class="note">A silent contact failure found and repaired, then a presence rebuilt around it.</p>
           </div>
         </a>
         <a class="card sm rv" href="https://ranatahirbilal.github.io/jared-videll/" target="_blank" rel="noopener noreferrer">
@@ -621,7 +644,6 @@ footer{
           <div class="meta">
             <p class="name">Jared Videll, DO</p>
             <p class="role">Cardiologist &middot; Lt. Col., USAR</p>
-            <p class="note">A medical and military career held in one authoritative place.</p>
           </div>
         </a>
         <a class="card sm rv" href="https://ranatahirbilal.github.io/marinella-chvatal/" target="_blank" rel="noopener noreferrer">
@@ -629,7 +651,6 @@ footer{
           <div class="meta">
             <p class="name">Marinella A. Chvatal, MEd</p>
             <p class="role">Founder &amp; CEO</p>
-            <p class="note">Four degrees organised around a single professional question.</p>
           </div>
         </a>
         <a class="card sm rv" href="https://illustrious-marshmallow-3491a0.netlify.app/" target="_blank" rel="noopener noreferrer">
@@ -637,7 +658,6 @@ footer{
           <div class="meta">
             <p class="name">Dr. Adam Silevitch, DMD</p>
             <p class="role">Pediatric dentist</p>
-            <p class="note">Specialist credibility written for parents rather than for peers.</p>
           </div>
         </a>
         <a class="card sm rv" href="https://playful-mousse-00f181.netlify.app/" target="_blank" rel="noopener noreferrer">
@@ -645,7 +665,6 @@ footer{
           <div class="meta">
             <p class="name">Dr. David D. Van Fleet</p>
             <p class="role">Professor Emeritus</p>
-            <p class="note">Five decades of scholarship given a navigable structure.</p>
           </div>
         </a>
         <a class="card sm rv" href="https://unrivaled-monstera-cb7475.netlify.app/" target="_blank" rel="noopener noreferrer">
@@ -653,7 +672,6 @@ footer{
           <div class="meta">
             <p class="name">Gregory E. Boske</p>
             <p class="role">Owner, medical transport</p>
-            <p class="note">Local operating authority, stated plainly for the community it serves.</p>
           </div>
         </a>
       </div>
@@ -666,7 +684,7 @@ footer{
 
     <section id="approach" class="creed">
       <div class="creed-in">
-        <h2>We do not manufacture authority.</h2>
+        <h2 class="statement">We do not manufacture authority.</h2>
         <div>
           <p>We do not inflate credentials, and we do not turn ordinary accomplishments into marketing fiction. No award, date, title, quote, publication or employer appears on a site unless the person has confirmed it. If a detail cannot be verified it is <b>marked for review, not filled in</b>.</p>
           <p>That restraint is the point. The people we work with have spent decades building something real, and the fastest way to damage it is to overstate it in public.</p>
@@ -678,7 +696,7 @@ footer{
     <section class="examine">
       <div class="exam-grid">
         <div>
-          <h2>Before we build anything.</h2>
+          <h2 class="statement">Before we build anything.</h2>
           <p>The first conversation is not about a website. It is about what someone should see when they search for you, and what currently stands between them and that.</p>
           <p class="note-small">Roughly 24,000 people follow this practice on Instagram. Useful evidence that we understand attention and how personal reputation travels, and not the reason to hire us.</p>
         </div>
@@ -731,7 +749,7 @@ footer{
     </section>
 
     <section id="contact" class="contact">
-      <h2>If your work is hard to explain, that is the job.</h2>
+      <h2 class="statement">If your work is hard to explain, that is the job.</h2>
       <p>Tell me what you have built, accomplished, or become known for. I will tell you honestly whether a personal brand website and a stronger digital presence can meaningfully improve how you are represented online.</p>
       <div class="links">
         <a class="btn" href="mailto:tahirbilal16@gmail.com?subject=Private%20Visibility%20Assessment">Request a Private Visibility Assessment</a>
