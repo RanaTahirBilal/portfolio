@@ -1,0 +1,433 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Rana Tahir Bilal — Personal websites for people whose work is worth explaining</title>
+<meta name="description" content="Personal brand websites written from scratch around one person's record. Fifteen live sites for clinicians, lawyers, academics, planners and coaches.">
+<meta property="og:title" content="Rana Tahir Bilal — Personal websites">
+<meta property="og:description" content="Fifteen live sites, written from scratch around one person's record. Open any of them.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500&family=Archivo:wght@400;500;600&display=swap">
+
+<style>
+/* ==========================================================
+   PORTFOLIO — Rana Tahir Bilal
+   Committed to one dark treatment on purpose. Every tile is a
+   screenshot of a light editorial website; on a near black
+   ground they are the only colour on the page, which is the
+   whole argument. No accent hue competes with them.
+
+   Bodoni Moda carries the display at large optical sizes only,
+   where its high contrast reads as authority; Archivo does all
+   the work that has to stay legible small.
+   ========================================================== */
+
+:root{
+    --ground:#0E0E0D;
+    --ground-2:#161615;
+    --raise:#1C1C1A;
+    --bone:#F2EFE9;
+    --bone-2:#CFCAC1;
+    --muted:#8F8A81;
+    --faint:#6E6960;
+    --rule:#2A2A27;
+    --rule-2:#3A3934;
+    --live:#7FBF9C;
+
+    --display:'Bodoni Moda',Didot,'Playfair Display',Georgia,serif;
+    --sans:'Archivo',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;
+
+    --page:1320px;
+    --gutter:clamp(20px,4.5vw,56px);
+}
+
+*,*::before,*::after{ box-sizing:border-box; }
+html{ scroll-behavior:smooth; }
+@media (prefers-reduced-motion: reduce){ html{ scroll-behavior:auto; } }
+
+body{
+    margin:0; background:var(--ground); color:var(--bone);
+    font-family:var(--sans); font-size:17px; line-height:1.6;
+    font-variant-numeric:tabular-nums;
+    -webkit-font-smoothing:antialiased; overflow-x:clip;
+}
+
+.page{ max-width:var(--page); margin:0 auto; padding:0 var(--gutter); }
+
+.label{
+    font-family:var(--sans); font-size:11px; font-weight:500;
+    letter-spacing:.19em; text-transform:uppercase; color:var(--muted);
+}
+
+a{ color:inherit; }
+a:focus-visible{ outline:2px solid var(--bone); outline-offset:3px; }
+
+/* ---------- masthead ---------- */
+.top{
+    display:flex; align-items:baseline; justify-content:space-between; gap:24px; flex-wrap:wrap;
+    padding:22px 0 20px; border-bottom:1px solid var(--rule);
+}
+.wordmark{ font-family:var(--sans); font-weight:600; font-size:15px; letter-spacing:.02em; }
+.top nav{ display:flex; gap:22px; }
+.top nav a{ text-decoration:none; }
+.top nav a:hover{ color:var(--bone); }
+
+/* ---------- statement ---------- */
+.hero{ padding:clamp(56px,10vw,132px) 0 clamp(40px,6vw,72px); }
+h1{
+    font-family:var(--display); font-weight:400;
+    font-variation-settings:'opsz' 96;
+    font-size:clamp(38px,7.2vw,88px); line-height:1.02; letter-spacing:-.02em;
+    margin:0 0 clamp(24px,3vw,40px); max-width:17ch; text-wrap:balance;
+}
+h1 em{ font-style:italic; }
+.standfirst{
+    font-size:clamp(17px,1.7vw,20px); line-height:1.6; color:var(--bone-2);
+    margin:0; max-width:62ch;
+}
+.standfirst b{ color:var(--bone); font-weight:500; }
+
+.facts{
+    display:flex; flex-wrap:wrap; gap:0;
+    margin:clamp(36px,5vw,60px) 0 0; border-top:1px solid var(--rule);
+}
+.facts div{
+    flex:1 1 200px; padding:20px 24px 20px 0; border-right:1px solid var(--rule);
+}
+.facts div:last-child{ border-right:0; }
+.facts dt{ margin:0 0 6px; }
+.facts dd{
+    margin:0; font-family:var(--display); font-variation-settings:'opsz' 40;
+    font-size:20px; line-height:1.35; color:var(--bone);
+}
+@media (max-width:760px){
+    .facts div{ flex:1 1 100%; border-right:0; border-bottom:1px solid var(--rule); padding-right:0; }
+    .facts div:last-child{ border-bottom:0; }
+}
+
+/* ---------- the work ---------- */
+.work{ padding:clamp(44px,7vw,96px) 0 0; }
+.section-head{
+    display:flex; align-items:baseline; justify-content:space-between; gap:20px;
+    border-top:1px solid var(--rule-2); padding-top:16px; margin:0 0 clamp(26px,3.5vw,44px);
+}
+h2{
+    font-family:var(--display); font-weight:400; font-variation-settings:'opsz' 48;
+    font-size:clamp(26px,3.4vw,38px); line-height:1.15; letter-spacing:-.015em; margin:0;
+}
+
+.grid{
+    display:grid; grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:clamp(20px,2.6vw,36px) clamp(18px,2.2vw,30px);
+}
+@media (max-width:1080px){ .grid{ grid-template-columns:repeat(2,minmax(0,1fr)); } }
+@media (max-width:640px){ .grid{ grid-template-columns:1fr; } }
+
+.card{ display:block; text-decoration:none; }
+.shot{
+    position:relative; overflow:hidden; background:var(--raise);
+    border:1px solid var(--rule); aspect-ratio:16/10;
+}
+.shot img{
+    width:100%; height:100%; object-fit:cover; object-position:50% 0;
+    display:block; transform:scale(1.001);
+    transition:transform .5s cubic-bezier(.2,.7,.3,1), opacity .3s ease;
+}
+.card:hover .shot img{ transform:scale(1.035); }
+.card:hover .shot{ border-color:var(--rule-2); }
+@media (prefers-reduced-motion: reduce){ .shot img{ transition:none; } .card:hover .shot img{ transform:none; } }
+
+.visit{
+    position:absolute; right:12px; bottom:12px;
+    background:var(--ground); color:var(--bone);
+    font-size:11px; font-weight:500; letter-spacing:.14em; text-transform:uppercase;
+    padding:7px 11px; border:1px solid var(--rule-2);
+    opacity:0; transform:translateY(6px);
+    transition:opacity .25s ease, transform .25s ease;
+}
+.card:hover .visit, .card:focus-visible .visit{ opacity:1; transform:none; }
+@media (prefers-reduced-motion: reduce){ .visit{ transition:none; } }
+@media (hover:none){ .visit{ opacity:1; transform:none; } }
+
+.meta{ padding:14px 2px 0; }
+.name{
+    font-family:var(--display); font-variation-settings:'opsz' 28;
+    font-weight:400; font-size:21px; line-height:1.25; margin:0 0 4px; letter-spacing:-.01em;
+}
+.role{ font-size:13.5px; color:var(--muted); margin:0 0 8px; }
+.note{ font-size:14.5px; color:var(--bone-2); margin:0; max-width:44ch; }
+
+.stamp{
+    display:inline-flex; align-items:center; gap:6px;
+    font-size:10.5px; font-weight:500; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--muted); margin:0 0 10px;
+}
+.stamp::before{
+    content:""; width:5px; height:5px; border-radius:50%; background:var(--live);
+}
+
+/* ---------- process ---------- */
+.process{ padding:clamp(60px,9vw,120px) 0 0; }
+.steps{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:clamp(22px,3vw,44px); }
+@media (max-width:820px){ .steps{ grid-template-columns:1fr; } }
+.step{ border-top:1px solid var(--rule); padding-top:18px; }
+.step h3{
+    font-family:var(--display); font-variation-settings:'opsz' 32;
+    font-weight:400; font-size:23px; margin:10px 0 8px; letter-spacing:-.01em;
+}
+.step p{ margin:0; color:var(--bone-2); font-size:15.5px; max-width:38ch; }
+.step a{ color:var(--bone); text-underline-offset:3px; }
+
+/* ---------- contact ---------- */
+.contact{ padding:clamp(60px,9vw,124px) 0 clamp(50px,7vw,90px); }
+.contact-in{ border-top:1px solid var(--rule-2); padding-top:clamp(28px,4vw,48px); }
+.contact h2{ max-width:16ch; margin:0 0 clamp(22px,3vw,36px); }
+.links{ display:flex; flex-wrap:wrap; gap:14px; }
+.btn{
+    display:inline-block; text-decoration:none;
+    font-size:13px; font-weight:500; letter-spacing:.06em;
+    padding:14px 22px; border:1px solid var(--bone); background:var(--bone); color:var(--ground);
+    transition:background .18s ease, color .18s ease, border-color .18s ease;
+}
+.btn.ghost{ background:transparent; color:var(--bone); border-color:var(--rule-2); }
+.btn:hover{ background:transparent; color:var(--bone); border-color:var(--bone); }
+.btn.ghost:hover{ border-color:var(--bone); }
+@media (prefers-reduced-motion: reduce){ .btn{ transition:none; } }
+
+footer{
+    border-top:1px solid var(--rule); padding:22px 0 60px;
+    display:flex; flex-wrap:wrap; gap:16px; justify-content:space-between;
+}
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <header class="top">
+    <span class="wordmark">Rana Tahir Bilal</span>
+    <nav class="label">
+      <a href="#work">Work</a>
+      <a href="#how">How it works</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>A website that sounds like the <em>person</em> it is about.</h1>
+    <p class="standfirst">I build personal sites for people whose record deserves explaining properly: clinicians, lawyers, academics, financial planners, coaches. Each one is written from scratch around that person's own material, in their own voice. <b>Fifteen are live below. Open any of them.</b></p>
+
+    <dl class="facts">
+      <div><dt class="label">Live sites</dt><dd>Fifteen, every link on this page opens the real thing</dd></div>
+      <div><dt class="label">Written for</dt><dd>Medicine, law, academia, finance, the arts</dd></div>
+      <div><dt class="label">Built around</dt><dd>One person, one record, no borrowed copy</dd></div>
+    </dl>
+  </section>
+
+  <main id="work" class="work">
+    <div class="section-head">
+      <h2>Selected work</h2>
+      <span class="label">Fifteen sites</span>
+    </div>
+
+    <div class="grid">
+
+      <a class="card" href="https://ranatahirbilal.github.io/kristina-mcgahan/" target="_blank" rel="noopener noreferrer">
+        <div class="shot"><img src="img/kristina.jpg" alt="Homepage of Kristina M. McGahan's website" width="880" height="550" loading="lazy" decoding="async"><span class="visit">Visit &#8599;</span></div>
+        <div class="meta">
+          <p class="stamp">Live</p>
+          <p class="name">Kristina M. McGahan, RN, BSN</p>
+          <p class="role">Cardiac &amp; telemetry nurse &middot; Author</p>
+          <p class="note">Built around a career on the night shift and a book she wrote about it.</p>
+        </div>
+      </a>
+
+      <a class="card" href="https://ranatahirbilal.github.io/charles-cooper/" target="_blank" rel="noopener noreferrer">
+        <div class="shot"><img src="img/charles.jpg" alt="Homepage of Charles L. Cooper's website" width="880" height="550" loading="lazy" decoding="async"><span class="visit">Visit &#8599;</span></div>
+        <div class="meta">
+          <p class="stamp">Live</p>
+          <p class="name">Charles L. Cooper, CFP</p>
+          <p class="role">Financial planner &middot; Greeley, Colorado</p>
+          <p class="note">Forty years at one firm, with the disclosures a regulated adviser needs.</p>
+        </div>
+      </a>
+
+      <a class="card" href="https://ranatahirbilal.github.io/john-fisher/" target="_blank" rel="noopener noreferrer">
+        <div class="shot"><img src="img/fisher.jpg" alt="Homepage of John W. Fisher's website" width="880" height="550" loading="lazy" decoding="async"><span class="visit">Visit &#8599;</span></div>
+        <div class="meta">
+          <p class="stamp">Live</p>
+          <p class="name">John W. Fisher</p>
+          <p class="role">Poet &middot; Composer &middot; Teacher</p>
+          <p class="note">A working life across three art forms, held together on one page.</p>
+        </div>
+      </a>
+
+      <a class="card" href="https://ranatahirbilal.github.io/ana-ferreira/" target="_blank" rel="noopener noreferrer">
+        <div class="shot"><img src="img/ana.jpg" alt="Homepage of Ana Eugenia Ferreira's website" width="880" height="550" loading="lazy" decoding="async"><span class="visit">Visit &#8599;</span></div>
+        <div class="meta">
+          <p class="stamp">Live</p>
+          <p class="name">Ana Eugenia Ferreira, PhD</p>
+          <p class="role">Clinical psychologist &middot; Psychoanalyst</p>
+          <p class="note">Forty years of practice in New York, written for people deciding whether to call.</p>
+        </div>
+      </a>
+
+      <a class="card" href="https://ranatahirbilal.github.io/andrew-cooper/" target="_blank" rel="noopener noreferrer">
+        <div class="shot"><img src="img/cooper.jpg" alt="Homepage of Andrew Charles Cooper's website" width="880" height="550" loading="lazy" decoding="async"><span class="visit">Visit &#8599;</span></div>
+        <div class="meta">
+          <p class="stamp">Live</p>
+          <p class="name">Andrew Charles Cooper</p>
+          <p class="role">Attorney &middot; Patent litigator</p>
+          <p class="note">A litigation record explained so a non lawyer can follow what it means.</p>
+        </div>
+      </a>
+
+      <a class="card" href="https://ranatahirbilal.github.io/kathleen-werner/" target="_blank" rel="noopener noreferrer">
+        <div class="shot"><img src="img/werner.jpg" alt="Homepage of Kathleen M. Werner's website" width="880" height="550" loading="lazy" decoding="async"><span class="visit">Visit &#8599;</span></div>
+        <div class="meta">
+          <p class="stamp">Live</p>
+          <p class="name">Kathleen M. Werner, JD</p>
+          <p class="role">Owner, The Dorsey Law Firm</p>
+          <p class="note">Rebuilt: thirty three years at the same firm, and now she owns it.</p>
+        </div>
+      </a>
+
+      <a class="card" href="https://ranatahirbilal.github.io/elery-shoemaker/" target="_blank" rel="noopener noreferrer">
+        <div class="shot"><img src="img/shoemaker.jpg" alt="Homepage of Elery M. Shoemaker's website" width="880" height="550" loading="lazy" decoding="async"><span class="visit">Visit &#8599;</span></div>
+        <div class="meta">
+          <p class="stamp">Live</p>
+          <p class="name">Elery M. &ldquo;Rusty&rdquo; Shoemaker</p>
+          <p class="role">Nuclear power &middot; INPO &amp; WANO</p>
+          <p class="note">Forty five years in nuclear operations, told as a sequence of decisions.</p>
+        </div>
+      </a>
+
+      <a class="card" href="https://ranatahirbilal.github.io/gabriela-torres/" target="_blank" rel="noopener noreferrer">
+        <div class="shot"><img src="img/torres.jpg" alt="Homepage of Gabriela Torres's website" width="880" height="550" loading="lazy" decoding="async"><span class="visit">Visit &#8599;</span></div>
+        <div class="meta">
+          <p class="stamp">Live</p>
+          <p class="name">Gabriela Torres</p>
+          <p class="role">Deputy Director &middot; Gates Foundation</p>
+          <p class="note">Postsecondary success work, made legible outside the sector.</p>
+        </div>
+      </a>
+
+      <a class="card" href="https://ranatahirbilal.github.io/philip-berry/" target="_blank" rel="noopener noreferrer">
+        <div class="shot"><img src="img/berry.jpg" alt="Homepage of Philip Berry's website" width="880" height="550" loading="lazy" decoding="async"><span class="visit">Visit &#8599;</span></div>
+        <div class="meta">
+          <p class="stamp">Live</p>
+          <p class="name">Philip Berry</p>
+          <p class="role">Executive coach &middot; Leadership advisor</p>
+          <p class="note">A client list of twenty eight organisations, shown without shouting.</p>
+        </div>
+      </a>
+
+      <a class="card" href="https://ranatahirbilal.github.io/frances-iger-laterman/" target="_blank" rel="noopener noreferrer">
+        <div class="shot"><img src="img/laterman.jpg" alt="Homepage of Frances Iger Laterman's website" width="880" height="550" loading="lazy" decoding="async"><span class="visit">Visit &#8599;</span></div>
+        <div class="meta">
+          <p class="stamp">Live</p>
+          <p class="name">Frances Iger Laterman</p>
+          <p class="role">Private art dealer &amp; consultant</p>
+          <p class="note">Her contact form looked fine and delivered nothing. Found and fixed.</p>
+        </div>
+      </a>
+
+      <a class="card" href="https://ranatahirbilal.github.io/jared-videll/" target="_blank" rel="noopener noreferrer">
+        <div class="shot"><img src="img/videll.jpg" alt="Homepage of Jared Videll's website" width="880" height="550" loading="lazy" decoding="async"><span class="visit">Visit &#8599;</span></div>
+        <div class="meta">
+          <p class="stamp">Live</p>
+          <p class="name">Jared Videll, DO</p>
+          <p class="role">Cardiologist &middot; Lt. Col., U.S. Army Reserve</p>
+          <p class="note">Practising cardiology since 1976, alongside a military career.</p>
+        </div>
+      </a>
+
+      <a class="card" href="https://ranatahirbilal.github.io/marinella-chvatal/" target="_blank" rel="noopener noreferrer">
+        <div class="shot"><img src="img/chvatal.jpg" alt="Homepage of Marinella A. Chvatal's website" width="880" height="550" loading="lazy" decoding="async"><span class="visit">Visit &#8599;</span></div>
+        <div class="meta">
+          <p class="stamp">Live</p>
+          <p class="name">Marinella A. Chvatal, MEd</p>
+          <p class="role">Founder &amp; CEO &middot; Tutoring</p>
+          <p class="note">Four degrees, all pointing at one question about how children learn.</p>
+        </div>
+      </a>
+
+      <a class="card" href="https://illustrious-marshmallow-3491a0.netlify.app/" target="_blank" rel="noopener noreferrer">
+        <div class="shot"><img src="img/silevitch.jpg" alt="Homepage of Dr. Adam Silevitch's website" width="880" height="550" loading="lazy" decoding="async"><span class="visit">Visit &#8599;</span></div>
+        <div class="meta">
+          <p class="stamp">Live</p>
+          <p class="name">Dr. Adam Silevitch, DMD</p>
+          <p class="role">Board certified pediatric dentist</p>
+          <p class="note">Written for anxious parents rather than for other dentists.</p>
+        </div>
+      </a>
+
+      <a class="card" href="https://playful-mousse-00f181.netlify.app/" target="_blank" rel="noopener noreferrer">
+        <div class="shot"><img src="img/vanfleet.jpg" alt="Homepage of Dr. David D. Van Fleet's website" width="880" height="550" loading="lazy" decoding="async"><span class="visit">Visit &#8599;</span></div>
+        <div class="meta">
+          <p class="stamp">Live</p>
+          <p class="name">Dr. David D. Van Fleet</p>
+          <p class="role">Professor Emeritus of Management</p>
+          <p class="note">Fifty years of teaching and a publication list that needed structure.</p>
+        </div>
+      </a>
+
+      <a class="card" href="https://unrivaled-monstera-cb7475.netlify.app/" target="_blank" rel="noopener noreferrer">
+        <div class="shot"><img src="img/boske.jpg" alt="Homepage of Gregory E. Boske's website" width="880" height="550" loading="lazy" decoding="async"><span class="visit">Visit &#8599;</span></div>
+        <div class="meta">
+          <p class="stamp">Live</p>
+          <p class="name">Gregory E. Boske</p>
+          <p class="role">Ridgecrest Medical Transportation</p>
+          <p class="note">A local operator, written for the valley he actually serves.</p>
+        </div>
+      </a>
+
+    </div>
+  </main>
+
+  <section id="how" class="process">
+    <div class="section-head">
+      <h2>How it works</h2>
+      <span class="label">Three steps</span>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <span class="label">01</span>
+        <h3>The brief</h3>
+        <p>You answer a <a href="https://ranatahirbilal.github.io/brief/" target="_blank" rel="noopener noreferrer">questionnaire</a> about your work, your record and what you would rather not publish. It takes about forty minutes.</p>
+      </div>
+      <div class="step">
+        <span class="label">02</span>
+        <h3>The build</h3>
+        <p>I write and design the site from your answers. Nothing is invented: no awards, dates, quotes or history that you have not confirmed.</p>
+      </div>
+      <div class="step">
+        <span class="label">03</span>
+        <h3>Live</h3>
+        <p>Hosted, fast, readable on a phone, and yours. You get the files and the address, and I stay on hand for changes.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="contact-in">
+      <h2>If your work is hard to explain, that is the job.</h2>
+      <div class="links">
+        <a class="btn" href="mailto:tahirbilal16@gmail.com?subject=Website%20enquiry">Start a conversation</a>
+        <a class="btn ghost" href="https://github.com/RanaTahirBilal" target="_blank" rel="noopener noreferrer">GitHub &#8599;</a>
+        <a class="btn ghost" href="https://ranatahirbilal.github.io/brief/" target="_blank" rel="noopener noreferrer">See the brief &#8599;</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="label">
+    <span>Rana Tahir Bilal</span>
+    <span>Every site on this page is live and linked</span>
+  </footer>
+
+</div>
+</body>
+</html>
