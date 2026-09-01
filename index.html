@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Rana Tahir Bilal — Personal brand websites and digital authority</title>
-<meta name="description" content="We build personal brand websites and digital authority systems for accomplished people who deserve to be found, understood and trusted online.">
+<meta name="description" content="I build personal brand websites and digital authority systems for accomplished people who deserve to be found, understood and trusted online.">
 <meta property="og:title" content="Rana Tahir Bilal — Personal brand websites and digital authority">
 <meta property="og:description" content="Personal brand websites and digital authority systems for accomplished people.">
 <meta property="og:type" content="website">
@@ -381,7 +381,7 @@ p.pull{
 .creed p:last-child{ margin:0; }
 .creed b{ color:var(--ivory); font-weight:600; }
 
-/* ---------- what we examine ---------- */
+/* ---------- what I examine ---------- */
 .examine{ padding:clamp(76px,11vw,156px) 0; border-top:1px solid var(--rule); }
 .exam-grid{ display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.05fr); gap:clamp(32px,5vw,80px); align-items:start; }
 @media (max-width:900px){ .exam-grid{ grid-template-columns:1fr; gap:30px; } }
@@ -394,6 +394,8 @@ p.pull{
 }
 @media (max-width:620px){ .exam-list{ columns:1; } }
 .note-small{ font-size:var(--t-small); line-height:1.6; color:var(--ivory-2); max-width:46ch; margin-top:22px; }
+.ilink{ color:var(--gold); text-decoration:none; border-bottom:1px solid rgba(201,163,78,.42); }
+.ilink:hover{ border-bottom-color:var(--gold); }
 
 /* ---------- process ---------- */
 .process{ padding:clamp(76px,11vw,156px) 0; border-bottom:1px solid var(--rule); }
@@ -434,8 +436,10 @@ p.pull{
 
 footer{
     border-top:1px solid var(--rule); padding:26px 0 64px;
-    display:flex; flex-wrap:wrap; gap:16px; justify-content:space-between;
+    display:flex; flex-wrap:wrap; gap:16px 26px; justify-content:space-between; align-items:baseline;
 }
+footer a{ color:var(--ivory-3); text-decoration:none; border-bottom:1px solid transparent; }
+footer a:hover{ color:var(--gold); border-bottom-color:var(--gold); }
 
 /* ---------- entrance ---------- */
 .js-reveal .rv{ opacity:0; transform:translateY(14px); }
@@ -443,6 +447,30 @@ footer{
 @media (prefers-reduced-motion: reduce){
     .js-reveal .rv{ opacity:1; transform:none; }
     .js-reveal .rv.in{ transition:none; }
+}
+
+.about{padding:clamp(64px,9vw,120px) 0;border-top:1px solid rgba(240,236,228,.12)}
+/* Until a real portrait exists, the column is removed rather than filled with a placeholder. */
+.about-portrait img{width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;display:block;
+  border:1px solid rgba(240,236,228,.14)}
+.about-in{display:grid;grid-template-columns:.82fr 1.18fr;gap:clamp(30px,5vw,66px);align-items:start;
+  max-width:1180px;margin:0 auto;padding:0 clamp(20px,4vw,44px)}
+
+.about-text .eyebrow{font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;
+  color:#C9A24A;font-weight:600;margin:0 0 16px}
+.about-text .lead{font-size:clamp(17px,1.5vw,19.5px);line-height:1.62}
+.creds{margin:34px 0 0;padding:26px 0 0;border-top:1px solid rgba(240,236,228,.14);
+  display:grid;gap:0}
+.creds > div{display:grid;grid-template-columns:150px 1fr;gap:18px;padding:11px 0;
+  border-bottom:1px solid rgba(240,236,228,.09)}
+.creds > div:last-child{border-bottom:0}
+.creds dt{font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;
+  color:rgba(240,236,228,.5);font-weight:600;margin:0}
+.creds dd{margin:0;font-size:16px;line-height:1.6}
+@media(max-width:820px){
+  .about-in{grid-template-columns:1fr;gap:28px}
+  .about-portrait{max-width:340px}
+  .creds > div{grid-template-columns:1fr;gap:2px}
 }
 </style>
 </head>
@@ -456,6 +484,7 @@ footer{
         <a href="#search">The problem</a>
         <a href="#work">Selected work</a>
         <a href="#approach">Approach</a>
+        <a href="#about">About</a>
         <a href="#contact">Contact</a>
       </nav>
     </header>
@@ -465,7 +494,7 @@ footer{
         <div>
           <p class="label eyebrow">Personal brand websites &amp; digital authority</p>
           <h1>Remarkable people, <em>invisible</em> online.</h1>
-          <p class="hero-sub">We build personal brand websites and digital authority systems for accomplished people who deserve to be <b>found, understood and trusted</b> online.</p>
+          <p class="hero-sub">I build personal brand websites and digital authority systems for accomplished people who deserve to be <b>found, understood and trusted</b> online.</p>
           <ul class="disciplines">
             <li>Personal Branding</li>
             <li>Google Visibility</li>
@@ -484,9 +513,9 @@ footer{
       </div>
 
       <dl class="band">
-        <div><dt class="label">Who we work with</dt><dd>Founders, executives, investors, physicians, attorneys, authors</dd></div>
-        <div><dt class="label">What we build</dt><dd>The <i>authoritative home</i> for your name</dd></div>
-        <div><dt class="label">How we work</dt><dd>Selected engagements, built around the individual</dd></div>
+        <div><dt class="label">Who I work with</dt><dd>Founders, executives, investors, physicians, attorneys, authors</dd></div>
+        <div><dt class="label">What I build</dt><dd>The <i>authoritative home</i> for your name</dd></div>
+        <div><dt class="label">How I work</dt><dd>Selected engagements, built around the individual</dd></div>
       </dl>
     </section>
 
@@ -524,7 +553,7 @@ footer{
         </div>
 
         <div class="serp-col">
-          <span class="label">What we build</span>
+          <span class="label">What I build</span>
           <div class="res own">
             <span class="label">Yourname.com</span>
             <b>The authoritative home for your name</b>
@@ -534,7 +563,7 @@ footer{
         </div>
       </div>
 
-      <p class="pull">Your reputation already exists. <i>We build the digital infrastructure around it.</i></p>
+      <p class="pull">Your reputation already exists. <i>I build the digital infrastructure around it.</i></p>
     </section>
 
     <section class="audience">
@@ -702,11 +731,11 @@ footer{
 
     <section id="approach" class="creed">
       <div class="creed-in">
-        <h2 class="statement">We do not manufacture authority.</h2>
+        <h2 class="statement">I do not manufacture authority.</h2>
         <div>
-          <p>We do not inflate credentials, and we do not turn ordinary accomplishments into marketing fiction. No award, date, title, quote, publication or employer appears on a site unless the person has confirmed it. If a detail cannot be verified it is <b>marked for review, not filled in</b>.</p>
-          <p>That restraint is the point. The people we work with have spent decades building something real, and the fastest way to damage it is to overstate it in public.</p>
-          <p>Our job is to take the work, expertise and reputation you have already built and construct the digital infrastructure that represents it properly.</p>
+          <p>I do not inflate credentials, and I do not turn ordinary accomplishments into marketing fiction. No award, date, title, quote, publication or employer appears on a site unless the person has confirmed it. If a detail cannot be verified it is <b>marked for review, not filled in</b>.</p>
+          <p>That restraint is the point. The people I work with have spent decades building something real, and the fastest way to damage it is to overstate it in public.</p>
+          <p>My job is to take the work, expertise and reputation you have already built and construct the digital infrastructure that represents it properly.</p>
         </div>
       </div>
     </section>
@@ -714,12 +743,12 @@ footer{
     <section class="examine">
       <div class="exam-grid">
         <div>
-          <h2 class="statement">Before we build anything.</h2>
+          <h2 class="statement">Before I build anything.</h2>
           <p>The first conversation is not about a website. It is about what someone should see when they search for you, and what currently stands between them and that.</p>
-          <p class="note-small">Roughly 24,000 people follow this practice on Instagram. Useful evidence that we understand attention and how personal reputation travels, and not the reason to hire us.</p>
+          <p class="note-small">I have built an audience of my own: <b>330,000 subscribers</b> and 434 videos on YouTube at <a class="ilink" href="https://www.youtube.com/@NeatRoots" target="_blank" rel="noopener noreferrer">Neat Roots</a>, teaching developers to build applications, and around 24,800 people on <a class="ilink" href="https://www.instagram.com/neatroots/" target="_blank" rel="noopener noreferrer">Instagram</a>. Useful evidence that I understand how attention and reputation travel online, and not the reason to hire me.</p>
         </div>
         <div>
-          <span class="label">What we examine</span>
+          <span class="label">What I examine</span>
           <ul class="exam-list">
             <li>Professional history</li>
             <li>Areas of genuine expertise</li>
@@ -740,17 +769,17 @@ footer{
         <div class="step">
           <span class="label">01 &mdash; Position</span>
           <h3>Position</h3>
-          <p>We determine how you should be represented online, and what your personal brand needs to communicate.</p>
+          <p>I determine how you should be represented online, and what your personal brand needs to communicate.</p>
         </div>
         <div class="step">
           <span class="label">02 &mdash; Build</span>
           <h3>Build</h3>
-          <p>We create your authoritative personal website around your expertise, accomplishments, story and professional identity.</p>
+          <p>I create your authoritative personal website around your expertise, accomplishments, story and professional identity.</p>
         </div>
         <div class="step">
           <span class="label">03 &mdash; Strengthen</span>
           <h3>Strengthen</h3>
-          <p>We connect the site to your wider digital presence and strengthen the signals that help search engines and people understand who you are.</p>
+          <p>I connect the site to your wider digital presence and strengthen the signals that help search engines and people understand who you are.</p>
         </div>
       </div>
     </section>
@@ -766,6 +795,28 @@ footer{
       </div>
     </section>
 
+    
+<section id="about" class="about">
+      <div class="about-in">
+        <div class="about-portrait rv">
+          <img src="img/tahir.jpg" alt="Rana Tahir Bilal, New York" width="1200" height="1500" loading="lazy" decoding="async">
+        </div>
+        <div class="about-text">
+          <p class="eyebrow">About</p>
+          <h2 class="statement">An AI engineer who builds personal brand websites.</h2>
+          <p class="lead">I work with founders, executives, clinicians, attorneys and public figures who have spent decades building something real, and have almost nothing online that reflects it. I build the site, the structure and the digital presence that represents the record accurately.</p>
+          <p>I came to this from engineering, not marketing. I spent six years writing Android code line by line, then years training developers, and I now work in AI engineering &mdash; agentic systems, LLM applications and AI agents built with Claude. I hold 11 Anthropic certifications.</p>
+          <p>That background is why these sites are built the way they are. Every claim is checked before it is published. Every page is tested at real screen sizes and against real accessibility thresholds, not eyeballed. Nothing ships because it looks finished.</p>
+          <dl class="creds">
+            <div><dt>Certifications</dt><dd>11 Anthropic &middot; agentic AI, LLM applications, prompt engineering</dd></div>
+            <div><dt>Engineering</dt><dd>Six years building Android applications</dd></div>
+            <div><dt>Teaching</dt><dd>330,000 subscribers on YouTube, teaching application development</dd></div>
+            <div><dt>Based in</dt><dd>Coram, New York</dd></div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
     <section id="contact" class="contact">
       <h2 class="statement">If your work is hard to explain, that is the job.</h2>
       <p>Tell me what you have built, accomplished, or become known for. I will tell you honestly whether a personal brand website and a stronger digital presence can meaningfully improve how you are represented online.</p>
@@ -777,6 +828,7 @@ footer{
 
     <footer class="label">
       <span>Rana Tahir Bilal &middot; Personal brand websites &amp; digital authority</span>
+      <span><a href="https://www.youtube.com/@NeatRoots" target="_blank" rel="noopener noreferrer">YouTube &#8599;</a> &nbsp;&middot;&nbsp; <a href="https://www.instagram.com/neatroots/" target="_blank" rel="noopener noreferrer">Instagram &#8599;</a> &nbsp;&middot;&nbsp; <a href="https://www.linkedin.com/in/ranatahirbilal/" target="_blank" rel="noopener noreferrer">LinkedIn &#8599;</a></span>
       <span>Selected engagements</span>
     </footer>
 
