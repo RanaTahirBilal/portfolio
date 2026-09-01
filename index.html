@@ -107,9 +107,12 @@ a:focus-visible{ outline:2px solid var(--gold); outline-offset:3px; }
 }
 .label.gold{ color:var(--gold); }
 
-.act-pine{ background:var(--pine); }
-.act-night{ background:var(--night); }
-.act-raise{ background:var(--pine-raise); }
+/* The hero stack bleeds past the page container on purpose. Clip it at the
+   band rather than the body: overflow-x:clip on body still permitted a 37px
+   horizontal scroll at 1024. */
+.act-pine{ background:var(--pine); overflow-x:clip; }
+.act-night{ background:var(--night); overflow-x:clip; }
+.act-raise{ background:var(--pine-raise); overflow-x:clip; }
 
 /* ---------- masthead ---------- */
 .top{
@@ -434,6 +437,113 @@ p.pull{
 .step p{ margin:0; color:var(--ivory-2); font-size:var(--t-body); line-height:1.6; max-width:38ch; }
 .step a{ color:var(--gold); text-underline-offset:3px; }
 
+
+/* ---------- engagements: three levels of presence ----------
+   Built from the existing tokens only. No new fonts, no libraries, no JS.
+   Deliberately not a pricing table: the outcome line carries the weight,
+   the figure sits at the bottom in the label style. */
+.eng{ padding:clamp(76px,10vw,150px) 0; }
+.eng-head{ max-width:62ch; margin:0 0 clamp(38px,5vw,64px); }
+.eng-head h2{ max-width:20ch; margin:0 0 20px; }
+.eng-head p{ margin:0; color:var(--ivory-2); font-size:var(--t-body); line-height:1.68; max-width:56ch; }
+
+.eng-grid{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:clamp(18px,2.2vw,30px); align-items:stretch; }
+@media (max-width:1100px){ .eng-grid{ grid-template-columns:1fr; gap:22px; } }
+
+.eng-card{
+    display:flex; flex-direction:column;
+    border:1px solid var(--rule-raise); background:var(--pine);
+    padding:clamp(30px,3vw,42px) clamp(26px,2.6vw,36px) clamp(28px,2.8vw,38px);
+    transition:border-color .3s ease, transform .3s cubic-bezier(.2,.7,.25,1);
+}
+.eng-card:hover{ border-color:var(--gold); transform:translateY(-3px); }
+@media (prefers-reduced-motion: reduce){ .eng-card{ transition:none; } .eng-card:hover{ transform:none; } }
+
+.eng-card.lead{
+    background:var(--pine-deep); border-color:var(--gold);
+    box-shadow:0 24px 60px -34px rgba(0,0,0,.75);
+}
+@media (min-width:1101px){ .eng-card.lead{ margin-top:-18px; padding-bottom:clamp(34px,3.2vw,46px); } }
+
+.eng-badge{
+    align-self:flex-start; margin:0 0 20px;
+    font-size:11px; font-weight:600; letter-spacing:.19em; text-transform:uppercase;
+    color:var(--gold); border:1px solid var(--gold); padding:6px 12px;
+}
+.eng-badge-spacer{ height:0; }
+@media (min-width:1101px){ .eng-badge-spacer{ height:calc(11px * 1.5 + 12px + 20px); } }
+
+.eng-name{
+    margin:0 0 12px; font-family:var(--sans); font-weight:600;
+    font-size:12.5px; letter-spacing:.19em; text-transform:uppercase; color:var(--ivory-3);
+}
+.eng-card.lead .eng-name{ color:var(--gold); }
+.eng-outcome{
+    margin:0 0 18px; font-family:var(--display); font-weight:400;
+    font-size:clamp(23px,1.95vw,29px); line-height:1.2; letter-spacing:-.01em; color:var(--ivory);
+    max-width:16ch;
+}
+.eng-for{
+    margin:0 0 18px; padding-bottom:18px; border-bottom:1px solid var(--rule-raise);
+    font-size:14.5px; line-height:1.6; color:var(--gold);
+}
+.eng-desc{ margin:0 0 22px; font-size:var(--t-small); line-height:1.68; color:var(--ivory-2); }
+
+.eng-inc{ margin:0 0 26px; padding:0; list-style:none; }
+.eng-inc li{
+    position:relative; padding:0 0 9px 17px; font-size:15.5px; line-height:1.55; color:var(--ivory-2);
+}
+.eng-inc li::before{
+    content:""; position:absolute; left:0; top:.62em; width:6px; height:1px; background:var(--gold);
+}
+.eng-inc .plus{
+    padding-left:0; margin:0 0 14px; font-size:12.5px; font-weight:600; letter-spacing:.15em;
+    text-transform:uppercase; color:var(--ivory-3);
+}
+.eng-inc .plus::before{ display:none; }
+
+.eng-foot{ margin-top:auto; padding-top:22px; border-top:1px solid var(--rule-raise); }
+.eng-price{
+    margin:0 0 4px; font-size:12.5px; font-weight:600; letter-spacing:.15em;
+    text-transform:uppercase; color:var(--ivory-3);
+}
+.eng-price b{ font-weight:600; color:var(--ivory); letter-spacing:.06em; }
+.eng-note{ margin:10px 0 0; font-size:13.5px; line-height:1.6; color:var(--ivory-3); }
+.eng-cta{
+    display:inline-block; margin-top:20px; text-decoration:none;
+    font-size:14.5px; font-weight:700; letter-spacing:.02em;
+    padding:15px 24px; border:1px solid var(--rule-raise); background:transparent; color:var(--ivory);
+    transition:border-color .18s ease, color .18s ease, background .18s ease;
+}
+.eng-cta:hover{ border-color:var(--gold); color:var(--gold); }
+.eng-card.lead .eng-cta{ background:var(--gold); border-color:var(--gold); color:#14100A; }
+.eng-card.lead .eng-cta:hover{ background:var(--gold-lift); border-color:var(--gold-lift); color:#14100A; }
+
+/* ---------- what the engagement actually is ---------- */
+.owned{ padding:0 0 clamp(76px,10vw,150px); }
+.owned-head{ margin:0 0 clamp(30px,4vw,50px); }
+.owned-head h2{ max-width:16ch; margin:0 0 14px; }
+.owned-head p{ margin:0; color:var(--ivory-2); font-size:var(--t-body); max-width:50ch; }
+.owned-list{ margin:0; padding:0; list-style:none; border-top:1px solid var(--rule-raise); }
+.owned-list li{
+    display:grid; grid-template-columns:64px minmax(0,15ch) minmax(0,1fr);
+    gap:10px clamp(18px,3vw,44px); align-items:baseline;
+    padding:22px 0; border-bottom:1px solid var(--rule-raise);
+}
+.owned-list .n{ font-family:var(--display); font-size:17px; color:var(--gold); }
+.owned-list .t{ font-size:12.5px; font-weight:600; letter-spacing:.17em; text-transform:uppercase; color:var(--ivory); }
+.owned-list .d{ margin:0; font-size:var(--t-small); line-height:1.62; color:var(--ivory-2); max-width:54ch; }
+@media (max-width:760px){
+    .owned-list li{ grid-template-columns:44px minmax(0,1fr); gap:6px 16px; }
+    .owned-list .d{ grid-column:2; }
+}
+
+/* ---------- the ask, under the engagements ---------- */
+.eng-close{ padding:0 0 clamp(76px,10vw,150px); }
+.eng-close-in{ border-top:1px solid var(--rule-raise); padding-top:clamp(34px,4vw,54px); }
+.eng-close h2{ max-width:17ch; margin:0 0 16px; }
+.eng-close p{ margin:0 0 clamp(26px,3vw,36px); color:var(--ivory-2); font-size:var(--t-body); line-height:1.66; max-width:52ch; }
+
 /* ---------- proof placeholders ---------- */
 .proof{ padding:clamp(72px,10vw,140px) 0; border-top:0; }
 .act-raise .slot{ border-color:var(--rule-raise); }
@@ -514,6 +624,7 @@ footer a:hover{ color:var(--gold); border-bottom-color:var(--gold); }
         <a href="#search">The problem</a>
         <a href="#work">Selected work</a>
         <a href="#approach">Approach</a>
+        <a href="#engagements">Engagements</a>
         <a href="#about">About</a>
         <a href="#contact">Contact</a>
       </nav>
@@ -829,14 +940,113 @@ footer a:hover{ color:var(--gold); border-bottom-color:var(--gold); }
 <div class="act-raise">
   <div class="page">
 
-    <section class="proof">
-      <div class="section-head"><h2>Proof, once it is verified.</h2>
-        <p>These slots stay empty until there is something real and permitted to put in them.</p>
+        <section id="engagements" class="eng">
+      <div class="eng-head">
+        <h2 class="statement">Choose the level of presence your career deserves.</h2>
+        <p>Every professional has a different level of visibility to build. Choose the engagement that matches where you are today, and where you want your professional presence to go next.</p>
       </div>
-      <div class="proof-grid">
-        <div class="slot"><span class="k">[ Client testimonial ]</span><p>Named, in their own words, published with permission.</p></div>
-        <div class="slot"><span class="k">[ Case study ]</span><p>One engagement in full: position, build, outcome.</p></div>
-        <div class="slot"><span class="k">[ Visibility result ]</span><p>A measured change in how a name is represented in search.</p></div>
+      <div class="eng-grid">
+    <article class="eng-card rv" aria-labelledby="eng-1">
+      <div class="eng-badge-spacer" aria-hidden="true"></div>
+      <h3 class="eng-name" id="eng-1">Professional Presence</h3>
+      <p class="eng-outcome">Establish your professional foundation.</p>
+      <p class="eng-for">For professionals who need a polished, credible home online.</p>
+      <p class="eng-desc">Establish a professional digital presence that clearly communicates who you are, what you do, and why your experience matters.</p>
+      <ul class="eng-inc">
+      <li>Custom personal professional website</li>
+      <li>Professional biography</li>
+      <li>Career and experience presentation</li>
+      <li>Key achievements section</li>
+      <li>Professional photography integration</li>
+      <li>Contact and enquiry section</li>
+      <li>Social and professional profile integration</li>
+      <li>Mobile-responsive design</li>
+      <li>Foundational SEO setup</li>
+      <li>Secure hosting and launch</li>
+      </ul>
+      <div class="eng-foot">
+        <p class="eng-price">Starting at <b>$1,500</b></p>
+        <a class="eng-cta" href="mailto:tahirbilal16@gmail.com?subject=Build%20My%20Professional%20Presence">Build My Professional Presence</a>
+      </div>
+    </article>
+    <article class="eng-card lead rv" aria-labelledby="eng-2">
+      <p class="eng-badge">Most requested</p>
+      <h3 class="eng-name" id="eng-2">Executive Authority</h3>
+      <p class="eng-outcome">Turn your experience into digital authority.</p>
+      <p class="eng-for">For executives, founders, specialists and established professionals.</p>
+      <p class="eng-desc">Turn your professional history into a comprehensive digital authority platform designed to strengthen credibility, visibility and professional positioning.</p>
+      <ul class="eng-inc">
+      <li class="plus">Everything in Professional Presence, plus</li>
+      <li>Expanded professional biography</li>
+      <li>Executive career timeline</li>
+      <li>Professional achievements and milestones</li>
+      <li>Media and press section</li>
+      <li>Publications and speaking appearances</li>
+      <li>Featured projects and accomplishments</li>
+      <li>Search-focused content structure</li>
+      <li>Advanced on-page SEO</li>
+      <li>Search-ready site architecture</li>
+      <li>Personal brand positioning</li>
+      <li>Professional media kit</li>
+      <li>Priority development and launch</li>
+      </ul>
+      <div class="eng-foot">
+        <p class="eng-price">Starting at <b>$3,000</b></p>
+        <a class="eng-cta" href="mailto:tahirbilal16@gmail.com?subject=Build%20My%20Executive%20Presence">Build My Executive Presence</a>
+      </div>
+    </article>
+    <article class="eng-card rv" aria-labelledby="eng-3">
+      <div class="eng-badge-spacer" aria-hidden="true"></div>
+      <h3 class="eng-name" id="eng-3">Digital Authority</h3>
+      <p class="eng-outcome">Build and continuously strengthen your presence.</p>
+      <p class="eng-for">For high-profile professionals who want an ongoing digital presence strategy.</p>
+      <p class="eng-desc">Build and continuously strengthen a complete digital ecosystem around your name, expertise and professional reputation.</p>
+      <ul class="eng-inc">
+      <li class="plus">Everything in Executive Authority, plus</li>
+      <li>Premium personal website</li>
+      <li>Long-form professional positioning</li>
+      <li>Advanced personal brand strategy</li>
+      <li>Ongoing content development</li>
+      <li>Search visibility strategy</li>
+      <li>Professional profile updates</li>
+      <li>Media and press updates</li>
+      <li>New achievement and milestone publishing</li>
+      <li>Content and SEO optimisation</li>
+      <li>Ongoing website management</li>
+      <li>Analytics and performance monitoring</li>
+      <li>Priority support</li>
+      </ul>
+      <div class="eng-foot">
+        <p class="eng-price">Starting at <b>$5,000</b></p>
+        <p class="eng-note">Custom engagements available for ongoing brand, content and visibility management.</p>
+        <a class="eng-cta" href="mailto:tahirbilal16@gmail.com?subject=Build%20My%20Digital%20Authority">Build My Digital Authority</a>
+      </div>
+    </article>
+      </div>
+    </section>
+
+    <section class="owned" aria-labelledby="owned-h">
+      <div class="owned-head">
+        <h2 class="statement" id="owned-h">You are not buying a website.</h2>
+        <p>You are building a permanent digital home for your professional identity.</p>
+      </div>
+      <ul class="owned-list">
+        <li class="rv"><span class="n">01</span><span class="t">Your story</span>
+          <p class="d">Your career, experience and accomplishments presented with clarity.</p></li>
+        <li class="rv"><span class="n">02</span><span class="t">Your authority</span>
+          <p class="d">Your expertise and professional achievements organised into one credible presence.</p></li>
+        <li class="rv"><span class="n">03</span><span class="t">Your visibility</span>
+          <p class="d">A search-friendly digital foundation designed to make your professional presence easier to discover.</p></li>
+        <li class="rv"><span class="n">04</span><span class="t">Your owned platform</span>
+          <p class="d">A digital destination you control, independent of social media platforms and third-party profiles.</p></li>
+      </ul>
+    </section>
+
+    <section class="eng-close">
+      <div class="eng-close-in">
+        <h2 class="statement">See what your name could look like online.</h2>
+        <p>Your professional reputation already exists. I build the digital presence that represents it.</p>
+        <a class="btn" href="mailto:tahirbilal16@gmail.com?subject=Private%20Visibility%20Assessment">Request a Private Visibility Assessment</a>
       </div>
     </section>
   </div>
@@ -846,7 +1056,18 @@ footer a:hover{ color:var(--gold); border-bottom-color:var(--gold); }
   <div class="page">
 
     
-<section id="about" class="about">
+<section class="proof">
+      <div class="section-head"><h2>Proof, once it is verified.</h2>
+        <p>These slots stay empty until there is something real and permitted to put in them.</p>
+      </div>
+      <div class="proof-grid">
+        <div class="slot"><span class="k">[ Client testimonial ]</span><p>Named, in their own words, published with permission.</p></div>
+        <div class="slot"><span class="k">[ Case study ]</span><p>One engagement in full: position, build, outcome.</p></div>
+        <div class="slot"><span class="k">[ Visibility result ]</span><p>A measured change in how a name is represented in search.</p></div>
+      </div>
+    </section>
+
+    <section id="about" class="about">
       <div class="about-in">
         <div class="about-portrait rv">
           <img src="img/tahir.jpg" alt="Rana Tahir Bilal, New York" width="1200" height="1500" loading="lazy" decoding="async">
