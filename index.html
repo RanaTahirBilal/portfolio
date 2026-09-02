@@ -611,6 +611,200 @@ footer a:hover{ color:var(--gold); border-bottom-color:var(--gold); }
   .about-portrait{max-width:340px}
   .creds > div{grid-template-columns:1fr;gap:2px}
 }
+
+/* ==========================================================
+   ENHANCEMENT PASS
+   Motion and hover only. No copy, no structure, no colour
+   tokens, no layout changes. Everything below is additive:
+   with JavaScript off, none of the hidden states apply, and
+   the page renders exactly as it did before. Every rule is
+   switched off in the reduced-motion block at the very end.
+   ========================================================== */
+
+/* ---- 1. hero load sequence -------------------------------
+   Hidden only under .js-reveal, which the script adds, so a
+   failed script can never leave the hero blank. ---------- */
+.js-reveal .hero .eyebrow,
+.js-reveal .hero h1,
+.js-reveal .hero-sub,
+.js-reveal .hero .proofline li,
+.js-reveal .hero .cta-row,
+.js-reveal .hero .band > div{ opacity:0; }
+
+html.lit .hero .eyebrow      { animation:fx-rise .75s cubic-bezier(.2,.7,.25,1) .04s both; }
+html.lit .hero h1            { animation:fx-wipe 1.05s cubic-bezier(.2,.7,.25,1) .14s both; }
+html.lit .hero-sub           { animation:fx-rise .8s cubic-bezier(.2,.7,.25,1) .40s both; }
+html.lit .hero .proofline li { animation:fx-rise .7s cubic-bezier(.2,.7,.25,1) both; }
+html.lit .hero .proofline li:nth-child(1){ animation-delay:.56s; }
+html.lit .hero .proofline li:nth-child(2){ animation-delay:.64s; }
+html.lit .hero .proofline li:nth-child(3){ animation-delay:.72s; }
+html.lit .hero .cta-row      { animation:fx-rise .7s cubic-bezier(.2,.7,.25,1) .78s both; }
+html.lit .hero .band > div   { animation:fx-rise .7s cubic-bezier(.2,.7,.25,1) both; }
+html.lit .hero .band > div:nth-child(1){ animation-delay:.92s; }
+html.lit .hero .band > div:nth-child(2){ animation-delay:1.00s; }
+html.lit .hero .band > div:nth-child(3){ animation-delay:1.08s; }
+
+@keyframes fx-rise{ from{ opacity:0; transform:translateY(14px); } to{ opacity:1; transform:none; } }
+/* the end state over-insets so no descender or italic overhang is clipped */
+@keyframes fx-wipe{
+  from{ opacity:0; transform:translateY(18px); clip-path:inset(0 0 100% 0); }
+  to  { opacity:1; transform:none;             clip-path:inset(-14% -14% -14% -14%); }
+}
+
+/* ---- 2. the hero stack: entrance, then a very small drift --- */
+.js-reveal .stack figure{ opacity:0; }
+html.lit .stack .s1{ animation:fx-fig .95s cubic-bezier(.2,.7,.25,1) .30s both; }
+html.lit .stack .s2{ animation:fx-fig .95s cubic-bezier(.2,.7,.25,1) .42s both; }
+html.lit .stack .s3{ animation:fx-fig .95s cubic-bezier(.2,.7,.25,1) .54s both; }
+@keyframes fx-fig{ from{ opacity:0; transform:translateY(26px) scale(.984); } to{ opacity:1; transform:none; } }
+/* drift is written to the `translate` property, not `transform`, so it
+   composes with the entrance keyframes instead of fighting them */
+.stack figure{ will-change:translate; }
+
+/* ---- 3. work cards ---------------------------------------- */
+.shot{ transition:border-color .35s ease, box-shadow .5s ease; }
+.card:hover .shot,
+.card:focus-visible .shot{ box-shadow:0 34px 74px -44px rgba(0,0,0,.9); }
+.shot img{ transition:transform .85s cubic-bezier(.16,.84,.3,1), opacity .45s ease, filter .45s ease; }
+.card:hover .shot img,
+.card:focus-visible .shot img{ transform:scale(1.045) translateY(-7px); }
+.card .name{ transition:transform .45s cubic-bezier(.2,.7,.25,1); }
+.card:hover .name,
+.card:focus-visible .name{ transform:translateX(5px); }
+.card .role{ transition:color .35s ease; }
+.card:hover .role,
+.card:focus-visible .role{ color:var(--gold); }
+.card .spec .v{ transition:color .35s ease; }
+.card:hover .spec .v{ color:var(--ivory); }
+
+/* an index behaves like an index: the row you are on comes forward,
+   the rest step back. Pointer devices only. */
+@media (hover:hover) and (pointer:fine){
+  .grid-sm:hover .card:not(:hover) .shot img{ opacity:.34; filter:saturate(.5); }
+  .grid-sm:hover .card:not(:hover) .name{ color:var(--ivory-3); }
+  .duo:hover     .card:not(:hover) .shot img{ opacity:.5;  filter:saturate(.65); }
+  /* .8 is the floor here. The dimmed card still carries its gold
+     "For ..." line, and gold composites to 4.69:1 at .8, 4.18:1
+     at .7 and 3.9:1 at .6. Measured against the card ground. */
+  .eng-grid:hover .eng-card:not(:hover){ opacity:.8; }
+  .aud-grid:hover .aud:not(:hover) p{ color:var(--ivory-3); }
+}
+.grid-sm .name{ transition:color .35s ease, transform .45s cubic-bezier(.2,.7,.25,1); }
+
+/* ---- 4. staggered entrance ---------------------------------
+   .rv already exists and is reused untouched; this only adds a
+   per-container delay. .fx is the same idea for the elements
+   that were never wrapped in .rv. ------------------------- */
+.js-reveal .rv.in{ transition-delay:calc(var(--i, 0) * 70ms); }
+
+.js-reveal .fx{ opacity:0; transform:translateY(13px); }
+.js-reveal .fx.on{
+  opacity:1; transform:none;
+  transition:opacity .72s ease, transform .72s cubic-bezier(.2,.7,.25,1);
+  transition-delay:calc(var(--i, 0) * 75ms);
+}
+
+/* ---- 5. the search section: fragments, then somewhere to point --- */
+.res{ transition:opacity .6s ease, transform .6s cubic-bezier(.2,.7,.25,1), border-color .4s ease; }
+/* .78, not the .5 that reads better in a mock-up: at .55 the
+   secondary line composites to 3.4:1 on the pine ground and
+   fails AA. Measured, not guessed. */
+.serp.converged .res.dim{ opacity:.78; transform:translateX(7px); }
+.serp.converged .res.own{ border-color:var(--gold); }
+.res.own{ position:relative; }
+.res.own::before{
+  content:""; position:absolute; left:0; top:-1px; height:1px; width:0;
+  background:var(--gold); transition:width .9s cubic-bezier(.2,.7,.25,1) .15s;
+}
+.serp.converged .res.own::before{ width:100%; }
+
+/* ---- 6. audience rows -------------------------------------- */
+.aud{ position:relative; }
+.aud::before{
+  content:""; position:absolute; left:0; top:-1px; height:1px; width:0;
+  background:var(--gold); transition:width .6s cubic-bezier(.2,.7,.25,1);
+}
+.aud:hover::before,.aud:focus-within::before{ width:100%; }
+.aud h3{ transition:transform .45s cubic-bezier(.2,.7,.25,1), color .3s ease; }
+.aud:hover h3{ transform:translateX(6px); color:var(--gold); }
+.aud p{ transition:color .35s ease; }
+.aud:hover p{ color:var(--ivory); }
+
+/* ---- 7. process steps and the owned list -------------------- */
+.step{ position:relative; }
+.step::before{
+  content:""; position:absolute; left:0; top:-1px; height:1px; width:0;
+  background:var(--gold); transition:width .7s cubic-bezier(.2,.7,.25,1);
+}
+.step.on::before,.step:hover::before{ width:100%; }
+.owned-list li{ transition:background .4s ease; }
+.owned-list li .n{ transition:transform .45s cubic-bezier(.2,.7,.25,1); display:inline-block; }
+.owned-list li:hover .n{ transform:translateY(-3px); }
+.owned-list li .t{ transition:color .3s ease; }
+.owned-list li:hover .t{ color:var(--gold); }
+
+/* ---- 8. engagements ----------------------------------------
+   Nothing is hidden and nothing is revealed on hover: every
+   line of every package stays readable at all times. The card
+   only gains weight. ------------------------------------- */
+.eng-card{ transition:border-color .3s ease, transform .35s cubic-bezier(.2,.7,.25,1), box-shadow .5s ease, opacity .4s ease; }
+/* The lift is written to `translate`, not `transform`. .eng-card
+   carries .rv, and `.js-reveal .rv.in{transform:none}` is three
+   classes to `.eng-card:hover`'s two, so it wins the cascade and
+   silently cancels any transform here — which is why the existing
+   translateY(-3px) hover has never actually moved the card. */
+.eng-card:hover{ translate:0 -6px; box-shadow:0 40px 90px -48px rgba(0,0,0,.92); }
+.eng-price{ transition:color .35s ease; }
+.eng-price b{ transition:color .35s ease, letter-spacing .45s ease; display:inline-block; }
+.eng-card:hover .eng-price b{ color:var(--gold); letter-spacing:.1em; }
+.eng-inc li{ transition:color .35s ease; }
+.eng-card:hover .eng-inc li{ color:var(--ivory); }
+.eng-cta{ transition:background .3s ease, border-color .3s ease, color .3s ease, transform .35s cubic-bezier(.2,.7,.25,1); }
+.eng-card:hover .eng-cta{ transform:translateY(-2px); }
+
+/* ---- 9. proof slots and the about portrait ------------------ */
+.slot{ transition:border-color .4s ease; }
+.slot:hover{ border-color:var(--rule-raise); }
+.about-portrait{ overflow:hidden; }
+.js-reveal .about-portrait img{ clip-path:inset(0 0 100% 0); }
+.js-reveal .about-portrait.in img{
+  clip-path:inset(0 0 0 0);
+  transition:clip-path 1.15s cubic-bezier(.2,.7,.25,1), scale .9s cubic-bezier(.2,.7,.25,1), filter .6s ease;
+}
+.about-portrait img{ transition:scale .9s cubic-bezier(.2,.7,.25,1), filter .6s ease; }
+.about-portrait:hover img{ scale:1.025; filter:saturate(1.06); }
+
+/* ---- 10. buttons ------------------------------------------- */
+.btn{ transition:background .3s ease, border-color .3s ease, color .3s ease, transform .35s cubic-bezier(.2,.7,.25,1); }
+.btn:hover{ transform:translateY(-2px); }
+.cta-quiet{ transition:color .3s ease, transform .35s cubic-bezier(.2,.7,.25,1); display:inline-block; }
+.cta-quiet:hover{ transform:translateX(4px); }
+
+/* ---- 11. the whole pass, off ------------------------------- */
+@media (prefers-reduced-motion: reduce){
+  .js-reveal .hero .eyebrow,
+  .js-reveal .hero h1,
+  .js-reveal .hero-sub,
+  .js-reveal .hero .proofline li,
+  .js-reveal .hero .cta-row,
+  .js-reveal .hero .band > div,
+  .js-reveal .stack figure,
+  .js-reveal .fx{ opacity:1 !important; transform:none !important; animation:none !important; }
+  .js-reveal .about-portrait img,
+  .js-reveal .about-portrait.in img{ clip-path:none !important; }
+  html.lit .hero .eyebrow, html.lit .hero h1, html.lit .hero-sub,
+  html.lit .hero .proofline li, html.lit .hero .cta-row,
+  html.lit .hero .band > div, html.lit .stack figure{ animation:none !important; }
+  .stack figure{ translate:none !important; }
+  .shot img, .card .name, .card .role, .aud h3, .aud p, .eng-card,
+  .eng-price b, .eng-cta, .btn, .cta-quiet, .res, .owned-list li .n,
+  .about-portrait img, .js-reveal .fx.on, .js-reveal .rv.in{
+    transition:none !important; transform:none !important;
+    scale:none !important; translate:none !important;
+  }
+  .aud::before,.step::before,.res.own::before{ transition:none !important; }
+}
+
 </style>
 </head>
 <body>
@@ -1150,5 +1344,144 @@ footer a:hover{ color:var(--gold); border-bottom-color:var(--gold); }
   }, 4000);
 })();
 </script>
+
+<script>
+/* ==========================================================
+   ENHANCEMENT PASS — behaviour.
+   Appended after the original scripts and dependent on the
+   .js-reveal class they set, so if either of them bails out
+   this file does nothing and the page stays exactly as it
+   was. No library, no dependency, ~2KB.
+   ========================================================== */
+(function(){
+  "use strict";
+  var root = document.documentElement;
+  if (!root.classList.contains('js-reveal')) { return; }
+
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* -- 1. arm the hero load sequence ------------------------
+     Added immediately rather than on a timer or a load event:
+     the stagger lives in the CSS animation-delays, and an
+     element that is hidden until an event is an element that
+     stays hidden when the event does not come. ----------- */
+  root.classList.add('lit');
+
+  /* -- 2. per-container stagger ---------------------------
+     The index resets inside every container and is capped, so
+     the last card in a twelve-item grid waits 350ms, not 840. */
+  function stagger(sel, kids, cap){
+    Array.prototype.forEach.call(document.querySelectorAll(sel), function(box){
+      Array.prototype.forEach.call(box.querySelectorAll(kids), function(el, i){
+        el.style.setProperty('--i', Math.min(i, cap || 5));
+      });
+    });
+  }
+  stagger('.grid-sm', ':scope > .card', 5);
+  stagger('.duo',     ':scope > .card', 1);
+  stagger('.eng-grid',':scope > .eng-card', 2);
+
+  /* -- 3. reveal the elements that were never wrapped in .rv --
+     Same contract as .rv: hidden by CSS only under .js-reveal,
+     shown by an observer, and swept unconditionally after a
+     few seconds so a missed callback cannot strand anything. */
+  var groups = [
+    ['.aud-grid',   ':scope > .aud',   5],
+    ['.steps',      ':scope > .step',  2],
+    ['.owned-list', ':scope > li',     3],
+    ['.proof-grid', ':scope > .slot',  2],
+    ['.exam-grid',  ':scope > *',      7],
+    ['.serp-col',   ':scope > .res',   3]
+  ];
+  var fx = [];
+  groups.forEach(function(g){
+    Array.prototype.forEach.call(document.querySelectorAll(g[0]), function(box){
+      Array.prototype.forEach.call(box.querySelectorAll(g[1]), function(el, i){
+        el.classList.add('fx');
+        el.style.setProperty('--i', Math.min(i, g[2]));
+        fx.push(el);
+      });
+    });
+  });
+
+  function light(el){
+    el.classList.add('on');
+    if (el.classList.contains('res') && el.classList.contains('own')) {
+      var serp = el.closest('.serp');
+      if (serp) { window.setTimeout(function(){ serp.classList.add('converged'); }, 620); }
+    }
+  }
+  function showAllFx(){ fx.forEach(light); }
+
+  if (reduce || !('IntersectionObserver' in window)) {
+    showAllFx();
+  } else {
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e){ if (e.isIntersecting){ light(e.target); io.unobserve(e.target); } });
+    }, { rootMargin:'0px 0px -6% 0px', threshold:0.05 });
+    fx.forEach(function(el){ io.observe(el); });
+
+    /* An in-page jump moves the viewport past whole sections in a
+       single frame and the observer never reports what it skipped,
+       so sweep on scroll as well. rAF-throttled. */
+    var sweeping = false;
+    function sweep(){
+      for (var i = 0; i < fx.length; i++){
+        var el = fx[i];
+        if (el.classList.contains('on')) { continue; }
+        var r = el.getBoundingClientRect();
+        if (r.top < window.innerHeight * 0.96 && r.bottom > 0) { light(el); }
+      }
+      sweeping = false;
+    }
+    window.addEventListener('scroll', function(){
+      if (!sweeping){ sweeping = true; requestAnimationFrame(sweep); }
+    }, { passive:true });
+    document.addEventListener('visibilitychange', function(){ if (!document.hidden) { sweep(); } });
+    window.addEventListener('pageshow', sweep);
+    sweep();
+    window.setTimeout(showAllFx, 6000);
+  }
+
+  /* -- 4. the process rule draws itself once its step arrives -- */
+  Array.prototype.forEach.call(document.querySelectorAll('.step'), function(el){
+    if (reduce) { el.classList.add('on'); return; }
+    if (!('IntersectionObserver' in window)) { el.classList.add('on'); return; }
+    var o = new IntersectionObserver(function(es){
+      es.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add('on'); o.unobserve(e.target); } });
+    }, { threshold:0.25 });
+    o.observe(el);
+  });
+
+  /* -- 5. hero stack drift ---------------------------------
+     Eight pixels at the very most, written to `translate` so it
+     never collides with the entrance keyframes' `transform`.
+     Skipped entirely on reduced motion and on narrow screens,
+     where the third frame is not rendered at all. --------- */
+  var stack = document.querySelector('.stack');
+  if (stack && !reduce && window.matchMedia('(min-width: 861px)').matches) {
+    var figs = Array.prototype.slice.call(stack.querySelectorAll('figure'));
+    var rate = [-6, 4, 8];
+    var queued = false;
+    function drift(){
+      var box = stack.getBoundingClientRect();
+      if (box.bottom > 0 && box.top < window.innerHeight) {
+        var p = 1 - (box.top + box.height / 2) / window.innerHeight;   /* -1 .. 1 */
+        if (p < -1) { p = -1; } else if (p > 1) { p = 1; }
+        for (var i = 0; i < figs.length; i++){
+          figs[i].style.translate = '0 ' + (p * rate[i]).toFixed(2) + 'px';
+        }
+      }
+      queued = false;
+    }
+    window.addEventListener('scroll', function(){
+      if (!queued){ queued = true; requestAnimationFrame(drift); }
+    }, { passive:true });
+    window.addEventListener('resize', drift, { passive:true });
+    drift();
+  }
+})();
+</script>
+
 </body>
 </html>
