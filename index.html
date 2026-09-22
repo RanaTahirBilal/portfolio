@@ -1773,6 +1773,12 @@ html.lit .stack .s3{ animation:fx-fig .95s cubic-bezier(.2,.7,.25,1) .54s both; 
 
   /* Adoni's badge was the smallest text on the page. */
   .ar-flag{ font-size:11px; }
+  /* Open menu dims the page behind it; tapping the dimmed area closes it. */
+  .top.open::before{ content:""; position:fixed; inset:0; background:rgba(4,14,11,.78); z-index:40; }
+  .top .wordmark, .top .nav-toggle{ position:relative; z-index:51; }
+  /* Decorative diagram labels and the mock URL bar were 9.5-10.5px. */
+  .node{ font-size:10.5px; }
+  .home-bar em{ font-size:11.5px; }
 }
 </style>
 </head>
@@ -1812,9 +1818,9 @@ html.lit .stack .s3{ animation:fx-fig .95s cubic-bezier(.2,.7,.25,1) .54s both; 
           </div>
         </div>
         <div class="stack rv" aria-hidden="true">
-          <figure class="s1"><img src="img/kristina.jpg" alt="" width="880" height="550" fetchpriority="high" decoding="async"></figure>
-          <figure class="s2"><img src="img/charles.jpg" alt="" width="880" height="550" decoding="async"></figure>
-          <figure class="s3"><img src="img/cooper.jpg" alt="" width="880" height="550" decoding="async"></figure>
+          <figure class="s1"><img src="img/kristina.jpg" srcset="img/m/kristina.jpg 1200w, img/kristina.jpg 1760w" sizes="(max-width:700px) 100vw, 900px" alt="" width="880" height="550" fetchpriority="high" decoding="async"></figure>
+          <figure class="s2"><img src="img/charles.jpg" srcset="img/m/charles.jpg 1200w, img/charles.jpg 1760w" sizes="(max-width:700px) 100vw, 900px" alt="" width="880" height="550" decoding="async"></figure>
+          <figure class="s3"><img src="img/cooper.jpg" srcset="img/m/cooper.jpg 1200w, img/cooper.jpg 1760w" sizes="(max-width:700px) 100vw, 900px" alt="" width="880" height="550" decoding="async"></figure>
         </div>
       </div>
 
@@ -1844,7 +1850,7 @@ html.lit .stack .s3{ animation:fx-fig .95s cubic-bezier(.2,.7,.25,1) .54s both; 
           <p class="sg-n" aria-hidden="true">01</p>
           <h3 class="sg-name"><span>Dr. </span><span>Steven </span><span>M. </span><span>Grimes </span></h3>
           <p class="sg-role">Nuclear physicist &middot; Ohio University</p>
-          <div class="sg-shot"><img src="img/grimes.jpg" alt="Website built for Dr. Steven M. Grimes" width="1760" height="1100" loading="eager" fetchpriority="high" sizes="(max-width:768px) 92vw, 80vw" decoding="async"></div>
+          <div class="sg-shot"><img src="img/grimes.jpg" srcset="img/m/grimes.jpg 1200w, img/grimes.jpg 1760w" sizes="(max-width:700px) 100vw, 900px" alt="Website built for Dr. Steven M. Grimes" width="1760" height="1100" loading="eager" fetchpriority="high" sizes="(max-width:768px) 92vw, 80vw" decoding="async"></div>
           <span class="sg-go">View website <i aria-hidden="true">&#8599;</i></span>
         </a>
       </article>
@@ -1853,7 +1859,7 @@ html.lit .stack .s3{ animation:fx-fig .95s cubic-bezier(.2,.7,.25,1) .54s both; 
           <p class="sg-n" aria-hidden="true">02</p>
           <h3 class="sg-name"><span>Jared </span><span>Videll, </span><span>DO </span></h3>
           <p class="sg-role">Cardiologist &middot; Lt. Col., USAR</p>
-          <div class="sg-shot"><img src="img/videll.jpg" alt="Website built for Jared Videll, DO" width="1760" height="1100" loading="lazy" sizes="(max-width:768px) 92vw, 80vw" decoding="async"></div>
+          <div class="sg-shot"><img src="img/videll.jpg" srcset="img/m/videll.jpg 1200w, img/videll.jpg 1760w" sizes="(max-width:700px) 100vw, 900px" alt="Website built for Jared Videll, DO" width="1760" height="1100" loading="lazy" sizes="(max-width:768px) 92vw, 80vw" decoding="async"></div>
           <span class="sg-go">View website <i aria-hidden="true">&#8599;</i></span>
         </a>
       </article>
@@ -1862,7 +1868,7 @@ html.lit .stack .s3{ animation:fx-fig .95s cubic-bezier(.2,.7,.25,1) .54s both; 
           <p class="sg-n" aria-hidden="true">03</p>
           <h3 class="sg-name"><span>Ilene </span><span>Fennoy, </span><span>MD, MPH </span></h3>
           <p class="sg-role">Pediatric endocrinology &middot; Columbia</p>
-          <div class="sg-shot"><img src="img/fennoy.jpg" alt="Website built for Ilene Fennoy, MD, MPH" width="1760" height="1100" loading="lazy" sizes="(max-width:768px) 92vw, 80vw" decoding="async"></div>
+          <div class="sg-shot"><img src="img/fennoy.jpg" srcset="img/m/fennoy.jpg 1200w, img/fennoy.jpg 1760w" sizes="(max-width:700px) 100vw, 900px" alt="Website built for Ilene Fennoy, MD, MPH" width="1760" height="1100" loading="lazy" sizes="(max-width:768px) 92vw, 80vw" decoding="async"></div>
           <span class="sg-go">View website <i aria-hidden="true">&#8599;</i></span>
         </a>
       </article>
@@ -1877,7 +1883,7 @@ html.lit .stack .s3{ animation:fx-fig .95s cubic-bezier(.2,.7,.25,1) .54s both; 
       <div class="sl-set">
       <article class="sl sl-a rv">
         <a class="sl-link" href="https://ranatahirbilal.github.io/jean-mineo/" target="_blank" rel="noopener noreferrer">
-          <div class="sl-shot"><img src="img/mineo.jpg" alt="Website built for Jean R. Mineo" width="1760" height="1100" loading="lazy" sizes="(max-width:768px) 92vw, 58vw" decoding="async"></div>
+          <div class="sl-shot"><img src="img/mineo.jpg" srcset="img/m/mineo.jpg 1200w, img/mineo.jpg 1760w" sizes="(max-width:700px) 100vw, 900px" alt="Website built for Jean R. Mineo" width="1760" height="1100" loading="lazy" sizes="(max-width:768px) 92vw, 58vw" decoding="async"></div>
           <div class="sl-meta">
             <p class="sl-n" aria-hidden="true">04</p>
             <h3 class="sl-name">Jean R. Mineo</h3>
@@ -1888,7 +1894,7 @@ html.lit .stack .s3{ animation:fx-fig .95s cubic-bezier(.2,.7,.25,1) .54s both; 
       </article>
       <article class="sl sl-b rv">
         <a class="sl-link" href="https://ranatahirbilal.github.io/elery-shoemaker/" target="_blank" rel="noopener noreferrer">
-          <div class="sl-shot"><img src="img/shoemaker.jpg" alt="Website built for Elery M. “Rusty” Shoemaker" width="1760" height="1100" loading="lazy" sizes="(max-width:768px) 92vw, 58vw" decoding="async"></div>
+          <div class="sl-shot"><img src="img/shoemaker.jpg" srcset="img/m/shoemaker.jpg 1200w, img/shoemaker.jpg 1760w" sizes="(max-width:700px) 100vw, 900px" alt="Website built for Elery M. “Rusty” Shoemaker" width="1760" height="1100" loading="lazy" sizes="(max-width:768px) 92vw, 58vw" decoding="async"></div>
           <div class="sl-meta">
             <p class="sl-n" aria-hidden="true">05</p>
             <h3 class="sl-name">Elery M. &ldquo;Rusty&rdquo; Shoemaker</h3>
@@ -1899,7 +1905,7 @@ html.lit .stack .s3{ animation:fx-fig .95s cubic-bezier(.2,.7,.25,1) .54s both; 
       </article>
       <article class="sl sl-c rv">
         <a class="sl-link" href="https://ranatahirbilal.github.io/john-fisher/" target="_blank" rel="noopener noreferrer">
-          <div class="sl-shot"><img src="img/fisher.jpg" alt="Website built for John W. Fisher" width="1760" height="1100" loading="lazy" sizes="(max-width:768px) 92vw, 58vw" decoding="async"></div>
+          <div class="sl-shot"><img src="img/fisher.jpg" srcset="img/m/fisher.jpg 1200w, img/fisher.jpg 1760w" sizes="(max-width:700px) 100vw, 900px" alt="Website built for John W. Fisher" width="1760" height="1100" loading="lazy" sizes="(max-width:768px) 92vw, 58vw" decoding="async"></div>
           <div class="sl-meta">
             <p class="sl-n" aria-hidden="true">06</p>
             <h3 class="sl-name">John W. Fisher</h3>
@@ -1910,7 +1916,7 @@ html.lit .stack .s3{ animation:fx-fig .95s cubic-bezier(.2,.7,.25,1) .54s both; 
       </article>
       <article class="sl sl-d rv">
         <a class="sl-link" href="https://ranatahirbilal.github.io/kathleen-werner/" target="_blank" rel="noopener noreferrer">
-          <div class="sl-shot"><img src="img/werner.jpg" alt="Website built for Kathleen M. Werner, JD" width="1760" height="1100" loading="lazy" sizes="(max-width:768px) 92vw, 58vw" decoding="async"></div>
+          <div class="sl-shot"><img src="img/werner.jpg" srcset="img/m/werner.jpg 1200w, img/werner.jpg 1760w" sizes="(max-width:700px) 100vw, 900px" alt="Website built for Kathleen M. Werner, JD" width="1760" height="1100" loading="lazy" sizes="(max-width:768px) 92vw, 58vw" decoding="async"></div>
           <div class="sl-meta">
             <p class="sl-n" aria-hidden="true">07</p>
             <h3 class="sl-name">Kathleen M. Werner, JD</h3>
@@ -1921,7 +1927,7 @@ html.lit .stack .s3{ animation:fx-fig .95s cubic-bezier(.2,.7,.25,1) .54s both; 
       </article>
       <article class="sl sl-e rv">
         <a class="sl-link" href="https://illustrious-marshmallow-3491a0.netlify.app/" target="_blank" rel="noopener noreferrer">
-          <div class="sl-shot"><img src="img/silevitch.jpg" alt="Website built for Dr. Adam Silevitch, DMD" width="1760" height="1100" loading="lazy" sizes="(max-width:768px) 92vw, 58vw" decoding="async"></div>
+          <div class="sl-shot"><img src="img/silevitch.jpg" srcset="img/m/silevitch.jpg 1200w, img/silevitch.jpg 1760w" sizes="(max-width:700px) 100vw, 900px" alt="Website built for Dr. Adam Silevitch, DMD" width="1760" height="1100" loading="lazy" sizes="(max-width:768px) 92vw, 58vw" decoding="async"></div>
           <div class="sl-meta">
             <p class="sl-n" aria-hidden="true">08</p>
             <h3 class="sl-name">Dr. Adam Silevitch, DMD</h3>
@@ -1932,7 +1938,7 @@ html.lit .stack .s3{ animation:fx-fig .95s cubic-bezier(.2,.7,.25,1) .54s both; 
       </article>
       <article class="sl sl-f rv">
         <a class="sl-link" href="https://ranatahirbilal.github.io/amy-salanty/" target="_blank" rel="noopener noreferrer">
-          <div class="sl-shot"><img src="img/salanty.jpg" alt="Website built for Amy Salanty, MSN, RN, PMHNP-BC" width="1760" height="1100" loading="lazy" sizes="(max-width:768px) 92vw, 58vw" decoding="async"></div>
+          <div class="sl-shot"><img src="img/salanty.jpg" srcset="img/m/salanty.jpg 1200w, img/salanty.jpg 1760w" sizes="(max-width:700px) 100vw, 900px" alt="Website built for Amy Salanty, MSN, RN, PMHNP-BC" width="1760" height="1100" loading="lazy" sizes="(max-width:768px) 92vw, 58vw" decoding="async"></div>
           <div class="sl-meta">
             <p class="sl-n" aria-hidden="true">09</p>
             <h3 class="sl-name">Amy Salanty, MSN, RN</h3>
@@ -1952,133 +1958,133 @@ html.lit .stack .s3{ animation:fx-fig .95s cubic-bezier(.2,.7,.25,1) .54s both; 
           <span class="ar-n" aria-hidden="true">10</span>
           <span class="ar-name">Miklos Toth, MD</span>
           <span class="ar-role">Obstetrics &amp; gynecology</span>
-          <img class="ar-tap" src="img/toth.jpg" alt="Website built for Miklos Toth, MD" width="1760" height="1100" loading="lazy" decoding="async">
+          <img class="ar-tap" src="img/toth.jpg" srcset="img/m/toth.jpg 1200w, img/toth.jpg 1760w" sizes="(max-width:700px) 100vw, 900px" alt="Website built for Miklos Toth, MD" width="1760" height="1100" loading="lazy" decoding="async">
           <span class="ar-go" aria-hidden="true">&#8599;</span>
         </a>
         <a class="ar-row rv" href="https://ranatahirbilal.github.io/kristina-mcgahan/" target="_blank" rel="noopener noreferrer" data-shot="img/kristina.jpg">
           <span class="ar-n" aria-hidden="true">11</span>
           <span class="ar-name">Kristina M. McGahan, RN, BSN</span>
           <span class="ar-role">Clinician &amp; author</span>
-          <img class="ar-tap" src="img/kristina.jpg" alt="Website built for Kristina M. McGahan, RN, BSN" width="1760" height="1100" loading="lazy" decoding="async">
+          <img class="ar-tap" src="img/kristina.jpg" srcset="img/m/kristina.jpg 1200w, img/kristina.jpg 1760w" sizes="(max-width:700px) 100vw, 900px" alt="Website built for Kristina M. McGahan, RN, BSN" width="1760" height="1100" loading="lazy" decoding="async">
           <span class="ar-go" aria-hidden="true">&#8599;</span>
         </a>
         <a class="ar-row rv" href="https://ranatahirbilal.github.io/ana-ferreira/" target="_blank" rel="noopener noreferrer" data-shot="img/ana.jpg">
           <span class="ar-n" aria-hidden="true">12</span>
           <span class="ar-name">Ana Eugenia Ferreira, PhD</span>
           <span class="ar-role">Clinical psychologist</span>
-          <img class="ar-tap" src="img/ana.jpg" alt="Website built for Ana Eugenia Ferreira, PhD" width="1760" height="1100" loading="lazy" decoding="async">
+          <img class="ar-tap" src="img/ana.jpg" srcset="img/m/ana.jpg 1200w, img/ana.jpg 1760w" sizes="(max-width:700px) 100vw, 900px" alt="Website built for Ana Eugenia Ferreira, PhD" width="1760" height="1100" loading="lazy" decoding="async">
           <span class="ar-go" aria-hidden="true">&#8599;</span>
         </a>
         <a class="ar-row rv" href="https://ranatahirbilal.github.io/cha-mei-tang/" target="_blank" rel="noopener noreferrer" data-shot="img/tang.jpg">
           <span class="ar-n" aria-hidden="true">13</span>
           <span class="ar-name">Cha-Mei Tang, ScD</span>
           <span class="ar-role">Cancer diagnostics, founder &amp; CEO</span>
-          <img class="ar-tap" src="img/tang.jpg" alt="Website built for Cha-Mei Tang, ScD" width="1760" height="1100" loading="lazy" decoding="async">
+          <img class="ar-tap" src="img/tang.jpg" srcset="img/m/tang.jpg 1200w, img/tang.jpg 1760w" sizes="(max-width:700px) 100vw, 900px" alt="Website built for Cha-Mei Tang, ScD" width="1760" height="1100" loading="lazy" decoding="async">
           <span class="ar-go" aria-hidden="true">&#8599;</span>
         </a>
         <a class="ar-row rv" href="https://unrivaled-monstera-cb7475.netlify.app/" target="_blank" rel="noopener noreferrer" data-shot="img/boske.jpg">
           <span class="ar-n" aria-hidden="true">14</span>
           <span class="ar-name">Gregory E. Boske</span>
           <span class="ar-role">Owner, medical transport</span>
-          <img class="ar-tap" src="img/boske.jpg" alt="Website built for Gregory E. Boske" width="1760" height="1100" loading="lazy" decoding="async">
+          <img class="ar-tap" src="img/boske.jpg" srcset="img/m/boske.jpg 1200w, img/boske.jpg 1760w" sizes="(max-width:700px) 100vw, 900px" alt="Website built for Gregory E. Boske" width="1760" height="1100" loading="lazy" decoding="async">
           <span class="ar-go" aria-hidden="true">&#8599;</span>
         </a>
         <a class="ar-row rv" href="https://ranatahirbilal.github.io/zane-shuck/" target="_blank" rel="noopener noreferrer" data-shot="img/shuck.jpg">
           <span class="ar-n" aria-hidden="true">15</span>
           <span class="ar-name">L. Zane Shuck, PhD, PE</span>
           <span class="ar-role">Engineer &middot; five US patents</span>
-          <img class="ar-tap" src="img/shuck.jpg" alt="Website built for L. Zane Shuck, PhD, PE" width="1760" height="1100" loading="lazy" decoding="async">
+          <img class="ar-tap" src="img/shuck.jpg" srcset="img/m/shuck.jpg 1200w, img/shuck.jpg 1760w" sizes="(max-width:700px) 100vw, 900px" alt="Website built for L. Zane Shuck, PhD, PE" width="1760" height="1100" loading="lazy" decoding="async">
           <span class="ar-go" aria-hidden="true">&#8599;</span>
         </a>
         <a class="ar-row rv" href="https://ranatahirbilal.github.io/stan-schekall/" target="_blank" rel="noopener noreferrer" data-shot="img/schekall.jpg">
           <span class="ar-n" aria-hidden="true">16</span>
           <span class="ar-name">Stan Schekall</span>
           <span class="ar-role">Electronics engineer, chief executive</span>
-          <img class="ar-tap" src="img/schekall.jpg" alt="Website built for Stan Schekall" width="1760" height="1100" loading="lazy" decoding="async">
+          <img class="ar-tap" src="img/schekall.jpg" srcset="img/m/schekall.jpg 1200w, img/schekall.jpg 1760w" sizes="(max-width:700px) 100vw, 900px" alt="Website built for Stan Schekall" width="1760" height="1100" loading="lazy" decoding="async">
           <span class="ar-go" aria-hidden="true">&#8599;</span>
         </a>
         <a class="ar-row rv" href="https://ranatahirbilal.github.io/andrew-cooper/" target="_blank" rel="noopener noreferrer" data-shot="img/cooper.jpg">
           <span class="ar-n" aria-hidden="true">17</span>
           <span class="ar-name">Andrew Charles Cooper</span>
           <span class="ar-role">Aviation &amp; patent counsel</span>
-          <img class="ar-tap" src="img/cooper.jpg" alt="Website built for Andrew Charles Cooper" width="1760" height="1100" loading="lazy" decoding="async">
+          <img class="ar-tap" src="img/cooper.jpg" srcset="img/m/cooper.jpg 1200w, img/cooper.jpg 1760w" sizes="(max-width:700px) 100vw, 900px" alt="Website built for Andrew Charles Cooper" width="1760" height="1100" loading="lazy" decoding="async">
           <span class="ar-go" aria-hidden="true">&#8599;</span>
         </a>
         <a class="ar-row rv" href="https://ranatahirbilal.github.io/philip-berry/" target="_blank" rel="noopener noreferrer" data-shot="img/berry.jpg">
           <span class="ar-n" aria-hidden="true">18</span>
           <span class="ar-name">Philip Berry</span>
           <span class="ar-role">Executive coach</span>
-          <img class="ar-tap" src="img/berry.jpg" alt="Website built for Philip Berry" width="1760" height="1100" loading="lazy" decoding="async">
+          <img class="ar-tap" src="img/berry.jpg" srcset="img/m/berry.jpg 1200w, img/berry.jpg 1760w" sizes="(max-width:700px) 100vw, 900px" alt="Website built for Philip Berry" width="1760" height="1100" loading="lazy" decoding="async">
           <span class="ar-go" aria-hidden="true">&#8599;</span>
         </a>
         <a class="ar-row rv" href="https://ranatahirbilal.github.io/gabriela-torres/" target="_blank" rel="noopener noreferrer" data-shot="img/torres.jpg">
           <span class="ar-n" aria-hidden="true">19</span>
           <span class="ar-name">Gabriela Torres</span>
           <span class="ar-role">Foundation executive</span>
-          <img class="ar-tap" src="img/torres.jpg" alt="Website built for Gabriela Torres" width="1760" height="1100" loading="lazy" decoding="async">
+          <img class="ar-tap" src="img/torres.jpg" srcset="img/m/torres.jpg 1200w, img/torres.jpg 1760w" sizes="(max-width:700px) 100vw, 900px" alt="Website built for Gabriela Torres" width="1760" height="1100" loading="lazy" decoding="async">
           <span class="ar-go" aria-hidden="true">&#8599;</span>
         </a>
         <a class="ar-row rv" href="https://ranatahirbilal.github.io/mary-jo-iozzio/" target="_blank" rel="noopener noreferrer" data-shot="img/iozzio.jpg">
           <span class="ar-n" aria-hidden="true">20</span>
           <span class="ar-name">Mary Jo Iozzio, PhD, STL</span>
           <span class="ar-role">Professor of moral theology</span>
-          <img class="ar-tap" src="img/iozzio.jpg" alt="Website built for Mary Jo Iozzio, PhD, STL" width="1760" height="1100" loading="lazy" decoding="async">
+          <img class="ar-tap" src="img/iozzio.jpg" srcset="img/m/iozzio.jpg 1200w, img/iozzio.jpg 1760w" sizes="(max-width:700px) 100vw, 900px" alt="Website built for Mary Jo Iozzio, PhD, STL" width="1760" height="1100" loading="lazy" decoding="async">
           <span class="ar-go" aria-hidden="true">&#8599;</span>
         </a>
         <a class="ar-row rv" href="https://ranatahirbilal.github.io/carol-spalding/" target="_blank" rel="noopener noreferrer" data-shot="img/spalding.jpg">
           <span class="ar-n" aria-hidden="true">21</span>
           <span class="ar-name">Carol S. Spalding, EdD</span>
           <span class="ar-role">College president emerita</span>
-          <img class="ar-tap" src="img/spalding.jpg" alt="Website built for Carol S. Spalding, EdD" width="1760" height="1100" loading="lazy" decoding="async">
+          <img class="ar-tap" src="img/spalding.jpg" srcset="img/m/spalding.jpg 1200w, img/spalding.jpg 1760w" sizes="(max-width:700px) 100vw, 900px" alt="Website built for Carol S. Spalding, EdD" width="1760" height="1100" loading="lazy" decoding="async">
           <span class="ar-go" aria-hidden="true">&#8599;</span>
         </a>
         <a class="ar-row rv" href="https://ranatahirbilal.github.io/shannon-jones/" target="_blank" rel="noopener noreferrer" data-shot="img/jones.jpg">
           <span class="ar-n" aria-hidden="true">22</span>
           <span class="ar-name">Shannon W. Jones III</span>
           <span class="ar-role">Public health director, retired</span>
-          <img class="ar-tap" src="img/jones.jpg" alt="Website built for Shannon W. Jones III" width="1760" height="1100" loading="lazy" decoding="async">
+          <img class="ar-tap" src="img/jones.jpg" srcset="img/m/jones.jpg 1200w, img/jones.jpg 1760w" sizes="(max-width:700px) 100vw, 900px" alt="Website built for Shannon W. Jones III" width="1760" height="1100" loading="lazy" decoding="async">
           <span class="ar-go" aria-hidden="true">&#8599;</span>
         </a>
         <a class="ar-row rv" href="https://ranatahirbilal.github.io/william-wallace-wilson/" target="_blank" rel="noopener noreferrer" data-shot="img/wilson.jpg">
           <span class="ar-n" aria-hidden="true">23</span>
           <span class="ar-name">William Wallace Wilson II</span>
           <span class="ar-role">President, insurance</span>
-          <img class="ar-tap" src="img/wilson.jpg" alt="Website built for William Wallace Wilson II" width="1760" height="1100" loading="lazy" decoding="async">
+          <img class="ar-tap" src="img/wilson.jpg" srcset="img/m/wilson.jpg 1200w, img/wilson.jpg 1760w" sizes="(max-width:700px) 100vw, 900px" alt="Website built for William Wallace Wilson II" width="1760" height="1100" loading="lazy" decoding="async">
           <span class="ar-go" aria-hidden="true">&#8599;</span>
         </a>
         <a class="ar-row rv" href="https://ranatahirbilal.github.io/ronald-berenbeim/" target="_blank" rel="noopener noreferrer" data-shot="img/berenbeim.jpg">
           <span class="ar-n" aria-hidden="true">24</span>
           <span class="ar-name">Ronald Berenbeim</span>
           <span class="ar-role">Business ethics &amp; anti-corruption</span>
-          <img class="ar-tap" src="img/berenbeim.jpg" alt="Website built for Ronald Berenbeim" width="1760" height="1100" loading="lazy" decoding="async">
+          <img class="ar-tap" src="img/berenbeim.jpg" srcset="img/m/berenbeim.jpg 1200w, img/berenbeim.jpg 1760w" sizes="(max-width:700px) 100vw, 900px" alt="Website built for Ronald Berenbeim" width="1760" height="1100" loading="lazy" decoding="async">
           <span class="ar-go" aria-hidden="true">&#8599;</span>
         </a>
         <a class="ar-row rv" href="https://ranatahirbilal.github.io/marinella-chvatal/" target="_blank" rel="noopener noreferrer" data-shot="img/chvatal.jpg">
           <span class="ar-n" aria-hidden="true">25</span>
           <span class="ar-name">Marinella A. Chvatal, MEd</span>
           <span class="ar-role">Founder &amp; CEO</span>
-          <img class="ar-tap" src="img/chvatal.jpg" alt="Website built for Marinella A. Chvatal, MEd" width="1760" height="1100" loading="lazy" decoding="async">
+          <img class="ar-tap" src="img/chvatal.jpg" srcset="img/m/chvatal.jpg 1200w, img/chvatal.jpg 1760w" sizes="(max-width:700px) 100vw, 900px" alt="Website built for Marinella A. Chvatal, MEd" width="1760" height="1100" loading="lazy" decoding="async">
           <span class="ar-go" aria-hidden="true">&#8599;</span>
         </a>
         <a class="ar-row rv" href="https://playful-mousse-00f181.netlify.app/" target="_blank" rel="noopener noreferrer" data-shot="img/vanfleet.jpg">
           <span class="ar-n" aria-hidden="true">26</span>
           <span class="ar-name">Dr. David D. Van Fleet</span>
           <span class="ar-role">Professor Emeritus</span>
-          <img class="ar-tap" src="img/vanfleet.jpg" alt="Website built for Dr. David D. Van Fleet" width="1760" height="1100" loading="lazy" decoding="async">
+          <img class="ar-tap" src="img/vanfleet.jpg" srcset="img/m/vanfleet.jpg 1200w, img/vanfleet.jpg 1760w" sizes="(max-width:700px) 100vw, 900px" alt="Website built for Dr. David D. Van Fleet" width="1760" height="1100" loading="lazy" decoding="async">
           <span class="ar-go" aria-hidden="true">&#8599;</span>
         </a>
         <a class="ar-row rv" href="https://ranatahirbilal.github.io/charles-cooper/" target="_blank" rel="noopener noreferrer" data-shot="img/charles.jpg">
           <span class="ar-n" aria-hidden="true">27</span>
           <span class="ar-name">Charles L. Cooper, CFP</span>
           <span class="ar-role">Financial planner</span>
-          <img class="ar-tap" src="img/charles.jpg" alt="Website built for Charles L. Cooper, CFP" width="1760" height="1100" loading="lazy" decoding="async">
+          <img class="ar-tap" src="img/charles.jpg" srcset="img/m/charles.jpg 1200w, img/charles.jpg 1760w" sizes="(max-width:700px) 100vw, 900px" alt="Website built for Charles L. Cooper, CFP" width="1760" height="1100" loading="lazy" decoding="async">
           <span class="ar-go" aria-hidden="true">&#8599;</span>
         </a>
         <a class="ar-row rv" href="https://ranatahirbilal.github.io/frances-iger-laterman/" target="_blank" rel="noopener noreferrer" data-shot="img/laterman.jpg">
           <span class="ar-n" aria-hidden="true">28</span>
           <span class="ar-name">Frances Iger Laterman</span>
           <span class="ar-role">Private art dealer</span>
-          <img class="ar-tap" src="img/laterman.jpg" alt="Website built for Frances Iger Laterman" width="1760" height="1100" loading="lazy" decoding="async">
+          <img class="ar-tap" src="img/laterman.jpg" srcset="img/m/laterman.jpg 1200w, img/laterman.jpg 1760w" sizes="(max-width:700px) 100vw, 900px" alt="Website built for Frances Iger Laterman" width="1760" height="1100" loading="lazy" decoding="async">
           <span class="ar-go" aria-hidden="true">&#8599;</span>
         </a>
         <a class="ar-row rv has-said" href="https://ranatahirbilal.github.io/jay-adoni/" target="_blank" rel="noopener noreferrer" data-shot="img/adoni.jpg">
@@ -2087,7 +2093,7 @@ html.lit .stack .s3{ animation:fx-fig .95s cubic-bezier(.2,.7,.25,1) .54s both; 
           <span class="ar-name">Jay Adoni</span>
           <span class="ar-role">Multimillionaire shoemaker &middot; Brooklyn factory</span>
           <span class="ar-said">She wears the shoes he makes.</span>
-          <img class="ar-tap" src="img/adoni.jpg" alt="Website built for Jay Adoni" width="1760" height="1100" loading="lazy" decoding="async">
+          <img class="ar-tap" src="img/adoni.jpg" srcset="img/m/adoni.jpg 1200w, img/adoni.jpg 1760w" sizes="(max-width:700px) 100vw, 900px" alt="Website built for Jay Adoni" width="1760" height="1100" loading="lazy" decoding="async">
           <span class="ar-go" aria-hidden="true">&#8599;</span>
         </a>
       </div>
@@ -2096,14 +2102,14 @@ html.lit .stack .s3{ animation:fx-fig .95s cubic-bezier(.2,.7,.25,1) .54s both; 
         <p class="ex-eyebrow">The body of work</p>
         <h2 class="ex-statement" id="bw-h">31 live <br>professional <br>websites.</h2>
         <div class="bw-grid">
-          <figure class="bw-1" data-drift="-24"><img src="img/grimes.jpg" alt="Website built for Dr. Steven M. Grimes" width="1760" height="1100" loading="lazy" sizes="42vw" decoding="async"></figure>
-          <figure class="bw-2" data-drift="18"><img src="img/videll.jpg" alt="Website built for Jared Videll, DO" width="1760" height="1100" loading="lazy" sizes="42vw" decoding="async"></figure>
-          <figure class="bw-3" data-drift="-14"><img src="img/cooper.jpg" alt="Website built for Andrew Charles Cooper" width="1760" height="1100" loading="lazy" sizes="42vw" decoding="async"></figure>
-          <figure class="bw-4" data-drift="26"><img src="img/mineo.jpg" alt="Website built for Jean R. Mineo" width="1760" height="1100" loading="lazy" sizes="42vw" decoding="async"></figure>
-          <figure class="bw-5" data-drift="-20"><img src="img/fisher.jpg" alt="Website built for John W. Fisher" width="1760" height="1100" loading="lazy" sizes="42vw" decoding="async"></figure>
-          <figure class="bw-6" data-drift="12"><img src="img/werner.jpg" alt="Website built for Kathleen M. Werner, JD" width="1760" height="1100" loading="lazy" sizes="42vw" decoding="async"></figure>
-          <figure class="bw-7" data-drift="-18"><img src="img/chvatal.jpg" alt="Website built for Marinella A. Chvatal, MEd" width="1760" height="1100" loading="lazy" sizes="42vw" decoding="async"></figure>
-          <figure class="bw-8" data-drift="22"><img src="img/torres.jpg" alt="Website built for Gabriela Torres" width="1760" height="1100" loading="lazy" sizes="42vw" decoding="async"></figure>
+          <figure class="bw-1" data-drift="-24"><img src="img/grimes.jpg" srcset="img/m/grimes.jpg 1200w, img/grimes.jpg 1760w" sizes="(max-width:700px) 100vw, 900px" alt="Website built for Dr. Steven M. Grimes" width="1760" height="1100" loading="lazy" sizes="42vw" decoding="async"></figure>
+          <figure class="bw-2" data-drift="18"><img src="img/videll.jpg" srcset="img/m/videll.jpg 1200w, img/videll.jpg 1760w" sizes="(max-width:700px) 100vw, 900px" alt="Website built for Jared Videll, DO" width="1760" height="1100" loading="lazy" sizes="42vw" decoding="async"></figure>
+          <figure class="bw-3" data-drift="-14"><img src="img/cooper.jpg" srcset="img/m/cooper.jpg 1200w, img/cooper.jpg 1760w" sizes="(max-width:700px) 100vw, 900px" alt="Website built for Andrew Charles Cooper" width="1760" height="1100" loading="lazy" sizes="42vw" decoding="async"></figure>
+          <figure class="bw-4" data-drift="26"><img src="img/mineo.jpg" srcset="img/m/mineo.jpg 1200w, img/mineo.jpg 1760w" sizes="(max-width:700px) 100vw, 900px" alt="Website built for Jean R. Mineo" width="1760" height="1100" loading="lazy" sizes="42vw" decoding="async"></figure>
+          <figure class="bw-5" data-drift="-20"><img src="img/fisher.jpg" srcset="img/m/fisher.jpg 1200w, img/fisher.jpg 1760w" sizes="(max-width:700px) 100vw, 900px" alt="Website built for John W. Fisher" width="1760" height="1100" loading="lazy" sizes="42vw" decoding="async"></figure>
+          <figure class="bw-6" data-drift="12"><img src="img/werner.jpg" srcset="img/m/werner.jpg 1200w, img/werner.jpg 1760w" sizes="(max-width:700px) 100vw, 900px" alt="Website built for Kathleen M. Werner, JD" width="1760" height="1100" loading="lazy" sizes="42vw" decoding="async"></figure>
+          <figure class="bw-7" data-drift="-18"><img src="img/chvatal.jpg" srcset="img/m/chvatal.jpg 1200w, img/chvatal.jpg 1760w" sizes="(max-width:700px) 100vw, 900px" alt="Website built for Marinella A. Chvatal, MEd" width="1760" height="1100" loading="lazy" sizes="42vw" decoding="async"></figure>
+          <figure class="bw-8" data-drift="22"><img src="img/torres.jpg" srcset="img/m/torres.jpg 1200w, img/torres.jpg 1760w" sizes="(max-width:700px) 100vw, 900px" alt="Website built for Gabriela Torres" width="1760" height="1100" loading="lazy" sizes="42vw" decoding="async"></figure>
         </div>
       </section>
 
@@ -2215,7 +2221,7 @@ html.lit .stack .s3{ animation:fx-fig .95s cubic-bezier(.2,.7,.25,1) .54s both; 
         <div class="aud has-proof" data-shot="img/kristina.jpg" data-who="Kristina M. McGahan, RN, BSN" data-role="Clinician &amp; author"><h3>Authors &amp; speakers</h3><p>Create a central destination for your work, ideas and appearances.</p></div>
         <div class="aud"><h3>Public figures</h3><p>Build a controlled, authoritative home around your name.</p></div>
       </div>
-          <figure id="audprev" aria-hidden="true"><img src="img/chvatal.jpg" alt="" width="1760" height="1100"><figcaption><b></b><span></span></figcaption></figure>
+          <figure id="audprev" aria-hidden="true"><img src="img/chvatal.jpg" srcset="img/m/chvatal.jpg 1200w, img/chvatal.jpg 1760w" sizes="(max-width:700px) 100vw, 900px" alt="" width="1760" height="1100"><figcaption><b></b><span></span></figcaption></figure>
     </section>
   </div>
 </div>
@@ -2500,7 +2506,7 @@ html.lit .stack .s3{ animation:fx-fig .95s cubic-bezier(.2,.7,.25,1) .54s both; 
     </section>
 
     <section id="contact" class="contact">
-      <div class="contact-bg rv" aria-hidden="true"><img src="img/mineo.jpg" alt="" width="1760" height="1100" loading="lazy" decoding="async"></div>
+      <div class="contact-bg rv" aria-hidden="true"><img src="img/mineo.jpg" srcset="img/m/mineo.jpg 1200w, img/mineo.jpg 1760w" sizes="(max-width:700px) 100vw, 900px" alt="" width="1760" height="1100" loading="lazy" decoding="async"></div>
       <h2 class="statement">If your work is hard to explain, that is the job.</h2>
       <p>Tell me what you have built, what you want represented, and where your current online presence falls short. I read every message myself, and I will tell you honestly whether this would meaningfully improve how you are represented online.</p>
       <div class="links">
@@ -2518,8 +2524,8 @@ html.lit .stack .s3{ animation:fx-fig .95s cubic-bezier(.2,.7,.25,1) .54s both; 
   </div>
 </div>
 
-  <figure id="pprev" aria-hidden="true"><img src="img/fisher.jpg" alt="" width="1760" height="1100"></figure>
-  <figure id="expv" aria-hidden="true"><img src="img/ana.jpg" alt="" width="1760" height="1100"></figure>
+  <figure id="pprev" aria-hidden="true"><img src="img/fisher.jpg" srcset="img/m/fisher.jpg 1200w, img/fisher.jpg 1760w" sizes="(max-width:700px) 100vw, 900px" alt="" width="1760" height="1100"></figure>
+  <figure id="expv" aria-hidden="true"><img src="img/ana.jpg" srcset="img/m/ana.jpg 1200w, img/ana.jpg 1760w" sizes="(max-width:700px) 100vw, 900px" alt="" width="1760" height="1100"></figure>
   <div id="excur" aria-hidden="true"><span>View</span></div>
 <script>
 (function(){
@@ -2880,6 +2886,7 @@ html.lit .stack .s3{ animation:fx-fig .95s cubic-bezier(.2,.7,.25,1) .54s both; 
   btn.addEventListener('click',function(){ set(!top.classList.contains('open')); });
   top.querySelectorAll('nav a').forEach(function(a){ a.addEventListener('click',function(){ set(false); }); });
   document.addEventListener('keydown',function(e){ if(e.key==='Escape') set(false); });
+  document.addEventListener('click',function(e){ if(top.classList.contains('open') && !e.target.closest('#site-nav') && !e.target.closest('.nav-toggle')) set(false); });
 })();
 </script>
 </body>
