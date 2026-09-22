@@ -51,6 +51,17 @@ nav.label .nav-cta:hover{background:var(--gold-lift);color:var(--pine)}
 .phead h1 em{font-style:italic;color:var(--gold)}
 .lede{font-size:var(--t-lead);color:var(--ivory-2);max-width:var(--measure);margin:24px 0 0}
 
+/* ---- portrait (about page) ---- */
+.phead.with-portrait{display:grid;grid-template-columns:minmax(0,1fr) minmax(200px,320px);
+  gap:clamp(28px,5vw,64px);align-items:end}
+.phead .portrait{margin:0}
+.phead .portrait img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;
+  border-radius:3px;border:1px solid var(--rule-raise)}
+@media (max-width:760px){
+  .phead.with-portrait{grid-template-columns:1fr}
+  .phead .portrait{max-width:260px;order:-1}
+}
+
 /* ---- body ---- */
 main section{padding:clamp(42px,5.5vw,72px) 0;border-bottom:1px solid var(--rule)}
 main h2{font-family:var(--display);font-weight:400;font-size:var(--t-h2);
