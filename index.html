@@ -1703,6 +1703,72 @@ html.lit .stack .s3{ animation:fx-fig .95s cubic-bezier(.2,.7,.25,1) .54s both; 
   ]
 }
 </script>
+<script>document.documentElement.classList.add('nt-js')</script>
+<style id="phone-polish">
+/* Phone layout. Everything here is scoped to phones; desktop is untouched. */
+.nav-toggle{ display:none; }
+@media (max-width:700px){
+  /* Masthead: a compact bar instead of four wrapped rows of links. */
+  .top{ flex-wrap:nowrap; padding:18px 0 16px; position:relative; }
+  .nav-toggle{
+    display:inline-flex; align-items:center; gap:10px;
+    min-height:44px; padding:0 14px; margin-right:-4px;
+    background:transparent; color:var(--ivory); cursor:pointer;
+    border:1px solid var(--rule); border-radius:1px;
+    font:600 12px/1 var(--sans); letter-spacing:.16em; text-transform:uppercase;
+  }
+  .nt-bars{ display:grid; gap:5px; width:16px; }
+  .nt-bars i{ display:block; height:1.5px; background:currentColor; transition:transform .25s ease; }
+  .top.open .nt-bars i:first-child{ transform:translateY(3.25px) rotate(45deg); }
+  .top.open .nt-bars i:last-child{ transform:translateY(-3.25px) rotate(-45deg); }
+  .top nav{
+    display:none; position:absolute; left:0; right:0; top:100%; z-index:50;
+    flex-direction:column; gap:0; padding:6px 0 18px;
+    background:var(--pine); border-bottom:1px solid var(--rule);
+    box-shadow:0 24px 40px -20px rgba(0,0,0,.6);
+  }
+  .top.open nav{ display:flex; }
+  .top nav a{
+    display:flex; align-items:center; min-height:48px; padding:0;
+    font-size:13px; border-bottom:1px solid var(--rule);
+  }
+  .top nav a.nav-cta{
+    justify-content:center; margin-top:14px; min-height:50px;
+    background:var(--gold); border-color:var(--gold); color:#14100A;
+  }
+  /* no-JS fallback: links stay reachable */
+  html:not(.nt-js) .top{ flex-wrap:wrap; }
+  html:not(.nt-js) .nav-toggle{ display:none; }
+  html:not(.nt-js) .top nav{ display:flex; position:static; flex-direction:row; flex-wrap:wrap; box-shadow:none; border:0; padding:0; }
+
+  /* Hero stats: three across instead of two plus an orphan. */
+  .proofline{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; }
+  .proofline b{ font-size:clamp(22px,6.4vw,27px); }
+  .proofline span{ font-size:10.5px; letter-spacing:.12em; line-height:1.35; }
+
+  /* Hero buttons: full-width, thumb-sized. */
+  .cta-row{ flex-wrap:wrap; gap:10px; }
+  .cta-row .btn{ flex:1 1 100%; justify-content:center; text-align:center; min-height:52px; display:flex; align-items:center; }
+  .cta-quiet{ min-height:44px; display:inline-flex; align-items:center; }
+
+  /* "What I examine": the note sits under the word instead of colliding with it. */
+  .ex-row{ grid-template-columns:1fr; gap:4px; }
+  .ex-note{ text-align:left; font-size:11.5px; opacity:.8; }
+
+  /* "What your name returns": readable at arm's length. */
+  .frag{ padding:11px 12px 13px; }
+  .frag-src{ font-size:10.5px; }
+  .frag-name{ font-size:15px; }
+  .frag-line{ font-size:12.5px; line-height:1.45; }
+
+  /* Inline and footer links: 44px touch targets without changing the look. */
+  .ilink{ padding:10px 0; margin:-10px 0; }
+  footer a{ display:inline-flex; align-items:center; min-height:44px; }
+
+  /* Adoni's badge was the smallest text on the page. */
+  .ar-flag{ font-size:11px; }
+}
+</style>
 </head>
 <body>
 <div id="rail" aria-hidden="true"></div>
@@ -1711,7 +1777,8 @@ html.lit .stack .s3{ animation:fx-fig .95s cubic-bezier(.2,.7,.25,1) .54s both; 
   <div class="page">
     <header class="top">
       <span class="wordmark">Rana Tahir Bilal</span>
-      <nav class="label">
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav"><span class="nt-bars" aria-hidden="true"><i></i><i></i></span><span class="nt-txt">Menu</span></button>
+      <nav class="label" id="site-nav">
         <a href="#search">The problem</a>
         <a href="/ai-visibility/">AI visibility</a>
         <a href="/ai-automation/">AI automation</a>
@@ -2798,5 +2865,16 @@ html.lit .stack .s3{ animation:fx-fig .95s cubic-bezier(.2,.7,.25,1) .54s both; 
 })();
 </script>
 
+<script>
+(function(){
+  document.documentElement.classList.add('nt-js');
+  var top=document.querySelector('.top'), btn=top&&top.querySelector('.nav-toggle');
+  if(!btn) return;
+  function set(open){ top.classList.toggle('open',open); btn.setAttribute('aria-expanded',open?'true':'false'); btn.querySelector('.nt-txt').textContent=open?'Close':'Menu'; }
+  btn.addEventListener('click',function(){ set(!top.classList.contains('open')); });
+  top.querySelectorAll('nav a').forEach(function(a){ a.addEventListener('click',function(){ set(false); }); });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape') set(false); });
+})();
+</script>
 </body>
 </html>
