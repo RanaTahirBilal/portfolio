@@ -1996,6 +1996,28 @@ html.lit .stack .s3{ animation:fx-fig .95s cubic-bezier(.2,.7,.25,1) .54s both; 
   .home-bar em{ font-size:11.5px; }
 }
 </style>
+<style id="hero-hook">
+/* The lead preview card: bigger, with the client's own headline claim on it. */
+.stack .s1.s1-hook{ width:94%; }
+@media (max-width:1000px){ .stack .s1.s1-hook{ width:90%; } }
+@media (max-width:520px){ .stack .s1.s1-hook{ width:100%; } }
+.hero-flag{
+  position:absolute; top:14px; left:14px; z-index:2;
+  padding:8px 14px; border-radius:999px;
+  background:rgba(8,37,31,.92); border:1px solid var(--gold); color:var(--gold);
+  font:600 12px/1.1 var(--sans); letter-spacing:.12em; text-transform:uppercase; white-space:nowrap;
+}
+.hero-cap{
+  position:absolute; left:0; right:0; bottom:0; z-index:2;
+  padding:34px 18px 14px;
+  background:linear-gradient(to bottom, rgba(4,14,11,0), rgba(4,14,11,.94) 55%);
+  color:var(--ivory-2); font:500 12.5px/1.35 var(--sans); letter-spacing:.06em; text-transform:uppercase;
+}
+.hero-cap b{ display:block; font-family:var(--display); font-weight:400; font-size:clamp(19px,1.9vw,26px); letter-spacing:-.01em; text-transform:none; color:var(--ivory); margin-bottom:3px; }
+@media (max-width:700px){ .hero-flag{ font-size:11px; padding:7px 12px; top:10px; left:10px; } .hero-cap{ padding:28px 14px 11px; font-size:11px; } }
+.hook-link{ display:block; width:100%; height:100%; color:inherit; text-decoration:none; }
+.hook-link:focus-visible{ outline:2px solid var(--gold); outline-offset:-2px; }
+</style>
 </head>
 <body>
 <div id="rail" aria-hidden="true"></div>
@@ -2007,11 +2029,9 @@ html.lit .stack .s3{ animation:fx-fig .95s cubic-bezier(.2,.7,.25,1) .54s both; 
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav"><span class="nt-bars" aria-hidden="true"><i></i><i></i></span><span class="nt-txt">Menu</span></button>
       <nav class="label" id="site-nav">
         <a href="#search">The problem</a>
-        <a href="/ai-visibility/">AI visibility</a>
-        <a href="/ai-automation/">AI automation</a>
-        <a href="/work/">Selected work</a>
+        <a href="#work">Selected work</a>
         <a href="#engagements">Engagements</a>
-        <a href="/about/">About</a>
+        <a href="#about">About</a>
         <a class="nav-cta" href="#contact">Start a conversation</a>
       </nav>
     </header>
@@ -2032,10 +2052,10 @@ html.lit .stack .s3{ animation:fx-fig .95s cubic-bezier(.2,.7,.25,1) .54s both; 
             <a class="cta-quiet" href="#work">See the work</a>
           </div>
         </div>
-        <div class="stack rv" aria-hidden="true">
-          <figure class="s1"><img src="img/kristina.jpg" srcset="img/m/kristina.jpg 1200w, img/kristina.jpg 1760w" sizes="(max-width:700px) 100vw, 900px" alt="" width="880" height="550" fetchpriority="high" decoding="async"></figure>
-          <figure class="s2"><img src="img/charles.jpg" srcset="img/m/charles.jpg 1200w, img/charles.jpg 1760w" sizes="(max-width:700px) 100vw, 900px" alt="" width="880" height="550" decoding="async"></figure>
-          <figure class="s3"><img src="img/cooper.jpg" srcset="img/m/cooper.jpg 1200w, img/cooper.jpg 1760w" sizes="(max-width:700px) 100vw, 900px" alt="" width="880" height="550" decoding="async"></figure>
+        <div class="stack rv">
+          <figure class="s1 s1-hook"><a class="hook-link" href="https://ranatahirbilal.github.io/jay-adoni/" target="_blank" rel="noopener noreferrer" aria-label="Jay Adoni, multimillionaire shoemaker. Beyonc&eacute; at the factory. Opens his website."><img src="img/adoni.jpg" srcset="img/m/adoni.jpg 1200w, img/adoni.jpg 1760w" sizes="(max-width:700px) 100vw, 900px" alt="" width="880" height="550" fetchpriority="high" decoding="async"><span class="hero-flag">Beyonc&eacute; at the factory</span><span class="hero-cap"><b>Jay Adoni</b>Multimillionaire shoemaker &middot; Brooklyn factory</span></a></figure>
+          <figure class="s2" aria-hidden="true"><img src="img/charles.jpg" srcset="img/m/charles.jpg 1200w, img/charles.jpg 1760w" sizes="(max-width:700px) 100vw, 900px" alt="" width="880" height="550" decoding="async"></figure>
+          <figure class="s3" aria-hidden="true"><img src="img/cooper.jpg" srcset="img/m/cooper.jpg 1200w, img/cooper.jpg 1760w" sizes="(max-width:700px) 100vw, 900px" alt="" width="880" height="550" decoding="async"></figure>
         </div>
       </div>
 
@@ -2981,19 +3001,8 @@ html.lit .stack .s3{ animation:fx-fig .95s cubic-bezier(.2,.7,.25,1) .54s both; 
   if (!rows.length) { return; }
 
   /* ---- mobile / touch: tap reveals the screenshot under the name ---- */
-  if (!fine) {
-    Array.prototype.forEach.call(rows, function(row){
-      row.addEventListener('click', function(e){
-        if (!row.classList.contains('open')) {
-          e.preventDefault();
-          Array.prototype.forEach.call(rows, function(o){ if (o !== row) { o.classList.remove('open'); } });
-          row.classList.add('open');
-        }
-        /* a second tap follows the link, so the destination is never trapped */
-      });
-    });
-    return;
-  }
+  /* touch: the card is a plain link; one tap opens the client's site */
+  if (!fine) { return; }
 
   /* ---- desktop: catalogue preview that follows the cursor ---- */
   var pv = document.getElementById('expv'), cur = document.getElementById('excur');
