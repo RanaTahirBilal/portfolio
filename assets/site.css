@@ -127,3 +127,8 @@ footer.label a:hover{color:var(--gold)}
   footer.label a{display:inline-flex;align-items:center;min-height:44px}
   .crumb a{display:inline-flex;align-items:center;min-height:44px}
 }
+
+/* ---- wide image band ---- */
+.band{margin:40px 0 0}
+.band img{display:block;width:100%;height:auto;border-radius:3px;border:1px solid var(--rule-raise)}
+.band figcaption{margin-top:10px;font-size:13.5px;line-height:1.4;color:var(--ivory-3);max-width:var(--measure)}
