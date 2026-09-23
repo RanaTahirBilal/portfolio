@@ -96,6 +96,16 @@ ul.plain li b{color:var(--ivory)}
 .crumb a{color:var(--ivory-3)}
 .crumb a:hover{color:var(--gold)}
 
+/* ---- work grid ---- */
+.shots{display:grid;gap:clamp(16px,2.2vw,26px);
+  grid-template-columns:repeat(auto-fill,minmax(230px,1fr));margin:34px 0 0;padding:0;list-style:none}
+.shots figure{margin:0}
+.shots img{display:block;width:100%;height:auto;aspect-ratio:16/10;object-fit:cover;object-position:top center;
+  border:1px solid var(--rule-raise);border-radius:3px;background:var(--pine-raise)}
+.shots figcaption{margin-top:10px;font-size:13.5px;line-height:1.35;color:var(--ivory-3)}
+.shots figcaption b{display:block;color:var(--ivory);font-weight:700;font-size:14.5px}
+@media (max-width:520px){ .shots{grid-template-columns:repeat(auto-fill,minmax(150px,1fr))} }
+
 /* ---- footer ---- */
 footer.label{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;
   padding:34px 0 48px;color:var(--ivory-3);font-weight:600}
