@@ -86,6 +86,13 @@ footer.end .wrap{ padding-block:30px 44px; font-size:14px; color:var(--ivory-3);
   .searched li{ flex-direction:column; gap:3px; }
   .searched .who{ flex:none; }
 }
+
+.top .pagenav{display:flex;flex-wrap:wrap;align-items:center;gap:18px;font-size:12px;letter-spacing:.14em;text-transform:uppercase}
+.top .pagenav a{color:var(--ivory-3,#9a9a9a);text-decoration:none}
+.top .pagenav a:hover{color:var(--gold,#c9a34e)}
+.top .pagenav .pagenav-cta{color:var(--gold,#c9a34e);border:1px solid var(--rule-raise,currentColor);border-radius:999px;padding:7px 15px;letter-spacing:.1em}
+.top .pagenav .pagenav-cta:hover{color:var(--gold-lift,#d9b665);border-color:var(--gold,#c9a34e)}
+@media (max-width:640px){.top .pagenav{gap:12px;font-size:10.5px}.top .pagenav .pagenav-cta{padding:6px 12px}}
 </style>
 </head>
 <body>
@@ -93,7 +100,13 @@ footer.end .wrap{ padding-block:30px 44px; font-size:14px; color:var(--ivory-3);
 <header class="top">
   <div class="wrap">
     <a class="home" href="/">Rana Tahir Bilal</a>
-    <span class="meta">For Physicians</span>
+    <nav class="pagenav" aria-label="Primary">
+<a href="/#search">The problem</a>
+<a href="/work/">Selected work</a>
+<a href="/#engagements">Engagements</a>
+<a href="/about/">About</a>
+<a class="pagenav-cta" href="/#contact">Start a conversation</a>
+</nav>
   </div>
 </header>
 
