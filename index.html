@@ -2045,42 +2045,59 @@ html.lit .stack .s3{ animation:fx-fig .95s cubic-bezier(.2,.7,.25,1) .54s both; 
   }
   .eng-alt a:hover{ color:var(--gold); border-color:var(--gold); }
 
-/* ===== Who I build for. Added 5 October 2026 ===== */
-.roster{padding:clamp(72px,9vw,128px) 0;background:var(--pine-deep);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+
+/* ===== Who I build for. Added 5 October 2026 =====
+   Contrast measured against --pine-deep #061B16:
+   --ivory  #F4F0E8 15.71 : 1   --ivory-2 #DAD7CD 12.40 : 1
+   --ivory-3 #BFBCB1 9.39 : 1   --gold-lift #D9B665 9.21 : 1 */
+.roster{padding:clamp(72px,9vw,128px) 0;background:var(--pine-deep);
+  border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
 .roster-in{width:min(1120px,calc(100% - 48px));margin-inline:auto}
-/* every block inside shares one left edge; the demo container centres only the wrapper */
 .roster-in>*{margin-left:0;margin-right:0}
 .roster-head{max-width:62ch}
-.roster-lede{color:var(--ivory-3);margin:18px 0 0;font-size:clamp(15px,1.5vw,17px);line-height:1.75} /* 9.39 on pine-deep */
+.roster-lede{color:var(--ivory-3);margin:18px 0 0;font-size:clamp(15px,1.5vw,17px);line-height:1.75}
 
 .roster-wall{list-style:none;padding:0;margin:clamp(34px,4vw,54px) 0 0 0;
   display:flex;flex-wrap:wrap;gap:12px 10px}
-.roster-wall li{font-family:var(--sans);font-size:clamp(12.5px,1.25vw,14px);font-weight:600;
-  letter-spacing:.04em;color:var(--ivory-2);                                   /* 12.40 on pine-deep */
-  border:1px solid var(--rule-raise);border-radius:999px;padding:9px 16px;
+.roster-wall li{display:inline-flex;align-items:center;gap:9px;
+  font-family:var(--sans);font-size:clamp(12.5px,1.25vw,14px);font-weight:600;letter-spacing:.04em;
+  color:var(--ivory-2);border:1px solid var(--rule-raise);border-radius:999px;padding:9px 16px 9px 13px;
   background:rgba(14,50,41,.42);white-space:nowrap}
+.ri{width:17px;height:17px;flex:0 0 17px;color:var(--gold-lift)}
 @media (max-width:560px){
-  /* 26 pills at desktop size stacked to a 2386px tall section on a 390px screen.
-     Smaller type and tighter padding fits two or three per row instead of one. */
   .roster-wall{gap:8px 7px}
-  .roster-wall li{white-space:normal;font-size:11.5px;letter-spacing:.02em;padding:7px 11px}
+  .roster-wall li{white-space:normal;font-size:11.5px;letter-spacing:.02em;padding:7px 11px 7px 9px;gap:7px}
+  .ri{width:15px;height:15px;flex:0 0 15px}
 }
 
-.roster-note{margin:clamp(26px,3vw,34px) 0 0;max-width:68ch;
-  font-size:13px;line-height:1.7;color:var(--ivory-3)}                          /* 9.39 on pine-deep */
+.roster-note{margin:clamp(26px,3vw,34px) 0 0;max-width:68ch;font-size:13px;line-height:1.7;color:var(--ivory-3)}
 
-.roster-proof{width:auto;margin:clamp(40px,5vw,64px) 0 0;padding-top:clamp(28px,3vw,38px);border-top:1px solid var(--rule)}
-.roster-proof ul{list-style:none;padding:0;margin:18px 0 0;display:grid;gap:14px;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
-.roster-proof a{display:block;text-decoration:none;border:1px solid var(--rule-raise);border-radius:12px;
-  padding:18px 20px;background:rgba(14,50,41,.42);transition:border-color .25s ease,transform .25s ease}
-.roster-proof a:hover,.roster-proof a:focus-visible{border-color:var(--gold);transform:translateY(-2px)}
-.roster-proof b{display:block;font-family:var(--display);font-weight:400;
-  font-size:clamp(17px,1.8vw,20px);color:var(--ivory);margin-bottom:7px}        /* 15.71 on pine-deep */
-.roster-proof span{display:block;font-size:13.5px;line-height:1.6;color:var(--ivory-3)}
-.roster-proof a::after{content:"View the site \2192";display:block;margin-top:12px;font-size:12px;
-  letter-spacing:.14em;text-transform:uppercase;color:var(--gold-lift)}         /* 9.21 on pine-deep */
-@media (prefers-reduced-motion:reduce){.roster-proof a{transition:none}}
+.roster-work{margin:clamp(44px,5vw,66px) 0 0;padding-top:clamp(30px,3vw,40px);border-top:1px solid var(--rule)}
+.work-wall{list-style:none;padding:0;margin:20px 0 0;display:grid;gap:18px;
+  grid-template-columns:repeat(auto-fill,minmax(236px,1fr))}
+.work-wall a{display:block;text-decoration:none;border:1px solid var(--rule-raise);border-radius:12px;
+  overflow:hidden;background:rgba(14,50,41,.42);transition:border-color .25s ease,transform .25s ease}
+.work-wall a:hover,.work-wall a:focus-visible{border-color:var(--gold);transform:translateY(-3px)}
+.work-wall img{display:block;width:100%;height:auto;aspect-ratio:8/5;object-fit:cover;
+  border-bottom:1px solid var(--rule-raise)}
+.work-wall b{display:block;font-family:var(--display);font-weight:400;font-size:17px;
+  color:var(--ivory);padding:14px 16px 0}
+.work-wall span{display:block;font-size:12.5px;line-height:1.55;color:var(--ivory-3);padding:5px 16px 15px}
+/* 12 stacked cards made the section 5108px tall on a 390px screen. On phones the wall
+   becomes a contained horizontal strip, so the page body still never scrolls sideways. */
+@media (max-width:700px){
+  .work-wall{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch;padding-bottom:12px;
+    scrollbar-width:thin;scrollbar-color:var(--rule-raise) transparent}
+  .work-wall>li{flex:0 0 72%;scroll-snap-align:start}
+  .work-wall b{font-size:15.5px;padding:12px 13px 0}
+  .work-wall span{font-size:12px;padding:4px 13px 13px}
+  .work-wall::-webkit-scrollbar{height:6px}
+  .work-wall::-webkit-scrollbar-thumb{background:var(--rule-raise);border-radius:99px}
+}
+.roster-hint{display:none;margin:10px 0 0;font-size:12px;color:var(--ivory-3)}
+@media (max-width:700px){.roster-hint{display:block}}
+@media (prefers-reduced-motion:reduce){.work-wall a{transition:none}}
 
 </style>
 </head>
@@ -2768,58 +2785,79 @@ html.lit .stack .s3{ animation:fx-fig .95s cubic-bezier(.2,.7,.25,1) .54s both; 
   <div class="page">
 
     
-<!-- ===== WHERE MY CLIENTS WORK =====
-     Text wordmarks only. No third party logos: these organisations employ my clients,
-     they are not my clients and have no relationship with this practice. The note at the
-     foot of the section says so, and it is not optional. -->
+<!-- ===== WHO I BUILD FOR =====
+     Category icons are generic marks drawn for this site. No third party logos appear here:
+     these organisations employ my clients, they are not clients of this practice, and showing
+     their trademarks beside my prices would imply an affiliation that does not exist.
+     The only marks on this page are my own work. -->
 <section id="roster" class="roster" aria-labelledby="roster-h">
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+    <g id="ri-campus" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10l9-5 9 5"/><path d="M5.5 10v8M9.5 10v8M14.5 10v8M18.5 10v8"/><path d="M3 20h18"/></g>
+    <g id="ri-hospital" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M12 8.5v7M8.5 12h7"/></g>
+    <g id="ri-lab" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 3v6L4.6 18.6A1 1 0 0 0 5.5 20h13a1 1 0 0 0 .9-1.4L14.5 9V3"/><path d="M8 3h8M7.6 14.5h8.8"/></g>
+    <g id="ri-gov" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5.5 3v18"/><path d="M5.5 4.2h11l-2.1 3.1 2.1 3.1h-11"/></g>
+    <g id="ri-corp" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V5a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v16"/><path d="M14 21V11h5a1 1 0 0 1 1 1v9"/><path d="M7 8h3M7 12h3M7 16h3M17 15h.8M17 18h.8"/><path d="M3 21h18"/></g>
+    <g id="ri-globe" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 2.6 2.6 15.4 0 18M12 3C9.4 5.6 9.4 18.4 12 21"/></g>
+    <g id="ri-media" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2"/><path d="M8.6 8.6a4.8 4.8 0 0 0 0 6.8M15.4 15.4a4.8 4.8 0 0 0 0-6.8"/><path d="M5.6 5.6a9 9 0 0 0 0 12.8M18.4 18.4a9 9 0 0 0 0-12.8"/></g>
+  </defs></svg>
+
   <div class="roster-in">
-  <div class="roster-head rv">
-    <p class="label">Who I build for</p>
-    <h2 class="statement" id="roster-h">My clients lead at institutions like these.</h2>
-    <p class="roster-lede">Forty one personal sites delivered this year, for physicians, professors, attorneys, engineers and public health leaders. These are the organisations where they hold, or have held, their posts.</p>
-  </div>
+    <div class="roster-head rv">
+      <p class="label">Who I build for</p>
+      <h2 class="statement" id="roster-h">My clients lead at institutions like these.</h2>
+      <p class="roster-lede">Forty one personal sites delivered this year, for physicians, professors, attorneys, engineers and public health leaders. These are the organisations where they hold, or have held, their posts.</p>
+    </div>
 
-  <ul class="roster-wall rv" aria-label="Organisations where my clients hold or have held posts">
-    <li>Columbia University</li>
-    <li>NewYork&#8209;Presbyterian</li>
-    <li>Boston College</li>
-    <li>NYU Stern</li>
-    <li>Gates Foundation</li>
-    <li>The Conference Board</li>
-    <li>Arizona State University</li>
-    <li>Ohio University</li>
-    <li>University of California, Irvine</li>
-    <li>U.S. Naval Research Laboratory</li>
-    <li>Johns Hopkins Applied Physics Laboratory</li>
-    <li>NIST</li>
-    <li>Centers for Disease Control and Prevention</li>
-    <li>U.S. Department of Energy</li>
-    <li>U.S. Army Reserve</li>
-    <li>Colgate&#8209;Palmolive</li>
-    <li>Procter &amp; Gamble</li>
-    <li>UPS Airlines</li>
-    <li>Qualcomm</li>
-    <li>Seagate Technology</li>
-    <li>Lockheed Missiles &amp; Space</li>
-    <li>Kaiser Permanente</li>
-    <li>Lenox Hill Hospital</li>
-    <li>Hoag Memorial Hospital Presbyterian</li>
-    <li>Associated Press</li>
-    <li>King County Metro Transit</li>
-  </ul>
-
-  <p class="roster-note rv">These organisations employ my clients. They are not clients of this practice and no affiliation or endorsement is implied.</p>
-
-  <div class="roster-proof rv">
-    <p class="label">Three of the forty one</p>
-    <ul>
-      <li><a href="https://ranatahirbilal.github.io/ilene-fennoy/" target="_blank" rel="noopener"><b>Dr. Ilene Fennoy</b><span>Professor of Pediatrics, Columbia University Irving Medical Center</span></a></li>
-      <li><a href="https://ranatahirbilal.github.io/gabriela-torres/" target="_blank" rel="noopener"><b>Gabriela Torres</b><span>Deputy Director, Gates Foundation</span></a></li>
-      <li><a href="https://ranatahirbilal.github.io/ronald-berenbeim/" target="_blank" rel="noopener"><b>Ronald Berenbeim</b><span>Senior Fellow, The Conference Board. Adjunct Professor, NYU Stern</span></a></li>
+    <ul class="roster-wall rv" aria-label="Organisations where my clients hold or have held posts">
+      <li><svg class="ri" viewBox="0 0 24 24" aria-hidden="true"><use href="#ri-campus"/></svg>Columbia University</li>
+      <li><svg class="ri" viewBox="0 0 24 24" aria-hidden="true"><use href="#ri-campus"/></svg>Boston College</li>
+      <li><svg class="ri" viewBox="0 0 24 24" aria-hidden="true"><use href="#ri-campus"/></svg>NYU Stern</li>
+      <li><svg class="ri" viewBox="0 0 24 24" aria-hidden="true"><use href="#ri-campus"/></svg>Arizona State University</li>
+      <li><svg class="ri" viewBox="0 0 24 24" aria-hidden="true"><use href="#ri-campus"/></svg>Ohio University</li>
+      <li><svg class="ri" viewBox="0 0 24 24" aria-hidden="true"><use href="#ri-campus"/></svg>University of California, Irvine</li>
+      <li><svg class="ri" viewBox="0 0 24 24" aria-hidden="true"><use href="#ri-hospital"/></svg>NewYork&#8209;Presbyterian</li>
+      <li><svg class="ri" viewBox="0 0 24 24" aria-hidden="true"><use href="#ri-hospital"/></svg>Lenox Hill Hospital</li>
+      <li><svg class="ri" viewBox="0 0 24 24" aria-hidden="true"><use href="#ri-hospital"/></svg>Hoag Memorial Hospital Presbyterian</li>
+      <li><svg class="ri" viewBox="0 0 24 24" aria-hidden="true"><use href="#ri-hospital"/></svg>Kaiser Permanente</li>
+      <li><svg class="ri" viewBox="0 0 24 24" aria-hidden="true"><use href="#ri-globe"/></svg>Gates Foundation</li>
+      <li><svg class="ri" viewBox="0 0 24 24" aria-hidden="true"><use href="#ri-globe"/></svg>The Conference Board</li>
+      <li><svg class="ri" viewBox="0 0 24 24" aria-hidden="true"><use href="#ri-lab"/></svg>U.S. Naval Research Laboratory</li>
+      <li><svg class="ri" viewBox="0 0 24 24" aria-hidden="true"><use href="#ri-lab"/></svg>Johns Hopkins Applied Physics Laboratory</li>
+      <li><svg class="ri" viewBox="0 0 24 24" aria-hidden="true"><use href="#ri-lab"/></svg>NIST</li>
+      <li><svg class="ri" viewBox="0 0 24 24" aria-hidden="true"><use href="#ri-gov"/></svg>Centers for Disease Control and Prevention</li>
+      <li><svg class="ri" viewBox="0 0 24 24" aria-hidden="true"><use href="#ri-gov"/></svg>U.S. Department of Energy</li>
+      <li><svg class="ri" viewBox="0 0 24 24" aria-hidden="true"><use href="#ri-gov"/></svg>U.S. Army Reserve</li>
+      <li><svg class="ri" viewBox="0 0 24 24" aria-hidden="true"><use href="#ri-gov"/></svg>King County Metro Transit</li>
+      <li><svg class="ri" viewBox="0 0 24 24" aria-hidden="true"><use href="#ri-corp"/></svg>Colgate&#8209;Palmolive</li>
+      <li><svg class="ri" viewBox="0 0 24 24" aria-hidden="true"><use href="#ri-corp"/></svg>Procter &amp; Gamble</li>
+      <li><svg class="ri" viewBox="0 0 24 24" aria-hidden="true"><use href="#ri-corp"/></svg>UPS Airlines</li>
+      <li><svg class="ri" viewBox="0 0 24 24" aria-hidden="true"><use href="#ri-corp"/></svg>Qualcomm</li>
+      <li><svg class="ri" viewBox="0 0 24 24" aria-hidden="true"><use href="#ri-corp"/></svg>Seagate Technology</li>
+      <li><svg class="ri" viewBox="0 0 24 24" aria-hidden="true"><use href="#ri-corp"/></svg>Lockheed Missiles &amp; Space</li>
+      <li><svg class="ri" viewBox="0 0 24 24" aria-hidden="true"><use href="#ri-media"/></svg>Associated Press</li>
     </ul>
+
+    <p class="roster-note rv">These organisations employ my clients. They are not clients of this practice and no affiliation or endorsement is implied.</p>
+
+    <div class="roster-work rv">
+      <p class="label">Twelve of the forty one</p>
+      <p class="roster-hint">Swipe to see more.</p>
+      <ul class="work-wall">
+        <li><a href="https://ranatahirbilal.github.io/ilene-fennoy/" target="_blank" rel="noopener"><img src="img/work/ilene-fennoy.jpg" width="640" height="400" loading="lazy" alt="Site built for Dr. Ilene Fennoy"><b>Dr. Ilene Fennoy</b><span>Columbia University Irving Medical Center</span></a></li>
+        <li><a href="https://ranatahirbilal.github.io/gabriela-torres/" target="_blank" rel="noopener"><img src="img/work/gabriela-torres.jpg" width="640" height="400" loading="lazy" alt="Site built for Gabriela Torres"><b>Gabriela Torres</b><span>Gates Foundation</span></a></li>
+        <li><a href="https://ranatahirbilal.github.io/ronald-berenbeim/" target="_blank" rel="noopener"><img src="img/work/ronald-berenbeim.jpg" width="640" height="400" loading="lazy" alt="Site built for Ronald Berenbeim"><b>Ronald Berenbeim</b><span>The Conference Board, NYU Stern</span></a></li>
+        <li><a href="https://ranatahirbilal.github.io/mary-jo-iozzio/" target="_blank" rel="noopener"><img src="img/work/mary-jo-iozzio.jpg" width="640" height="400" loading="lazy" alt="Site built for Mary Jo Iozzio"><b>Mary Jo Iozzio</b><span>Boston College</span></a></li>
+        <li><a href="https://ranatahirbilal.github.io/carol-spalding/" target="_blank" rel="noopener"><img src="img/work/carol-spalding.jpg" width="640" height="400" loading="lazy" alt="Site built for Carol Spalding"><b>Carol Spalding</b><span>Rowan&#8209;Cabarrus Community College</span></a></li>
+        <li><a href="https://ranatahirbilal.github.io/cha-mei-tang/" target="_blank" rel="noopener"><img src="img/work/cha-mei-tang.jpg" width="640" height="400" loading="lazy" alt="Site built for Cha-Mei Tang"><b>Cha&#8209;Mei Tang</b><span>Creatv MicroTech, formerly U.S. Naval Research Laboratory</span></a></li>
+        <li><a href="https://ranatahirbilal.github.io/eleni-vrana/" target="_blank" rel="noopener"><img src="img/work/eleni-vrana.jpg" width="640" height="400" loading="lazy" alt="Site built for Eleni Vrana"><b>Eleni Vrana</b><span>Columbia University</span></a></li>
+        <li><a href="https://ranatahirbilal.github.io/steven-grimes/" target="_blank" rel="noopener"><img src="img/work/steven-grimes.jpg" width="640" height="400" loading="lazy" alt="Site built for Steven Grimes"><b>Steven Grimes</b><span>Ohio University</span></a></li>
+        <li><a href="https://ranatahirbilal.github.io/philip-berry/" target="_blank" rel="noopener"><img src="img/work/philip-berry.jpg" width="640" height="400" loading="lazy" alt="Site built for Philip Berry"><b>Philip Berry</b><span>Formerly Colgate&#8209;Palmolive, Procter &amp; Gamble</span></a></li>
+        <li><a href="https://ranatahirbilal.github.io/shannon-jones/" target="_blank" rel="noopener"><img src="img/work/shannon-jones.jpg" width="640" height="400" loading="lazy" alt="Site built for Shannon Jones"><b>Shannon Jones</b><span>Austin Public Health, CDC advisory council</span></a></li>
+        <li><a href="https://ranatahirbilal.github.io/robert-flor/" target="_blank" rel="noopener"><img src="img/work/robert-flor.jpg" width="640" height="400" loading="lazy" alt="Site built for Robert Flor"><b>Robert Flor</b><span>Formerly King County Metro Transit</span></a></li>
+        <li><a href="https://ranatahirbilal.github.io/jean-mineo/" target="_blank" rel="noopener"><img src="img/work/jean-mineo.jpg" width="640" height="400" loading="lazy" alt="Site built for Jean Mineo"><b>Jean Mineo</b><span>Bellforge Arts Center</span></a></li>
+      </ul>
+    </div>
   </div>
-</div>
 </section>
 
 <section id="about" class="about">
