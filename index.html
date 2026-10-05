@@ -2047,6 +2047,7 @@ html.lit .stack .s3{ animation:fx-fig .95s cubic-bezier(.2,.7,.25,1) .54s both; 
 
 
 
+
 /* ===== Institutional marquee =====
    Contrast on the white card:  #1C2622 15.56:1 (headline)
                                 #3F4845  9.44:1 (marks)
@@ -2081,24 +2082,24 @@ html.lit .stack .s3{ animation:fx-fig .95s cubic-bezier(.2,.7,.25,1) .54s both; 
 @keyframes mq-run{from{transform:translate3d(0,0,0)}to{transform:translate3d(-50%,0,0)}}
 
 .mq-set{list-style:none;margin:0;padding:0;display:flex;align-items:center;flex:0 0 auto}
-.mq-item{display:inline-flex;align-items:center;gap:9px;flex:0 0 auto;
-  padding:0 26px;height:46px;color:#3F4845;
-  font-family:var(--sans);font-size:12.5px;font-weight:600;letter-spacing:.05em;
+.mq-item{display:inline-flex;align-items:center;gap:13px;flex:0 0 auto;
+  padding:0 32px;height:68px;color:#3F4845;
+  font-family:var(--sans);font-size:16px;font-weight:600;letter-spacing:.045em;
   text-transform:uppercase;white-space:nowrap}
-.mq-ico{width:20px;height:20px;flex:0 0 20px;color:#535C58}
+.mq-ico{width:30px;height:30px;flex:0 0 30px;color:#535C58;stroke-width:1.4}
 
 .trust-note{text-align:center;margin:clamp(20px,2.4vw,30px) auto 0;max-width:60ch;
   padding:0 clamp(18px,4vw,44px);font-size:12.5px;line-height:1.65;color:#535C58}
 
 @media (max-width:900px){
-  .mq-item{height:40px;font-size:11.5px;padding:0 19px;gap:8px}
-  .mq-ico{width:18px;height:18px;flex:0 0 18px}
+  .mq-item{height:58px;font-size:14px;padding:0 24px;gap:11px}
+  .mq-ico{width:26px;height:26px;flex:0 0 26px}
   .mq-track{animation-duration:48s}
   .trust-head{max-width:26ch}
 }
 @media (max-width:560px){
-  .mq-item{height:34px;font-size:10px;letter-spacing:.04em;padding:0 13px;gap:6px}
-  .mq-ico{width:15px;height:15px;flex:0 0 15px}
+  .mq-item{height:46px;font-size:11.5px;letter-spacing:.035em;padding:0 16px;gap:8px}
+  .mq-ico{width:21px;height:21px;flex:0 0 21px}
   .mq-track{animation-duration:38s}
   .trust{border-radius:14px}
   .mq{-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 6%,#000 94%,transparent 100%);
