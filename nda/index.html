@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Mutual Confidentiality and Non Disclosure Agreement, Neat Roots Inc. and La Patrona</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Inter:wght@400;500;600;700&display=swap">
+<style>
+:root{
+  --ink:#14181B;        /* 15.70 on white */
+  --body:#2B3338;       /* 11.49 on white */
+  --muted:#525C62;      /*  7.01 on white */
+  --rule:#DCE0E2;
+  --rule-strong:#B6BDC1;
+  --accent:#1F4E46;     /* 9.42 on white */
+  --accent-soft:#F1F6F4;
+  --warn:#7A4A12;       /* 7.18 on white */
+  --serif:'Source Serif 4',Georgia,'Times New Roman',serif;
+  --sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:#EDEFF0;color:var(--body);
+  font-family:var(--serif);font-size:16px;line-height:1.72;
+  -webkit-font-smoothing:antialiased}
+.sheet{max-width:860px;margin:0 auto;background:#fff;
+  padding:clamp(28px,5vw,72px) clamp(20px,5vw,76px) clamp(40px,6vw,80px);
+  box-shadow:0 1px 3px rgba(20,24,27,.10),0 18px 48px rgba(20,24,27,.10)}
+@media(min-width:900px){body{padding:36px 20px}}
+
+.brand{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;
+  gap:10px;border-bottom:2px solid var(--ink);padding-bottom:14px;margin-bottom:34px}
+.brand b{font-family:var(--sans);font-size:15px;font-weight:700;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ink)}
+.brand span{font-family:var(--sans);font-size:11.5px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--muted)}
+
+h1{font-family:var(--serif);font-weight:700;font-size:clamp(23px,3.1vw,31px);
+  line-height:1.26;color:var(--ink);margin:0 0 8px;text-wrap:balance}
+.sub{font-family:var(--sans);font-size:13px;color:var(--muted);margin:0 0 30px}
+
+.parties{background:var(--accent-soft);border-left:3px solid var(--accent);
+  padding:18px 22px;margin:0 0 30px;border-radius:0 6px 6px 0}
+.parties p{margin:0 0 6px;font-size:15.5px}
+.parties p:last-child{margin:0}
+.parties b{color:var(--ink)}
+
+h2{font-family:var(--sans);font-size:13px;font-weight:700;letter-spacing:.10em;
+  text-transform:uppercase;color:var(--ink);
+  margin:34px 0 10px;padding-bottom:7px;border-bottom:1px solid var(--rule)}
+p{margin:0 0 13px}
+ul,ol{margin:0 0 14px;padding-left:22px}
+li{margin-bottom:7px}
+.lede{font-size:16.5px}
+
+.fill{display:inline-block;min-width:210px;border-bottom:1px solid var(--rule-strong);
+  height:1.15em;vertical-align:baseline}
+
+/* ---------- signing ---------- */
+.sign{margin-top:46px;border-top:2px solid var(--ink);padding-top:30px}
+.sign h2{margin-top:0;border-bottom:0;padding-bottom:0;font-size:14px}
+.cols{display:grid;gap:26px;grid-template-columns:repeat(auto-fit,minmax(282px,1fr));margin-top:20px}
+.block{border:1px solid var(--rule);border-radius:8px;padding:20px 22px 22px;background:#fff}
+.block h3{font-family:var(--sans);font-size:11.5px;font-weight:700;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--muted);margin:0 0 16px}
+.f{margin-bottom:14px}
+.f label{display:block;font-family:var(--sans);font-size:11.5px;font-weight:600;
+  letter-spacing:.07em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.f input[type=text],.f input[type=email]{width:100%;font-family:var(--sans);font-size:15px;
+  color:var(--ink);background:#fff;border:1px solid var(--rule-strong);border-radius:5px;
+  padding:10px 12px}
+.f input:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:var(--accent)}
+.ro{font-family:var(--sans);font-size:15px;color:var(--ink);
+  border-bottom:1px solid var(--rule);padding:9px 2px}
+
+.padwrap{border:1px dashed var(--rule-strong);border-radius:6px;background:#FCFDFD;position:relative}
+#pad{display:block;width:100%;height:150px;touch-action:none;cursor:crosshair;border-radius:6px}
+.padhint{position:absolute;inset:auto 0 12px;text-align:center;pointer-events:none;
+  font-family:var(--sans);font-size:12px;color:#7A8187}
+.padbar{display:flex;justify-content:space-between;align-items:center;margin-top:8px}
+.padbar small{font-family:var(--sans);font-size:11.5px;color:var(--muted)}
+.lnk{font-family:var(--sans);font-size:12px;font-weight:600;color:var(--accent);
+  background:none;border:0;padding:4px 2px;cursor:pointer;text-decoration:underline}
+
+.agree{display:flex;gap:11px;align-items:flex-start;margin:22px 0 0;
+  font-family:var(--sans);font-size:14px;line-height:1.6;color:var(--body)}
+.agree input{margin-top:3px;width:17px;height:17px;flex:0 0 17px;accent-color:var(--accent)}
+.actions{margin-top:24px;display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.btn{font-family:var(--sans);font-size:14px;font-weight:600;letter-spacing:.02em;
+  padding:13px 26px;border-radius:6px;border:1px solid var(--accent);cursor:pointer;
+  background:var(--accent);color:#fff}
+.btn[disabled]{opacity:.45;cursor:not-allowed}
+.btn-quiet{background:#fff;color:var(--accent)}
+.note{font-family:var(--sans);font-size:12.5px;line-height:1.6;color:var(--muted);margin:14px 0 0}
+.err{font-family:var(--sans);font-size:13.5px;color:#8A2222;margin:12px 0 0;display:none}
+
+.done{display:none;border:1px solid var(--accent);background:var(--accent-soft);
+  border-radius:8px;padding:22px 24px;margin-top:26px}
+.done h3{font-family:var(--sans);font-size:15px;color:var(--ink);margin:0 0 8px}
+.done p{font-family:var(--sans);font-size:14px;margin:0 0 10px;color:var(--body)}
+.execd{display:none;margin-top:26px;border-top:1px solid var(--rule);padding-top:22px}
+.execd img{max-width:300px;display:block;margin:8px 0 4px}
+.execd dl{font-family:var(--sans);font-size:14px;margin:0}
+.execd dt{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:12px}
+.execd dd{margin:3px 0 0;color:var(--ink)}
+
+.foot{margin-top:40px;padding-top:18px;border-top:1px solid var(--rule);
+  font-family:var(--sans);font-size:11.5px;line-height:1.7;color:var(--muted)}
+
+@media print{
+  body{background:#fff;padding:0;font-size:11.5pt}
+  .sheet{box-shadow:none;max-width:none;padding:0}
+  .noprint{display:none!important}
+  .block{break-inside:avoid}
+  h2{break-after:avoid}
+  .sign{break-before:auto}
+  a[href]:after{content:""}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <div class="brand">
+    <b>Neat Roots Inc.</b>
+    <span>Mutual NDA</span>
+  </div>
+
+  <h1>Mutual Confidentiality and Non Disclosure Agreement</h1>
+  <p class="sub">Please read in full. Sign at the foot of the page.</p>
+
+  <div class="parties">
+    <p>This Mutual Confidentiality and Non Disclosure Agreement (&ldquo;NDA&rdquo;) is entered into between:</p>
+    <p><b>Neat Roots Inc.</b> (&ldquo;Service Provider&rdquo;)</p>
+    <p>and</p>
+    <p><b>La Patrona</b> (&ldquo;Client&rdquo;).</p>
+    <p style="margin-top:10px">Effective Date: <span id="eff-print" class="fill"></span></p>
+  </div>
+
+  <p class="lede">The Service Provider and Client may each be referred to as a &ldquo;Party&rdquo; and together as the &ldquo;Parties.&rdquo;</p>
+  <p>The Parties expect to share certain private, confidential, and commercially valuable information as part of their professional relationship. This NDA is intended to ensure that such information is handled responsibly and remains protected.</p>
+
+  <h2>1. Purpose</h2>
+  <p>The Parties may exchange confidential information in connection with social media management, Instagram and YouTube operations, content publishing, analytics, brand collaborations, business opportunities, advertising activities, commercial discussions, and related professional services.</p>
+  <p>Each Party agrees to protect confidential information received from the other Party and to use it only for legitimate purposes connected with their professional relationship.</p>
+
+  <h2>2. What Is Confidential Information</h2>
+  <p>&ldquo;Confidential Information&rdquo; means non public information shared by either Party that a reasonable person would understand to be private, commercially sensitive, or confidential.</p>
+  <p>Depending on the circumstances, Confidential Information may include:</p>
+  <ul>
+    <li>Instagram and YouTube account credentials and access information</li>
+    <li>Account analytics and performance information</li>
+    <li>Private messages and communications</li>
+    <li>Unpublished photographs, videos, content, and creative materials</li>
+    <li>Content plans and publishing schedules</li>
+    <li>Social media strategies, recommendations, processes, and working methods</li>
+    <li>Brand contacts and brand collaboration opportunities</li>
+    <li>Brand negotiations, proposals, contracts, campaign details, and compensation information</li>
+    <li>Financial information and payment information</li>
+    <li>Business plans and commercial information</li>
+    <li>Personal information shared for purposes of the professional relationship</li>
+    <li>Advertising information and campaign information</li>
+    <li>Client lists, business relationships, and contact information</li>
+    <li>Internal documents, systems, templates, and business processes</li>
+    <li>Any other non public information that is identified as confidential or should reasonably be understood to be confidential</li>
+  </ul>
+  <p>Confidential Information may be communicated verbally, electronically, in writing, visually, through online platforms, or through access to accounts and systems.</p>
+
+  <h2>3. Use of Confidential Information</h2>
+  <p>Each Party agrees to use the other Party&rsquo;s Confidential Information only as reasonably necessary to perform, manage, or support the professional relationship between the Parties.</p>
+  <p>Neither Party will use Confidential Information for an unrelated personal, commercial, competitive, or third party purpose without appropriate authorization.</p>
+
+  <h2>4. Protection of Account Information</h2>
+  <p>Any passwords, login credentials, authentication information, account access, security information, or other sensitive access details provided to the Service Provider will be treated as confidential.</p>
+  <p>The Service Provider will use such information only to perform the agreed services.</p>
+  <p>The Client likewise agrees to keep confidential any account access information, internal systems, processes, or business information belonging to the Service Provider.</p>
+
+  <h2>5. Brand and Commercial Information</h2>
+  <p>Brand collaboration information is considered confidential unless it has already been publicly disclosed by the relevant Party or brand.</p>
+  <p>Neither Party will intentionally disclose private information regarding a proposed or ongoing brand collaboration, including negotiations, compensation, campaign requirements, contact information, proposals, or other commercially sensitive details, to unauthorized third parties.</p>
+  <p>This provision is intended to protect both Parties and the professional relationships developed during the engagement.</p>
+
+  <h2>6. Permitted Disclosure</h2>
+  <p>A Party may disclose Confidential Information when disclosure is:</p>
+  <ol>
+    <li>Required by law, court order, subpoena, or valid governmental request.</li>
+    <li>Necessary to obtain professional legal, accounting, tax, or other professional advice, provided the recipient is subject to appropriate confidentiality obligations.</li>
+    <li>Authorized in writing by the Party that owns the Confidential Information.</li>
+    <li>Reasonably necessary to perform an obligation under the Parties&rsquo; professional relationship.</li>
+  </ol>
+  <p>Where legally permitted, a Party required to disclose Confidential Information will provide reasonable notice to the other Party before making the disclosure.</p>
+
+  <h2>7. Information That Is Not Confidential</h2>
+  <p>Confidential Information does not include information that:</p>
+  <ol>
+    <li>Was already publicly available without violation of this NDA.</li>
+    <li>Becomes publicly available through no wrongful act of the receiving Party.</li>
+    <li>Was lawfully known to the receiving Party before it was provided by the other Party.</li>
+    <li>Is independently developed without using the other Party&rsquo;s Confidential Information.</li>
+    <li>Is lawfully received from a third party that is not under a confidentiality obligation regarding that information.</li>
+  </ol>
+
+  <h2>8. No Ownership Transfer</h2>
+  <p>Sharing Confidential Information does not transfer ownership of that information.</p>
+  <p>Each Party retains ownership of its own pre existing intellectual property, business materials, content, systems, methods, processes, and other proprietary materials.</p>
+  <p>This NDA does not grant either Party any ownership interest, license, or other rights beyond what is reasonably necessary for the professional relationship unless separately agreed in writing.</p>
+
+  <h2>9. Return or Removal of Information</h2>
+  <p>Upon reasonable written request or upon completion of the professional relationship, each Party will take reasonable steps to return, delete, or discontinue use of Confidential Information belonging to the other Party, subject to information that must reasonably be retained for legal, accounting, compliance, backup, or record keeping purposes.</p>
+  <p>Information retained for such purposes will remain subject to the confidentiality obligations of this NDA.</p>
+
+  <h2>10. No Public Disclosure of Private Relationship Information</h2>
+  <p>Neither Party will intentionally publish or disclose private business communications, confidential negotiations, private disagreements, account information, financial information, or other confidential matters concerning the professional relationship for the purpose of causing reputational or commercial harm to the other Party.</p>
+  <p>Nothing in this provision prevents either Party from making truthful statements required by law or exercising lawful legal rights.</p>
+
+  <h2>11. Mutual Obligation</h2>
+  <p>This NDA is mutual.</p>
+  <p>The Client has an obligation to protect confidential information belonging to Neat Roots Inc., and Neat Roots Inc. has an obligation to protect confidential information belonging to the Client.</p>
+  <p>The Parties intend these obligations to operate fairly and equally.</p>
+
+  <h2>12. Duration of Confidentiality</h2>
+  <p>The confidentiality obligations under this NDA will begin on the Effective Date and will continue throughout the Parties&rsquo; professional relationship.</p>
+  <p>The obligations concerning confidential information will continue after the professional relationship ends for as long as the information remains confidential and is not otherwise excluded under Section 7.</p>
+  <p>Trade secrets will remain protected for so long as they qualify as trade secrets under applicable law.</p>
+
+  <h2>13. No Waiver of Legal Rights</h2>
+  <p>Nothing in this NDA prevents either Party from reporting unlawful conduct to an appropriate government authority or exercising any legal right that cannot lawfully be waived.</p>
+  <p>Nothing in this NDA is intended to restrict legally protected communications or disclosures.</p>
+
+  <h2>14. Remedies</h2>
+  <p>Each Party acknowledges that unauthorized disclosure or misuse of Confidential Information may cause harm that may not be adequately compensated by monetary damages alone.</p>
+  <p>Accordingly, to the extent permitted by applicable law, the affected Party may seek appropriate legal remedies for an actual or threatened violation of this NDA, in addition to any other remedies available under applicable law.</p>
+
+  <h2>15. Governing Law</h2>
+  <p>This NDA will be governed by the laws of the State of New York, without regard to conflict of law principles.</p>
+  <p>Any dispute arising from this NDA will be handled in an appropriate court located in New York, subject to applicable law and the jurisdiction of the applicable court.</p>
+
+  <h2>16. Severability</h2>
+  <p>If any provision of this NDA is determined to be invalid or unenforceable, the remaining provisions will remain effective to the extent permitted by law.</p>
+  <p>The Parties intend that any provision found to be unenforceable be interpreted or modified only to the minimum extent necessary to permit enforcement where legally permissible.</p>
+
+  <h2>17. Entire Agreement</h2>
+  <p>This NDA represents the understanding between the Parties regarding confidentiality and protection of information exchanged in connection with their professional relationship.</p>
+  <p>If the Parties have a separate Social Media Management and Brand Collaboration Agreement, this NDA supplements that Agreement.</p>
+  <p>If there is a conflict between this NDA and the confidentiality provisions of the main Agreement, the provision providing the greater lawful protection of Confidential Information will apply to the extent permitted by law.</p>
+
+  <h2>18. Amendments</h2>
+  <p>Any amendment to this NDA must be made in writing and acknowledged by both Parties.</p>
+
+  <h2>19. Electronic Signatures</h2>
+  <p>Electronic signatures and electronically delivered copies of this NDA may be used and will have the same intended effect as original signatures to the extent permitted by applicable law.</p>
+
+  <h2>20. Acknowledgment</h2>
+  <p>By signing below, each Party confirms that it understands the purpose of this NDA and agrees to handle the other Party&rsquo;s confidential information responsibly and professionally.</p>
+  <p>This NDA is intended to support a relationship built on trust, professionalism, transparency, and mutual respect.</p>
+
+  <!-- ================= SIGNING ================= -->
+  <div class="sign">
+    <h2>Signatures</h2>
+
+    <form id="nda" novalidate>
+      <div class="cols">
+
+        <div class="block">
+          <h3>Client</h3>
+          <div class="f"><label>Creator / Brand Name</label><div class="ro">La Patrona</div></div>
+          <div class="f"><label for="n">Legal Name</label><input id="n" name="Client legal name" type="text" autocomplete="name" required></div>
+          <div class="f"><label for="t">Title (optional)</label><input id="t" name="Client title" type="text" autocomplete="organization-title"></div>
+          <div class="f"><label for="e">Email</label><input id="e" name="Client email" type="email" autocomplete="email" required></div>
+          <div class="f"><label>Date</label><div class="ro" id="dshow"></div></div>
+
+          <div class="f" style="margin-bottom:0">
+            <label for="pad">Signature</label>
+            <div class="padwrap">
+              <canvas id="pad" aria-label="Draw your signature"></canvas>
+              <span class="padhint" id="hint">Draw your signature here</span>
+            </div>
+            <div class="padbar">
+              <small>Use a mouse, trackpad or finger.</small>
+              <button type="button" class="lnk noprint" id="clr">Clear</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="block">
+          <h3>Service Provider</h3>
+          <div class="f"><label>Company</label><div class="ro">Neat Roots Inc.</div></div>
+          <div class="f"><label>Authorized Signatory</label><div class="ro" id="sp-name">Rana Tahir Bilal</div></div>
+          <div class="f"><label>Title</label><div class="ro" id="sp-title">Authorized Signatory</div></div>
+          <div class="f"><label>Signature</label><div class="ro" style="font-family:var(--serif);font-style:italic;font-size:19px">Rana Tahir Bilal</div></div>
+          <div class="f"><label>Date</label><div class="ro" id="sp-date"></div></div>
+          <p class="note" style="margin-top:18px">Neat Roots Inc. has executed this NDA. Your signature completes it.</p>
+        </div>
+
+      </div>
+
+      <label class="agree">
+        <input type="checkbox" id="ok" required>
+        <span>I have read this Mutual Confidentiality and Non Disclosure Agreement in full, I agree to be bound by it, and I intend my electronic signature above to have the same effect as a handwritten signature.</span>
+      </label>
+
+      <div class="actions noprint">
+        <button type="submit" class="btn" id="go" disabled>Sign and send</button>
+        <button type="button" class="btn btn-quiet" id="pr">Print or save a blank copy</button>
+      </div>
+      <p class="err" id="err" role="alert"></p>
+      <p class="note noprint">When you sign, a complete copy of this agreement with your details is sent to Neat Roots Inc., and you can save your own PDF on the next screen.</p>
+    </form>
+
+    <div class="done" id="done" role="status">
+      <h3>Signed. Thank you.</h3>
+      <p>A copy has been sent to Neat Roots Inc. Save your own copy now: choose <b>Save as PDF</b> as the destination.</p>
+      <p class="noprint"><button type="button" class="btn" id="pr2">Save my signed copy as PDF</button></p>
+    </div>
+
+    <div class="execd" id="execd">
+      <dl>
+        <dt>Signed by</dt><dd id="o-n"></dd>
+        <dt>Title</dt><dd id="o-t"></dd>
+        <dt>Email</dt><dd id="o-e"></dd>
+        <dt>Date and time</dt><dd id="o-d"></dd>
+        <dt>Signature</dt><dd><img id="o-sig" alt="Signature"></dd>
+        <dt>Reference</dt><dd id="o-r"></dd>
+      </dl>
+    </div>
+  </div>
+
+  <p class="foot">
+    Neat Roots Inc. &middot; Mutual Confidentiality and Non Disclosure Agreement &middot; Governed by the laws of the State of New York.<br>
+    This page is not indexed and is intended only for the named Parties.
+  </p>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var EMAIL = "neatrootfreelance@gmail.com"; /* <= where the signed copy is delivered */
+
+  var now = new Date();
+  var human = now.toLocaleDateString(undefined,{year:'numeric',month:'long',day:'numeric'});
+  ['dshow','sp-date','eff-print'].forEach(function(id){var el=document.getElementById(id); if(el) el.textContent=human;});
+
+  /* ---- signature pad ---- */
+  var pad=document.getElementById('pad'), ctx=pad.getContext('2d'), drawn=false, drawing=false, last=null;
+  function size(){
+    var r=pad.getBoundingClientRect(), dpr=window.devicePixelRatio||1;
+    var data = drawn ? pad.toDataURL() : null;
+    pad.width=Math.round(r.width*dpr); pad.height=Math.round(r.height*dpr);
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    ctx.lineWidth=2.1; ctx.lineCap='round'; ctx.lineJoin='round'; ctx.strokeStyle='#14181B';
+    if(data){var i=new Image(); i.onload=function(){ctx.drawImage(i,0,0,r.width,r.height);}; i.src=data;}
+  }
+  size(); window.addEventListener('resize',size);
+  function pt(ev){var r=pad.getBoundingClientRect();
+    var p = ev.touches ? ev.touches[0] : ev;
+    return {x:p.clientX-r.left, y:p.clientY-r.top};}
+  function start(ev){ev.preventDefault(); drawing=true; last=pt(ev);
+    document.getElementById('hint').style.display='none';}
+  function move(ev){ if(!drawing) return; ev.preventDefault();
+    var p=pt(ev); ctx.beginPath(); ctx.moveTo(last.x,last.y); ctx.lineTo(p.x,p.y); ctx.stroke();
+    last=p; drawn=true; check();}
+  function end(){drawing=false;}
+  pad.addEventListener('mousedown',start); pad.addEventListener('mousemove',move);
+  window.addEventListener('mouseup',end);
+  pad.addEventListener('touchstart',start,{passive:false});
+  pad.addEventListener('touchmove',move,{passive:false});
+  pad.addEventListener('touchend',end);
+  document.getElementById('clr').addEventListener('click',function(){
+    ctx.clearRect(0,0,pad.width,pad.height); drawn=false;
+    document.getElementById('hint').style.display=''; check();});
+
+  /* ---- gate the button ---- */
+  var n=document.getElementById('n'), e=document.getElementById('e'),
+      ok=document.getElementById('ok'), go=document.getElementById('go');
+  function check(){
+    var valid = n.value.trim().length>1 && /\S+@\S+\.\S+/.test(e.value.trim()) && ok.checked && drawn;
+    go.disabled = !valid;
+  }
+  [n,e].forEach(function(el){el.addEventListener('input',check);});
+  ok.addEventListener('change',check);
+
+  document.getElementById('pr').addEventListener('click',function(){window.print();});
+  document.getElementById('pr2').addEventListener('click',function(){window.print();});
+
+  /* ---- submit ---- */
+  document.getElementById('nda').addEventListener('submit',function(ev){
+    ev.preventDefault();
+    var err=document.getElementById('err'); err.style.display='none';
+    go.disabled=true; go.textContent='Sending…';
+
+    var ref = 'NR-' + now.getFullYear() + String(now.getMonth()+1).padStart(2,'0') +
+              String(now.getDate()).padStart(2,'0') + '-' +
+              Math.random().toString(36).slice(2,8).toUpperCase();
+    var sig = pad.toDataURL('image/png');
+
+    var payload = {
+      _subject: 'Signed NDA, La Patrona, ref ' + ref,
+      _template: 'table',
+      _captcha: 'false',
+      'Agreement': 'Mutual Confidentiality and Non Disclosure Agreement',
+      'Service Provider': 'Neat Roots Inc.',
+      'Client brand': 'La Patrona',
+      'Client legal name': n.value.trim(),
+      'Client title': document.getElementById('t').value.trim() || 'Not given',
+      'Client email': e.value.trim(),
+      'Agreed to be bound': 'Yes, checkbox ticked',
+      'Signed at': now.toISOString(),
+      'Signed at local': human + ', ' + now.toLocaleTimeString(),
+      'Time zone': Intl.DateTimeFormat().resolvedOptions().timeZone || 'unknown',
+      'Reference': ref,
+      'Browser': navigator.userAgent,
+      'Page': location.href,
+      'Signature image': sig
+    };
+
+    fetch('https://formsubmit.co/ajax/' + EMAIL, {
+      method:'POST',
+      headers:{'Content-Type':'application/json','Accept':'application/json'},
+      body: JSON.stringify(payload)
+    }).then(function(r){ return r.json().catch(function(){return {};}); })
+      .then(function(){ finish(ref, sig); })
+      .catch(function(){
+        err.textContent='The copy could not be sent automatically. Your signature is saved on this page: press "Save my signed copy as PDF" below and email it to Neat Roots Inc.';
+        err.style.display='block';
+        finish(ref, sig);
+      });
+  });
+
+  function finish(ref, sig){
+    document.getElementById('o-n').textContent=n.value.trim();
+    document.getElementById('o-t').textContent=document.getElementById('t').value.trim()||'Not given';
+    document.getElementById('o-e').textContent=e.value.trim();
+    document.getElementById('o-d').textContent=human+', '+now.toLocaleTimeString()+' ('+(Intl.DateTimeFormat().resolvedOptions().timeZone||'local time')+')';
+    document.getElementById('o-sig').src=sig;
+    document.getElementById('o-r').textContent=ref;
+    document.getElementById('execd').style.display='block';
+    document.getElementById('done').style.display='block';
+    document.getElementById('nda').style.display='none';
+    document.getElementById('done').scrollIntoView({block:'start'});
+  }
+})();
+</script>
+</body>
+</html>
