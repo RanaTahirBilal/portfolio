@@ -2044,6 +2044,44 @@ html.lit .stack .s3{ animation:fx-fig .95s cubic-bezier(.2,.7,.25,1) .54s both; 
     transition:color .18s ease, border-color .18s ease;
   }
   .eng-alt a:hover{ color:var(--gold); border-color:var(--gold); }
+
+/* ===== Who I build for. Added 5 October 2026 ===== */
+.roster{padding:clamp(72px,9vw,128px) 0;background:var(--pine-deep);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.roster-in{width:min(1120px,calc(100% - 48px));margin-inline:auto}
+/* every block inside shares one left edge; the demo container centres only the wrapper */
+.roster-in>*{margin-left:0;margin-right:0}
+.roster-head{max-width:62ch}
+.roster-lede{color:var(--ivory-3);margin:18px 0 0;font-size:clamp(15px,1.5vw,17px);line-height:1.75} /* 9.39 on pine-deep */
+
+.roster-wall{list-style:none;padding:0;margin:clamp(34px,4vw,54px) 0 0 0;
+  display:flex;flex-wrap:wrap;gap:12px 10px}
+.roster-wall li{font-family:var(--sans);font-size:clamp(12.5px,1.25vw,14px);font-weight:600;
+  letter-spacing:.04em;color:var(--ivory-2);                                   /* 12.40 on pine-deep */
+  border:1px solid var(--rule-raise);border-radius:999px;padding:9px 16px;
+  background:rgba(14,50,41,.42);white-space:nowrap}
+@media (max-width:560px){
+  /* 26 pills at desktop size stacked to a 2386px tall section on a 390px screen.
+     Smaller type and tighter padding fits two or three per row instead of one. */
+  .roster-wall{gap:8px 7px}
+  .roster-wall li{white-space:normal;font-size:11.5px;letter-spacing:.02em;padding:7px 11px}
+}
+
+.roster-note{margin:clamp(26px,3vw,34px) 0 0;max-width:68ch;
+  font-size:13px;line-height:1.7;color:var(--ivory-3)}                          /* 9.39 on pine-deep */
+
+.roster-proof{width:auto;margin:clamp(40px,5vw,64px) 0 0;padding-top:clamp(28px,3vw,38px);border-top:1px solid var(--rule)}
+.roster-proof ul{list-style:none;padding:0;margin:18px 0 0;display:grid;gap:14px;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.roster-proof a{display:block;text-decoration:none;border:1px solid var(--rule-raise);border-radius:12px;
+  padding:18px 20px;background:rgba(14,50,41,.42);transition:border-color .25s ease,transform .25s ease}
+.roster-proof a:hover,.roster-proof a:focus-visible{border-color:var(--gold);transform:translateY(-2px)}
+.roster-proof b{display:block;font-family:var(--display);font-weight:400;
+  font-size:clamp(17px,1.8vw,20px);color:var(--ivory);margin-bottom:7px}        /* 15.71 on pine-deep */
+.roster-proof span{display:block;font-size:13.5px;line-height:1.6;color:var(--ivory-3)}
+.roster-proof a::after{content:"View the site \2192";display:block;margin-top:12px;font-size:12px;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--gold-lift)}         /* 9.21 on pine-deep */
+@media (prefers-reduced-motion:reduce){.roster-proof a{transition:none}}
+
 </style>
 </head>
 <body>
@@ -2730,6 +2768,60 @@ html.lit .stack .s3{ animation:fx-fig .95s cubic-bezier(.2,.7,.25,1) .54s both; 
   <div class="page">
 
     
+<!-- ===== WHERE MY CLIENTS WORK =====
+     Text wordmarks only. No third party logos: these organisations employ my clients,
+     they are not my clients and have no relationship with this practice. The note at the
+     foot of the section says so, and it is not optional. -->
+<section id="roster" class="roster" aria-labelledby="roster-h">
+  <div class="roster-in">
+  <div class="roster-head rv">
+    <p class="label">Who I build for</p>
+    <h2 class="statement" id="roster-h">My clients lead at institutions like these.</h2>
+    <p class="roster-lede">Forty one personal sites delivered this year, for physicians, professors, attorneys, engineers and public health leaders. These are the organisations where they hold, or have held, their posts.</p>
+  </div>
+
+  <ul class="roster-wall rv" aria-label="Organisations where my clients hold or have held posts">
+    <li>Columbia University</li>
+    <li>NewYork&#8209;Presbyterian</li>
+    <li>Boston College</li>
+    <li>NYU Stern</li>
+    <li>Gates Foundation</li>
+    <li>The Conference Board</li>
+    <li>Arizona State University</li>
+    <li>Ohio University</li>
+    <li>University of California, Irvine</li>
+    <li>U.S. Naval Research Laboratory</li>
+    <li>Johns Hopkins Applied Physics Laboratory</li>
+    <li>NIST</li>
+    <li>Centers for Disease Control and Prevention</li>
+    <li>U.S. Department of Energy</li>
+    <li>U.S. Army Reserve</li>
+    <li>Colgate&#8209;Palmolive</li>
+    <li>Procter &amp; Gamble</li>
+    <li>UPS Airlines</li>
+    <li>Qualcomm</li>
+    <li>Seagate Technology</li>
+    <li>Lockheed Missiles &amp; Space</li>
+    <li>Kaiser Permanente</li>
+    <li>Lenox Hill Hospital</li>
+    <li>Hoag Memorial Hospital Presbyterian</li>
+    <li>Associated Press</li>
+    <li>King County Metro Transit</li>
+  </ul>
+
+  <p class="roster-note rv">These organisations employ my clients. They are not clients of this practice and no affiliation or endorsement is implied.</p>
+
+  <div class="roster-proof rv">
+    <p class="label">Three of the forty one</p>
+    <ul>
+      <li><a href="https://ranatahirbilal.github.io/ilene-fennoy/" target="_blank" rel="noopener"><b>Dr. Ilene Fennoy</b><span>Professor of Pediatrics, Columbia University Irving Medical Center</span></a></li>
+      <li><a href="https://ranatahirbilal.github.io/gabriela-torres/" target="_blank" rel="noopener"><b>Gabriela Torres</b><span>Deputy Director, Gates Foundation</span></a></li>
+      <li><a href="https://ranatahirbilal.github.io/ronald-berenbeim/" target="_blank" rel="noopener"><b>Ronald Berenbeim</b><span>Senior Fellow, The Conference Board. Adjunct Professor, NYU Stern</span></a></li>
+    </ul>
+  </div>
+</div>
+</section>
+
 <section id="about" class="about">
       <div class="about-in">
         <div class="about-portrait rv">
