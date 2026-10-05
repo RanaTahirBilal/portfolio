@@ -2046,64 +2046,70 @@ html.lit .stack .s3{ animation:fx-fig .95s cubic-bezier(.2,.7,.25,1) .54s both; 
   .eng-alt a:hover{ color:var(--gold); border-color:var(--gold); }
 
 
-/* ===== Who I build for. Added 5 October 2026 =====
-   Contrast measured against --pine-deep #061B16:
-   --ivory  #F4F0E8 15.71 : 1   --ivory-2 #DAD7CD 12.40 : 1
-   --ivory-3 #BFBCB1 9.39 : 1   --gold-lift #D9B665 9.21 : 1 */
-.roster{padding:clamp(72px,9vw,128px) 0;background:var(--pine-deep);
-  border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+
+/* ===== Institutional marquee =====
+   Contrast on the white card:  #1C2622 15.56:1 (headline)
+                                #3F4845  9.44:1 (marks)
+                                #535C58  6.91:1 (eyebrow, note)
+   The marks are a category glyph plus a wordmark, monochrome, drawn for this site. */
+#roster{padding:clamp(34px,4vw,54px) 0 clamp(40px,4.5vw,64px);border-top:0;background:var(--pine-deep)}
+/* this rule was lost when the previous section's CSS was stripped; without it the white
+   card runs full bleed to the viewport edges */
 .roster-in{width:min(1120px,calc(100% - 48px));margin-inline:auto}
-.roster-in>*{margin-left:0;margin-right:0}
-.roster-head{max-width:62ch}
-.roster-lede{color:var(--ivory-3);margin:18px 0 0;font-size:clamp(15px,1.5vw,17px);line-height:1.75}
 
-.roster-wall{list-style:none;padding:0;margin:clamp(34px,4vw,54px) 0 0 0;
-  display:flex;flex-wrap:wrap;gap:12px 10px}
-.roster-wall li{display:inline-flex;align-items:center;gap:9px;
-  font-family:var(--sans);font-size:clamp(12.5px,1.25vw,14px);font-weight:600;letter-spacing:.04em;
-  color:var(--ivory-2);border:1px solid var(--rule-raise);border-radius:999px;padding:9px 16px 9px 13px;
-  background:rgba(14,50,41,.42);white-space:nowrap}
-.ri{width:17px;height:17px;flex:0 0 17px;color:var(--gold-lift)}
+.trust{background:#fff;border-radius:clamp(16px,2vw,26px);
+  padding:clamp(28px,3.4vw,46px) 0 clamp(24px,3vw,38px);
+  box-shadow:0 26px 60px rgba(4,14,11,.40);overflow:hidden}
+.trust-eyebrow{text-align:center;color:#535C58;margin:0 clamp(18px,4vw,44px)}
+.trust-eyebrow::after,.trust-eyebrow::before{display:none}
+/* a site wide h2 rule caps headings at about 420px, which left this one off centre */
+.trust-head{max-width:34ch;margin:12px auto clamp(24px,3vw,36px);text-align:center;
+  font-family:var(--display);font-weight:400;font-size:clamp(20px,2.7vw,36px);
+  line-height:1.22;color:#1C2622;text-wrap:balance}
+.trust-head em{font-style:italic;color:#3F4845}
+
+/* track is exactly two sets wide and shifts exactly one set, so the loop has no jump */
+.mq{overflow:hidden;
+  -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 9%,#000 91%,transparent 100%);
+          mask-image:linear-gradient(90deg,transparent 0,#000 9%,#000 91%,transparent 100%);
+  /* mask-size:auto with repeat tiles the gradient and the edge fade never appears */
+  -webkit-mask-size:100% 100%;        mask-size:100% 100%;
+  -webkit-mask-repeat:no-repeat;      mask-repeat:no-repeat}
+.mq-track{display:flex;width:max-content;will-change:transform;
+  animation:mq-run 58s linear infinite}
+.mq:hover .mq-track,.mq:focus-within .mq-track{animation-play-state:paused}
+@keyframes mq-run{from{transform:translate3d(0,0,0)}to{transform:translate3d(-50%,0,0)}}
+
+.mq-set{list-style:none;margin:0;padding:0;display:flex;align-items:center;flex:0 0 auto}
+.mq-item{display:inline-flex;align-items:center;gap:9px;flex:0 0 auto;
+  padding:0 26px;height:46px;color:#3F4845;
+  font-family:var(--sans);font-size:12.5px;font-weight:600;letter-spacing:.05em;
+  text-transform:uppercase;white-space:nowrap}
+.mq-ico{width:20px;height:20px;flex:0 0 20px;color:#535C58}
+
+.trust-note{text-align:center;margin:clamp(20px,2.4vw,30px) auto 0;max-width:60ch;
+  padding:0 clamp(18px,4vw,44px);font-size:12.5px;line-height:1.65;color:#535C58}
+
+@media (max-width:900px){
+  .mq-item{height:40px;font-size:11.5px;padding:0 19px;gap:8px}
+  .mq-ico{width:18px;height:18px;flex:0 0 18px}
+  .mq-track{animation-duration:48s}
+  .trust-head{max-width:26ch}
+}
 @media (max-width:560px){
-  .roster-wall{gap:8px 7px}
-  .roster-wall li{white-space:normal;font-size:11.5px;letter-spacing:.02em;padding:7px 11px 7px 9px;gap:7px}
-  .ri{width:15px;height:15px;flex:0 0 15px}
+  .mq-item{height:34px;font-size:10px;letter-spacing:.04em;padding:0 13px;gap:6px}
+  .mq-ico{width:15px;height:15px;flex:0 0 15px}
+  .mq-track{animation-duration:38s}
+  .trust{border-radius:14px}
+  .mq{-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 6%,#000 94%,transparent 100%);
+              mask-image:linear-gradient(90deg,transparent 0,#000 6%,#000 94%,transparent 100%)}
 }
-
-.roster-note{margin:clamp(26px,3vw,34px) 0 0;max-width:68ch;font-size:13px;line-height:1.7;color:var(--ivory-3)}
-
-.roster-work{margin:clamp(44px,5vw,66px) 0 0;padding-top:clamp(30px,3vw,40px);border-top:1px solid var(--rule)}
-.work-wall{list-style:none;padding:0;margin:20px 0 0;display:grid;gap:18px;
-  grid-template-columns:repeat(auto-fill,minmax(236px,1fr))}
-.work-wall a{display:block;text-decoration:none;border:1px solid var(--rule-raise);border-radius:12px;
-  overflow:hidden;background:rgba(14,50,41,.42);transition:border-color .25s ease,transform .25s ease}
-.work-wall a:hover,.work-wall a:focus-visible{border-color:var(--gold);transform:translateY(-3px)}
-.work-wall img{display:block;width:100%;height:auto;aspect-ratio:8/5;object-fit:cover;
-  border-bottom:1px solid var(--rule-raise)}
-.work-wall b{display:block;font-family:var(--display);font-weight:400;font-size:17px;
-  color:var(--ivory);padding:14px 16px 0}
-.work-wall span{display:block;font-size:12.5px;line-height:1.55;color:var(--ivory-3);padding:5px 16px 15px}
-/* 12 stacked cards made the section 5108px tall on a 390px screen. On phones the wall
-   becomes a contained horizontal strip, so the page body still never scrolls sideways. */
-@media (max-width:700px){
-  .work-wall{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;
-    -webkit-overflow-scrolling:touch;padding-bottom:12px;
-    scrollbar-width:thin;scrollbar-color:var(--rule-raise) transparent}
-  .work-wall>li{flex:0 0 72%;scroll-snap-align:start}
-  .work-wall b{font-size:15.5px;padding:12px 13px 0}
-  .work-wall span{font-size:12px;padding:4px 13px 13px}
-  .work-wall::-webkit-scrollbar{height:6px}
-  .work-wall::-webkit-scrollbar-thumb{background:var(--rule-raise);border-radius:99px}
+/* no animation must not mean hidden content: the strip becomes scrollable instead */
+@media (prefers-reduced-motion:reduce){
+  .mq{overflow-x:auto}
+  .mq-track{animation:none}
+  .mq-set:nth-child(2){display:none}
 }
-.roster-hint{display:none;margin:10px 0 0;font-size:12px;color:var(--ivory-3)}
-@media (max-width:700px){.roster-hint{display:block}}
-@media (prefers-reduced-motion:reduce){.work-wall a{transition:none}}
-
-
-/* Band sits directly under the hero and above Selected work: no top border, lighter top padding. */
-#roster{padding-top:clamp(40px,4.5vw,60px);padding-bottom:clamp(44px,5vw,68px);border-top:0}
-#roster .roster-head .statement{font-size:clamp(25px,3.2vw,38px)}
-#roster .roster-lede{margin-top:14px}
 
 </style>
 </head>
@@ -2156,62 +2162,92 @@ html.lit .stack .s3{ animation:fx-fig .95s cubic-bezier(.2,.7,.25,1) .54s both; 
   </div>
 </div>
 
-<!-- ===== WHO I BUILD FOR =====
-     Category icons are generic marks drawn for this site. No third party logos appear here:
-     these organisations employ my clients, they are not clients of this practice, and showing
-     their trademarks beside my prices would imply an affiliation that does not exist.
-     The only marks on this page are my own work. -->
+<!-- ===== INSTITUTIONAL MARQUEE =====
+     The marks are mine: a category glyph plus the institution name, drawn for this site.
+     No third party logo appears here. These organisations employ my clients, they are not
+     clients of this practice, and their trademarks beside my prices would imply an
+     affiliation that does not exist. The note under the marquee says so.
+     The headline states what I actually do. -->
 <section id="roster" class="roster" aria-labelledby="roster-h">
   <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
-    <g id="ri-campus" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10l9-5 9 5"/><path d="M5.5 10v8M9.5 10v8M14.5 10v8M18.5 10v8"/><path d="M3 20h18"/></g>
-    <g id="ri-hospital" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M12 8.5v7M8.5 12h7"/></g>
-    <g id="ri-lab" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 3v6L4.6 18.6A1 1 0 0 0 5.5 20h13a1 1 0 0 0 .9-1.4L14.5 9V3"/><path d="M8 3h8M7.6 14.5h8.8"/></g>
-    <g id="ri-gov" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5.5 3v18"/><path d="M5.5 4.2h11l-2.1 3.1 2.1 3.1h-11"/></g>
-    <g id="ri-corp" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V5a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v16"/><path d="M14 21V11h5a1 1 0 0 1 1 1v9"/><path d="M7 8h3M7 12h3M7 16h3M17 15h.8M17 18h.8"/><path d="M3 21h18"/></g>
-    <g id="ri-globe" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 2.6 2.6 15.4 0 18M12 3C9.4 5.6 9.4 18.4 12 21"/></g>
-    <g id="ri-media" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2"/><path d="M8.6 8.6a4.8 4.8 0 0 0 0 6.8M15.4 15.4a4.8 4.8 0 0 0 0-6.8"/><path d="M5.6 5.6a9 9 0 0 0 0 12.8M18.4 18.4a9 9 0 0 0 0-12.8"/></g>
+    <g id="ri-campus" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10l9-5 9 5"/><path d="M5.5 10v8M9.5 10v8M14.5 10v8M18.5 10v8"/><path d="M3 20h18"/></g>
+    <g id="ri-hospital" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M12 8.5v7M8.5 12h7"/></g>
+    <g id="ri-lab" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 3v6L4.6 18.6A1 1 0 0 0 5.5 20h13a1 1 0 0 0 .9-1.4L14.5 9V3"/><path d="M8 3h8M7.6 14.5h8.8"/></g>
+    <g id="ri-gov" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5.5 3v18"/><path d="M5.5 4.2h11l-2.1 3.1 2.1 3.1h-11"/></g>
+    <g id="ri-corp" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V5a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v16"/><path d="M14 21V11h5a1 1 0 0 1 1 1v9"/><path d="M7 8h3M7 12h3M7 16h3M17 15h.8M17 18h.8"/><path d="M3 21h18"/></g>
+    <g id="ri-globe" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 2.6 2.6 15.4 0 18M12 3C9.4 5.6 9.4 18.4 12 21"/></g>
+    <g id="ri-media" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2"/><path d="M8.6 8.6a4.8 4.8 0 0 0 0 6.8M15.4 15.4a4.8 4.8 0 0 0 0-6.8"/><path d="M5.6 5.6a9 9 0 0 0 0 12.8M18.4 18.4a9 9 0 0 0 0-12.8"/></g>
   </defs></svg>
-
   <div class="roster-in">
-    <div class="roster-head rv">
-      <p class="label">Who I build for</p>
-      <h2 class="statement" id="roster-h">My clients lead at institutions like these.</h2>
-      <p class="roster-lede">I build personal sites for physicians, professors, attorneys, engineers and public health leaders. These are the organisations where they hold, or have held, their posts.</p>
+    <div class="trust rv">
+      <p class="label trust-eyebrow">Institutional relationships</p>
+      <h2 class="trust-head" id="roster-h">The professionals I build for<br><em>lead at these institutions.</em></h2>
+
+      <div class="mq" role="region" aria-label="Institutions where my clients hold or have held posts">
+        <div class="mq-track">
+          <ul class="mq-set">
+        <li class="mq-item"><svg class="mq-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#ri-campus"/></svg><span>Columbia University</span></li>
+        <li class="mq-item"><svg class="mq-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#ri-campus"/></svg><span>Boston College</span></li>
+        <li class="mq-item"><svg class="mq-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#ri-campus"/></svg><span>NYU Stern</span></li>
+        <li class="mq-item"><svg class="mq-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#ri-campus"/></svg><span>Arizona State University</span></li>
+        <li class="mq-item"><svg class="mq-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#ri-campus"/></svg><span>Ohio University</span></li>
+        <li class="mq-item"><svg class="mq-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#ri-campus"/></svg><span>UC Irvine</span></li>
+        <li class="mq-item"><svg class="mq-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#ri-hospital"/></svg><span>NewYork-Presbyterian</span></li>
+        <li class="mq-item"><svg class="mq-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#ri-hospital"/></svg><span>Lenox Hill Hospital</span></li>
+        <li class="mq-item"><svg class="mq-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#ri-hospital"/></svg><span>Hoag Memorial</span></li>
+        <li class="mq-item"><svg class="mq-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#ri-hospital"/></svg><span>Kaiser Permanente</span></li>
+        <li class="mq-item"><svg class="mq-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#ri-globe"/></svg><span>Gates Foundation</span></li>
+        <li class="mq-item"><svg class="mq-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#ri-globe"/></svg><span>The Conference Board</span></li>
+        <li class="mq-item"><svg class="mq-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#ri-lab"/></svg><span>U.S. Naval Research Laboratory</span></li>
+        <li class="mq-item"><svg class="mq-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#ri-lab"/></svg><span>Johns Hopkins APL</span></li>
+        <li class="mq-item"><svg class="mq-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#ri-lab"/></svg><span>NIST</span></li>
+        <li class="mq-item"><svg class="mq-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#ri-gov"/></svg><span>Centers for Disease Control</span></li>
+        <li class="mq-item"><svg class="mq-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#ri-gov"/></svg><span>U.S. Department of Energy</span></li>
+        <li class="mq-item"><svg class="mq-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#ri-gov"/></svg><span>U.S. Army Reserve</span></li>
+        <li class="mq-item"><svg class="mq-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#ri-gov"/></svg><span>King County Metro</span></li>
+        <li class="mq-item"><svg class="mq-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#ri-corp"/></svg><span>Colgate-Palmolive</span></li>
+        <li class="mq-item"><svg class="mq-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#ri-corp"/></svg><span>Procter &amp; Gamble</span></li>
+        <li class="mq-item"><svg class="mq-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#ri-corp"/></svg><span>UPS Airlines</span></li>
+        <li class="mq-item"><svg class="mq-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#ri-corp"/></svg><span>Qualcomm</span></li>
+        <li class="mq-item"><svg class="mq-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#ri-corp"/></svg><span>Seagate Technology</span></li>
+        <li class="mq-item"><svg class="mq-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#ri-corp"/></svg><span>Lockheed Missiles &amp; Space</span></li>
+        <li class="mq-item"><svg class="mq-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#ri-media"/></svg><span>Associated Press</span></li>
+          </ul>
+          <ul class="mq-set" aria-hidden="true">
+        <li class="mq-item"><svg class="mq-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#ri-campus"/></svg><span>Columbia University</span></li>
+        <li class="mq-item"><svg class="mq-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#ri-campus"/></svg><span>Boston College</span></li>
+        <li class="mq-item"><svg class="mq-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#ri-campus"/></svg><span>NYU Stern</span></li>
+        <li class="mq-item"><svg class="mq-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#ri-campus"/></svg><span>Arizona State University</span></li>
+        <li class="mq-item"><svg class="mq-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#ri-campus"/></svg><span>Ohio University</span></li>
+        <li class="mq-item"><svg class="mq-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#ri-campus"/></svg><span>UC Irvine</span></li>
+        <li class="mq-item"><svg class="mq-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#ri-hospital"/></svg><span>NewYork-Presbyterian</span></li>
+        <li class="mq-item"><svg class="mq-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#ri-hospital"/></svg><span>Lenox Hill Hospital</span></li>
+        <li class="mq-item"><svg class="mq-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#ri-hospital"/></svg><span>Hoag Memorial</span></li>
+        <li class="mq-item"><svg class="mq-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#ri-hospital"/></svg><span>Kaiser Permanente</span></li>
+        <li class="mq-item"><svg class="mq-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#ri-globe"/></svg><span>Gates Foundation</span></li>
+        <li class="mq-item"><svg class="mq-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#ri-globe"/></svg><span>The Conference Board</span></li>
+        <li class="mq-item"><svg class="mq-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#ri-lab"/></svg><span>U.S. Naval Research Laboratory</span></li>
+        <li class="mq-item"><svg class="mq-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#ri-lab"/></svg><span>Johns Hopkins APL</span></li>
+        <li class="mq-item"><svg class="mq-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#ri-lab"/></svg><span>NIST</span></li>
+        <li class="mq-item"><svg class="mq-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#ri-gov"/></svg><span>Centers for Disease Control</span></li>
+        <li class="mq-item"><svg class="mq-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#ri-gov"/></svg><span>U.S. Department of Energy</span></li>
+        <li class="mq-item"><svg class="mq-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#ri-gov"/></svg><span>U.S. Army Reserve</span></li>
+        <li class="mq-item"><svg class="mq-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#ri-gov"/></svg><span>King County Metro</span></li>
+        <li class="mq-item"><svg class="mq-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#ri-corp"/></svg><span>Colgate-Palmolive</span></li>
+        <li class="mq-item"><svg class="mq-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#ri-corp"/></svg><span>Procter &amp; Gamble</span></li>
+        <li class="mq-item"><svg class="mq-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#ri-corp"/></svg><span>UPS Airlines</span></li>
+        <li class="mq-item"><svg class="mq-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#ri-corp"/></svg><span>Qualcomm</span></li>
+        <li class="mq-item"><svg class="mq-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#ri-corp"/></svg><span>Seagate Technology</span></li>
+        <li class="mq-item"><svg class="mq-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#ri-corp"/></svg><span>Lockheed Missiles &amp; Space</span></li>
+        <li class="mq-item"><svg class="mq-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#ri-media"/></svg><span>Associated Press</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="trust-note">These organisations employ my clients. They are not clients of this practice and no affiliation or endorsement is implied.</p>
     </div>
-
-    <ul class="roster-wall rv" aria-label="Organisations where my clients hold or have held posts">
-      <li><svg class="ri" viewBox="0 0 24 24" aria-hidden="true"><use href="#ri-campus"/></svg>Columbia University</li>
-      <li><svg class="ri" viewBox="0 0 24 24" aria-hidden="true"><use href="#ri-campus"/></svg>Boston College</li>
-      <li><svg class="ri" viewBox="0 0 24 24" aria-hidden="true"><use href="#ri-campus"/></svg>NYU Stern</li>
-      <li><svg class="ri" viewBox="0 0 24 24" aria-hidden="true"><use href="#ri-campus"/></svg>Arizona State University</li>
-      <li><svg class="ri" viewBox="0 0 24 24" aria-hidden="true"><use href="#ri-campus"/></svg>Ohio University</li>
-      <li><svg class="ri" viewBox="0 0 24 24" aria-hidden="true"><use href="#ri-campus"/></svg>University of California, Irvine</li>
-      <li><svg class="ri" viewBox="0 0 24 24" aria-hidden="true"><use href="#ri-hospital"/></svg>NewYork&#8209;Presbyterian</li>
-      <li><svg class="ri" viewBox="0 0 24 24" aria-hidden="true"><use href="#ri-hospital"/></svg>Lenox Hill Hospital</li>
-      <li><svg class="ri" viewBox="0 0 24 24" aria-hidden="true"><use href="#ri-hospital"/></svg>Hoag Memorial Hospital Presbyterian</li>
-      <li><svg class="ri" viewBox="0 0 24 24" aria-hidden="true"><use href="#ri-hospital"/></svg>Kaiser Permanente</li>
-      <li><svg class="ri" viewBox="0 0 24 24" aria-hidden="true"><use href="#ri-globe"/></svg>Gates Foundation</li>
-      <li><svg class="ri" viewBox="0 0 24 24" aria-hidden="true"><use href="#ri-globe"/></svg>The Conference Board</li>
-      <li><svg class="ri" viewBox="0 0 24 24" aria-hidden="true"><use href="#ri-lab"/></svg>U.S. Naval Research Laboratory</li>
-      <li><svg class="ri" viewBox="0 0 24 24" aria-hidden="true"><use href="#ri-lab"/></svg>Johns Hopkins Applied Physics Laboratory</li>
-      <li><svg class="ri" viewBox="0 0 24 24" aria-hidden="true"><use href="#ri-lab"/></svg>NIST</li>
-      <li><svg class="ri" viewBox="0 0 24 24" aria-hidden="true"><use href="#ri-gov"/></svg>Centers for Disease Control and Prevention</li>
-      <li><svg class="ri" viewBox="0 0 24 24" aria-hidden="true"><use href="#ri-gov"/></svg>U.S. Department of Energy</li>
-      <li><svg class="ri" viewBox="0 0 24 24" aria-hidden="true"><use href="#ri-gov"/></svg>U.S. Army Reserve</li>
-      <li><svg class="ri" viewBox="0 0 24 24" aria-hidden="true"><use href="#ri-gov"/></svg>King County Metro Transit</li>
-      <li><svg class="ri" viewBox="0 0 24 24" aria-hidden="true"><use href="#ri-corp"/></svg>Colgate&#8209;Palmolive</li>
-      <li><svg class="ri" viewBox="0 0 24 24" aria-hidden="true"><use href="#ri-corp"/></svg>Procter &amp; Gamble</li>
-      <li><svg class="ri" viewBox="0 0 24 24" aria-hidden="true"><use href="#ri-corp"/></svg>UPS Airlines</li>
-      <li><svg class="ri" viewBox="0 0 24 24" aria-hidden="true"><use href="#ri-corp"/></svg>Qualcomm</li>
-      <li><svg class="ri" viewBox="0 0 24 24" aria-hidden="true"><use href="#ri-corp"/></svg>Seagate Technology</li>
-      <li><svg class="ri" viewBox="0 0 24 24" aria-hidden="true"><use href="#ri-corp"/></svg>Lockheed Missiles &amp; Space</li>
-      <li><svg class="ri" viewBox="0 0 24 24" aria-hidden="true"><use href="#ri-media"/></svg>Associated Press</li>
-    </ul>
-
-    <p class="roster-note rv">These organisations employ my clients. They are not clients of this practice and no affiliation or endorsement is implied.</p>
   </div>
 </section>
-
 
 <div class="act-night">
   <div class="page">
