@@ -110,11 +110,16 @@ li{margin-bottom:8px}
   border-radius:8px;padding:24px 26px;margin-top:28px}
 .done h3{font-family:var(--sans);font-size:15px;color:var(--ink);margin:0 0 8px}
 .done p{font-family:var(--sans);font-size:14px;margin:0 0 10px;color:var(--body)}
-.execd{display:none;margin-top:28px;border-top:1px solid var(--rule);padding-top:24px}
-.execd img{max-width:300px;display:block;margin:8px 0 4px}
-.execd dl{font-family:var(--sans);font-size:14px;margin:0}
-.execd dt{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:12px}
-.execd dd{margin:3px 0 0;color:var(--ink)}
+.execd{display:none;margin-top:22px}
+.execd .ro{min-height:40px}
+.execd img{max-width:100%;height:auto;display:block;margin:4px 0 0;
+  border-bottom:1px solid var(--rule)}
+.meta{margin-top:26px;border-top:1px solid var(--rule);padding-top:18px;
+  display:grid;gap:14px 30px;grid-template-columns:repeat(auto-fit,minmax(190px,1fr))}
+.meta div{break-inside:avoid}
+.meta dt{font-family:var(--sans);font-size:10.5px;font-weight:600;letter-spacing:.11em;
+  text-transform:uppercase;color:var(--muted);margin:0 0 3px}
+.meta dd{font-family:var(--sans);font-size:14px;color:var(--ink);margin:0}
 
 .foot{margin-top:44px;padding-top:20px;border-top:1px solid var(--rule);
   font-family:var(--sans);font-size:11.5px;line-height:1.7;color:var(--muted)}
@@ -129,9 +134,20 @@ li{margin-bottom:8px}
   h2{break-after:avoid;page-break-after:avoid;margin-top:16pt}
   p,li{orphans:3;widows:3}
   .parties{break-inside:avoid}
-  .sign{break-inside:auto}
-  .cols{display:block}
-  .block{margin-bottom:16pt}
+  /* the signature section starts a fresh page so both blocks stay together */
+  .sign{break-before:page;page-break-before:always;break-inside:avoid}
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:16pt;break-inside:avoid;page-break-inside:avoid}
+  .block{margin-bottom:0;break-inside:avoid;page-break-inside:avoid}
+  .execd{break-inside:avoid;page-break-inside:avoid}
+  .meta{break-inside:avoid;page-break-inside:avoid;margin-top:14pt;padding-top:12pt}
+  .padwrap{break-inside:avoid}
+  /* compress the executed block so the audit strip stays on the signature page */
+  .block{padding:12pt 14pt 14pt}
+  .f{margin-bottom:9pt}
+  .execd img{max-height:64pt;width:auto}
+  .sigline{height:26pt}
+  .block .org{margin-bottom:10pt;padding-bottom:8pt}
+  .note{margin-top:10pt}
   a[href]:after{content:""}
 }
 @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
@@ -164,6 +180,7 @@ li{margin-bottom:8px}
   <h2 id="s1">1. Purpose</h2>
   <p>The Parties may exchange Confidential Information in connection with their business and professional relationship, which may include social media management, Instagram and YouTube operations, content publishing and scheduling, analytics and reporting, brand collaborations, advertising activities, commercial discussions, and related professional services.</p>
   <p>Each Party agrees to protect Confidential Information received from the other Party and to use it only for purposes connected with that relationship.</p>
+  <p>This Agreement applies to Confidential Information exchanged between the Parties before, on, and after the Effective Date, including any account credentials or access information shared before this Agreement was signed.</p>
 
   <!-- ================= 2 ================= -->
   <h2 id="s2">2. Confidential Information</h2>
@@ -374,21 +391,43 @@ li{margin-bottom:8px}
       <p class="note noprint">When you sign, a complete copy of this Agreement with your details is sent to Neat Roots Inc., and you can save your own PDF on the next screen.</p>
     </form>
 
-    <div class="done" id="done" role="status">
+    <div class="done noprint" id="done" role="status">
       <h3>Signed. Thank you.</h3>
-      <p>A copy has been sent to Neat Roots Inc., who will countersign and return a fully executed copy. Save your own copy now: choose <b>Save as PDF</b> as the destination.</p>
-      <p class="noprint"><button type="button" class="btn" id="pr2">Save my signed copy as PDF</button></p>
+      <p>A copy has been sent to Neat Roots Inc., who will countersign and return a fully executed copy. A copy has also been emailed to you. You can save a PDF now if you would like one straight away.</p>
+      <p><button type="button" class="btn" id="pr2">Save my signed copy as PDF</button></p>
     </div>
 
     <div class="execd" id="execd">
-      <dl>
-        <dt>Signed by</dt><dd id="o-n"></dd>
-        <dt>Brand</dt><dd>La Patrona</dd>
-        <dt>Title</dt><dd id="o-t"></dd>
-        <dt>Email</dt><dd id="o-e"></dd>
-        <dt>Date and time</dt><dd id="o-d"></dd>
-        <dt>Signature</dt><dd><img id="o-sig" alt="Signature"></dd>
-        <dt>Reference</dt><dd id="o-r"></dd>
+      <div class="cols">
+
+        <div class="block">
+          <h3>Client</h3>
+          <p class="org">La Patrona</p>
+          <div class="f"><label>Legal Name</label><div class="ro" id="o-n"></div></div>
+          <div class="f"><label>Brand / Professional Name</label><div class="ro">La Patrona</div></div>
+          <div class="f"><label>Title</label><div class="ro" id="o-t"></div></div>
+          <div class="f"><label>Email</label><div class="ro" id="o-e"></div></div>
+          <div class="f"><label>Date</label><div class="ro" id="o-d2"></div></div>
+          <div class="f" style="margin-bottom:0"><label>Signature</label><img id="o-sig" alt="Signature of the Client"></div>
+        </div>
+
+        <div class="block">
+          <h3>Service Provider</h3>
+          <p class="org">Neat Roots Inc.</p>
+          <div class="f"><label>Authorized Signatory</label><div class="sigline"></div></div>
+          <div class="f"><label>Title</label><div class="sigline"></div></div>
+          <div class="f"><label>Signature</label><div class="sigline"></div></div>
+          <div class="f" style="margin-bottom:0"><label>Date</label><div class="sigline"></div></div>
+          <p class="note">To be completed by Neat Roots Inc. on countersignature.</p>
+        </div>
+
+      </div>
+
+      <dl class="meta">
+        <div><dt>Reference</dt><dd id="o-r"></dd></div>
+        <div><dt>Signed at</dt><dd id="o-d"></dd></div>
+        <div><dt>Time zone</dt><dd id="o-tz"></dd></div>
+        <div><dt>Agreed to be bound</dt><dd>Yes, confirmed by the Client</dd></div>
       </dl>
     </div>
   </div>
@@ -461,10 +500,12 @@ li{margin-bottom:8px}
               Math.random().toString(36).slice(2,8).toUpperCase();
     var sig = pad.toDataURL('image/png');
 
-    var payload = {
+    var tz = Intl.DateTimeFormat().resolvedOptions().timeZone || 'unknown';
+    var fields = {
       _subject: 'Signed NDA, La Patrona, ref ' + ref,
       _template: 'table',
       _captcha: 'false',
+      _cc: e.value.trim(),                 /* the Client receives her own copy */
       'Agreement': 'Mutual Confidentiality and Non Disclosure Agreement',
       'Service Provider': 'Neat Roots Inc.',
       'Client brand': 'La Patrona',
@@ -474,18 +515,29 @@ li{margin-bottom:8px}
       'Agreed to be bound': 'Yes, checkbox ticked',
       'Signed at': now.toISOString(),
       'Signed at local': human + ', ' + now.toLocaleTimeString(),
-      'Time zone': Intl.DateTimeFormat().resolvedOptions().timeZone || 'unknown',
+      'Time zone': tz,
       'Reference': ref,
       'Countersignature': 'Pending, to be completed by Neat Roots Inc.',
       'Browser': navigator.userAgent,
-      'Page': location.href,
-      'Signature image': sig
+      'Page': location.href
     };
+
+    /* the signature travels as a real PNG attachment, not a base64 blob in the body */
+    var fd = new FormData();
+    Object.keys(fields).forEach(function(k){ fd.append(k, fields[k]); });
+    try {
+      var bin = atob(sig.split(',')[1]);
+      var buf = new Uint8Array(bin.length);
+      for (var i=0;i<bin.length;i++) buf[i]=bin.charCodeAt(i);
+      fd.append('attachment', new Blob([buf],{type:'image/png'}), 'signature-' + ref + '.png');
+    } catch(ex){
+      fd.append('Signature image', sig);   /* fallback if Blob construction fails */
+    }
 
     fetch('https://formsubmit.co/ajax/' + EMAIL, {
       method:'POST',
-      headers:{'Content-Type':'application/json','Accept':'application/json'},
-      body: JSON.stringify(payload)
+      headers:{'Accept':'application/json'},   /* no Content-Type: the browser sets the boundary */
+      body: fd
     }).then(function(r){ return r.json().catch(function(){return {};}); })
       .then(function(){ finish(ref, sig); })
       .catch(function(){
@@ -496,15 +548,18 @@ li{margin-bottom:8px}
   });
 
   function finish(ref, sig){
-    document.getElementById('o-n').textContent=n.value.trim();
-    document.getElementById('o-t').textContent=document.getElementById('t').value.trim()||'Not given';
-    document.getElementById('o-e').textContent=e.value.trim();
-    document.getElementById('o-d').textContent=human+', '+now.toLocaleTimeString()+' ('+(Intl.DateTimeFormat().resolvedOptions().timeZone||'local time')+')';
-    document.getElementById('o-sig').src=sig;
-    document.getElementById('o-r').textContent=ref;
-    document.getElementById('execd').style.display='block';
-    document.getElementById('done').style.display='block';
-    document.getElementById('nda').style.display='none';
+    var tz = Intl.DateTimeFormat().resolvedOptions().timeZone || 'local time';
+    document.getElementById('o-n').textContent = n.value.trim();
+    document.getElementById('o-t').textContent = document.getElementById('t').value.trim() || 'Not given';
+    document.getElementById('o-e').textContent = e.value.trim();
+    document.getElementById('o-d2').textContent = human;
+    document.getElementById('o-d').textContent = human + ', ' + now.toLocaleTimeString();
+    document.getElementById('o-tz').textContent = tz;
+    document.getElementById('o-sig').src = sig;
+    document.getElementById('o-r').textContent = ref;
+    document.getElementById('execd').style.display = 'block';
+    document.getElementById('done').style.display = 'block';
+    document.getElementById('nda').style.display = 'none';
     document.getElementById('done').scrollIntoView({block:'start'});
   }
 })();
