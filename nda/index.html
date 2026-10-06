@@ -17,6 +17,7 @@
   --rule-strong:#B6BDC1;
   --accent:#1F4E46;     /* 9.42 on white */
   --accent-soft:#F1F6F4;
+  --warn:#7A4A12;     /* 7.18 on white */
   --serif:'Source Serif 4',Georgia,'Times New Roman',serif;
   --sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;
 }
@@ -64,6 +65,17 @@ li{margin-bottom:8px}
 
 .callout{border-left:3px solid var(--rule-strong);padding:2px 0 2px 18px;margin:0 0 15px;
   color:var(--muted);font-size:15px}
+
+.prior{display:none;border:1px solid var(--rule-strong);background:#FBF8F2;
+  border-left:3px solid var(--warn);border-radius:0 6px 6px 0;
+  padding:14px 18px;margin:22px 0 0;
+  font-family:var(--sans);font-size:13.5px;line-height:1.6;color:var(--body)}
+.fp{margin-top:16px;border-top:1px solid var(--rule);padding-top:14px}
+.fp dt{font-family:var(--sans);font-size:10.5px;font-weight:600;letter-spacing:.11em;
+  text-transform:uppercase;color:var(--muted);margin:0 0 4px}
+.fp dd{margin:0;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  font-size:12px;line-height:1.6;color:var(--ink);word-break:break-all}
+.fp p{font-family:var(--sans);font-size:12px;color:var(--muted);margin:8px 0 0}
 
 /* ---------- signing ---------- */
 .sign{margin-top:52px;border-top:2px solid var(--ink);padding-top:32px}
@@ -341,6 +353,8 @@ li{margin-bottom:8px}
   <div class="sign">
     <h2>Signatures</h2>
 
+    <p class="prior" id="prior" role="status"></p>
+
     <form id="nda" novalidate>
       <div class="cols">
 
@@ -429,6 +443,12 @@ li{margin-bottom:8px}
         <div><dt>Time zone</dt><dd id="o-tz"></dd></div>
         <div><dt>Agreed to be bound</dt><dd>Yes, confirmed by the Client</dd></div>
       </dl>
+
+      <dl class="fp">
+        <dt>Document fingerprint, SHA-256</dt>
+        <dd id="o-fp"></dd>
+        <p>This fingerprint is computed from the text of this Agreement at the moment of signing. It identifies the exact version that was signed.</p>
+      </dl>
     </div>
   </div>
 
@@ -447,6 +467,46 @@ li{margin-bottom:8px}
   var human = now.toLocaleDateString(undefined,{year:'numeric',month:'long',day:'numeric'});
   ['dshow','eff-print'].forEach(function(id){var el=document.getElementById(id); if(el) el.textContent=human;});
 
+  /* ---- document fingerprint ----
+     SHA-256 over the normalised text of the agreement itself, so the signed
+     record identifies the exact wording the Client saw. Computed once on load. */
+  var DOC_HASH = 'not computed';
+  function agreementText(){
+    var parts=[];
+    var pb=document.querySelector('.parties'); if(pb) parts.push(pb.innerText);
+    for(var i=1;i<=20;i++){
+      var h=document.getElementById('s'+i); if(!h) continue;
+      parts.push(h.innerText);
+      var el=h.nextElementSibling;
+      while(el && el.tagName!=='H2'){ parts.push(el.innerText||''); el=el.nextElementSibling; }
+    }
+    return parts.join('\n').replace(/\s+/g,' ').trim();
+  }
+  (function(){
+    try{
+      if(!(window.crypto && crypto.subtle && window.TextEncoder)) return;
+      crypto.subtle.digest('SHA-256', new TextEncoder().encode(agreementText()))
+        .then(function(buf){
+          DOC_HASH = Array.prototype.map.call(new Uint8Array(buf),function(b){
+            return ('00'+b.toString(16)).slice(-2);}).join('');
+        }).catch(function(){});
+    }catch(ex){}
+  })();
+
+  /* ---- has this device signed before? not a block, a flag ---- */
+  var PRIOR = null;
+  try{
+    var raw = localStorage.getItem('nr-nda-signed');
+    if(raw){
+      PRIOR = JSON.parse(raw);
+      var pb2 = document.getElementById('prior');
+      pb2.textContent = 'Our records show this agreement was already signed from this device on '
+        + PRIOR.when + ', reference ' + PRIOR.ref
+        + '. You can sign again if you need to, and Neat Roots Inc. will treat the most recent signature as the current one.';
+      pb2.style.display='block';
+    }
+  }catch(ex){}
+
   /* ---- signature pad ---- */
   var pad=document.getElementById('pad'), ctx=pad.getContext('2d'), drawn=false, drawing=false, last=null;
   function size(){
@@ -461,26 +521,39 @@ li{margin-bottom:8px}
   function pt(ev){var r=pad.getBoundingClientRect();
     var p = ev.touches ? ev.touches[0] : ev;
     return {x:p.clientX-r.left, y:p.clientY-r.top};}
-  function start(ev){ev.preventDefault(); drawing=true; last=pt(ev);
+  /* a stray tap is not a signature: require real ink across a real area */
+  var pts=0, bb=null;
+  function noteInk(p){
+    pts++;
+    if(!bb) bb={x1:p.x,y1:p.y,x2:p.x,y2:p.y};
+    else { bb.x1=Math.min(bb.x1,p.x); bb.y1=Math.min(bb.y1,p.y);
+           bb.x2=Math.max(bb.x2,p.x); bb.y2=Math.max(bb.y2,p.y); }
+  }
+  function inkOK(){
+    if(!bb || pts < 12) return false;
+    var w=bb.x2-bb.x1, h=bb.y2-bb.y1;
+    return Math.sqrt(w*w+h*h) >= 40;
+  }
+  function start(ev){ev.preventDefault(); drawing=true; last=pt(ev); noteInk(last);
     document.getElementById('hint').style.display='none';}
   function move(ev){ if(!drawing) return; ev.preventDefault();
     var p=pt(ev); ctx.beginPath(); ctx.moveTo(last.x,last.y); ctx.lineTo(p.x,p.y); ctx.stroke();
-    last=p; drawn=true; check();}
-  function end(){drawing=false;}
+    last=p; noteInk(p); drawn=true; check();}
+  function end(){drawing=false; check();}
   pad.addEventListener('mousedown',start); pad.addEventListener('mousemove',move);
   window.addEventListener('mouseup',end);
   pad.addEventListener('touchstart',start,{passive:false});
   pad.addEventListener('touchmove',move,{passive:false});
   pad.addEventListener('touchend',end);
   document.getElementById('clr').addEventListener('click',function(){
-    ctx.clearRect(0,0,pad.width,pad.height); drawn=false;
+    ctx.clearRect(0,0,pad.width,pad.height); drawn=false; pts=0; bb=null;
     document.getElementById('hint').style.display=''; check();});
 
   /* ---- gate the button ---- */
   var n=document.getElementById('n'), e=document.getElementById('e'),
       ok=document.getElementById('ok'), go=document.getElementById('go');
   function check(){
-    var valid = n.value.trim().length>1 && /\S+@\S+\.\S+/.test(e.value.trim()) && ok.checked && drawn;
+    var valid = n.value.trim().length>1 && /\S+@\S+\.\S+/.test(e.value.trim()) && ok.checked && drawn && inkOK();
     go.disabled = !valid;
   }
   [n,e].forEach(function(el){el.addEventListener('input',check);});
@@ -517,8 +590,13 @@ li{margin-bottom:8px}
       'Signed at local': human + ', ' + now.toLocaleTimeString(),
       'Time zone': tz,
       'Reference': ref,
+      'Document fingerprint SHA-256': DOC_HASH,
+      'Consent text shown': document.querySelector('.agree span').textContent.trim(),
       'Countersignature': 'Pending, to be completed by Neat Roots Inc.',
+      'Previously signed on this device': PRIOR ? (PRIOR.when + ', ref ' + PRIOR.ref) : 'No',
       'Browser': navigator.userAgent,
+      'Language': navigator.language || 'unknown',
+      'Screen': (screen.width||'?') + 'x' + (screen.height||'?'),
       'Page': location.href
     };
 
@@ -534,21 +612,48 @@ li{margin-bottom:8px}
       fd.append('Signature image', sig);   /* fallback if Blob construction fails */
     }
 
-    fetch('https://formsubmit.co/ajax/' + EMAIL, {
-      method:'POST',
-      headers:{'Accept':'application/json'},   /* no Content-Type: the browser sets the boundary */
-      body: fd
-    }).then(function(r){ return r.json().catch(function(){return {};}); })
-      .then(function(){ finish(ref, sig); })
+    function send(attempt){
+      return fetch('https://formsubmit.co/ajax/' + EMAIL, {
+        method:'POST',
+        headers:{'Accept':'application/json'},  /* no Content-Type: the browser sets the boundary */
+        body: fd
+      }).then(function(r){
+        if(!r.ok) throw new Error('status ' + r.status);
+        return r.json().catch(function(){return {};});
+      }).catch(function(e){
+        if(attempt < 2){                        /* one retry before giving up */
+          return new Promise(function(res){setTimeout(res,1500);}).then(function(){return send(attempt+1);});
+        }
+        throw e;
+      });
+    }
+
+    send(1).then(function(){ finish(ref, sig, true); })
       .catch(function(){
-        err.textContent='The copy could not be sent automatically. Your signature is saved on this page: press "Save my signed copy as PDF" below and email it to Neat Roots Inc.';
+        var subject = encodeURIComponent('Signed NDA, La Patrona, ref ' + ref);
+        var body = encodeURIComponent(
+          'This agreement was signed but the automatic copy could not be delivered.\n\n' +
+          'Legal name: ' + n.value.trim() + '\n' +
+          'Email: ' + e.value.trim() + '\n' +
+          'Signed at: ' + now.toISOString() + '\n' +
+          'Reference: ' + ref + '\n' +
+          'Document fingerprint: ' + DOC_HASH + '\n\n' +
+          'Please attach the saved PDF of the signed agreement to this email.');
+        err.innerHTML = 'The copy could not be sent automatically. Your signature is safe and shown below. '
+          + 'Please press <b>Save my signed copy as PDF</b>, then '
+          + '<a href="mailto:' + EMAIL + '?subject=' + subject + '&body=' + body + '">send it to Neat Roots Inc. here</a>.';
         err.style.display='block';
-        finish(ref, sig);
+        finish(ref, sig, false);
       });
   });
 
-  function finish(ref, sig){
+  function finish(ref, sig, delivered){
     var tz = Intl.DateTimeFormat().resolvedOptions().timeZone || 'local time';
+    document.getElementById('o-fp').textContent = DOC_HASH;
+    var pb3=document.getElementById('prior'); if(pb3) pb3.style.display='none';
+    try{
+      localStorage.setItem('nr-nda-signed', JSON.stringify({ref:ref, when:human, delivered:!!delivered}));
+    }catch(ex){}
     document.getElementById('o-n').textContent = n.value.trim();
     document.getElementById('o-t').textContent = document.getElementById('t').value.trim() || 'Not given';
     document.getElementById('o-e').textContent = e.value.trim();
