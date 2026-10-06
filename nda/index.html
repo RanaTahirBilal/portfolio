@@ -17,56 +17,73 @@
   --rule-strong:#B6BDC1;
   --accent:#1F4E46;     /* 9.42 on white */
   --accent-soft:#F1F6F4;
-  --warn:#7A4A12;       /* 7.18 on white */
   --serif:'Source Serif 4',Georgia,'Times New Roman',serif;
   --sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;
 }
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
 body{margin:0;background:#EDEFF0;color:var(--body);
-  font-family:var(--serif);font-size:16px;line-height:1.72;
+  font-family:var(--serif);font-size:16px;line-height:1.75;
   -webkit-font-smoothing:antialiased}
 .sheet{max-width:860px;margin:0 auto;background:#fff;
-  padding:clamp(28px,5vw,72px) clamp(20px,5vw,76px) clamp(40px,6vw,80px);
+  padding:clamp(28px,5vw,76px) clamp(20px,5vw,80px) clamp(40px,6vw,84px);
   box-shadow:0 1px 3px rgba(20,24,27,.10),0 18px 48px rgba(20,24,27,.10)}
 @media(min-width:900px){body{padding:36px 20px}}
 
 .brand{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;
-  gap:10px;border-bottom:2px solid var(--ink);padding-bottom:14px;margin-bottom:34px}
+  gap:10px;border-bottom:2px solid var(--ink);padding-bottom:14px;margin-bottom:38px}
 .brand b{font-family:var(--sans);font-size:15px;font-weight:700;letter-spacing:.14em;
   text-transform:uppercase;color:var(--ink)}
 .brand span{font-family:var(--sans);font-size:11.5px;letter-spacing:.14em;
   text-transform:uppercase;color:var(--muted)}
 
 h1{font-family:var(--serif);font-weight:700;font-size:clamp(23px,3.1vw,31px);
-  line-height:1.26;color:var(--ink);margin:0 0 8px;text-wrap:balance}
-.sub{font-family:var(--sans);font-size:13px;color:var(--muted);margin:0 0 30px}
+  line-height:1.26;color:var(--ink);margin:0 0 10px;text-wrap:balance}
+.sub{font-family:var(--sans);font-size:13px;color:var(--muted);margin:0 0 32px}
 
 .parties{background:var(--accent-soft);border-left:3px solid var(--accent);
-  padding:18px 22px;margin:0 0 30px;border-radius:0 6px 6px 0}
-.parties p{margin:0 0 6px;font-size:15.5px}
+  padding:20px 24px;margin:0 0 32px;border-radius:0 6px 6px 0}
+.parties p{margin:0 0 7px;font-size:15.5px}
 .parties p:last-child{margin:0}
 .parties b{color:var(--ink)}
 
+/* ---------- contents ---------- */
+.toc{border:1px solid var(--rule);border-radius:8px;padding:20px 24px 22px;margin:0 0 38px}
+.toc h2{margin:0 0 12px;border-bottom:0;padding-bottom:0}
+.toc ol{columns:2;column-gap:34px;margin:0;padding-left:20px;
+  font-family:var(--sans);font-size:13.5px;line-height:1.85}
+.toc li{margin:0;break-inside:avoid}
+.toc a{color:var(--body);text-decoration:none;border-bottom:1px solid transparent}
+.toc a:hover,.toc a:focus{color:var(--accent);border-bottom-color:var(--accent)}
+@media(max-width:620px){.toc ol{columns:1}}
+
 h2{font-family:var(--sans);font-size:13px;font-weight:700;letter-spacing:.10em;
   text-transform:uppercase;color:var(--ink);
-  margin:34px 0 10px;padding-bottom:7px;border-bottom:1px solid var(--rule)}
-p{margin:0 0 13px}
-ul,ol{margin:0 0 14px;padding-left:22px}
-li{margin-bottom:7px}
+  margin:40px 0 12px;padding-bottom:8px;border-bottom:1px solid var(--rule);
+  scroll-margin-top:16px}
+h3.sh{font-family:var(--sans);font-size:12px;font-weight:700;letter-spacing:.06em;
+  text-transform:uppercase;color:var(--muted);margin:22px 0 8px}
+p{margin:0 0 14px}
+ul,ol{margin:0 0 15px;padding-left:23px}
+li{margin-bottom:8px}
 .lede{font-size:16.5px}
+.cols2{columns:2;column-gap:36px;margin:0 0 15px;padding-left:23px}
+.cols2 li{break-inside:avoid;margin-bottom:6px}
+@media(max-width:620px){.cols2{columns:1}}
 
-.fill{display:inline-block;min-width:210px;border-bottom:1px solid var(--rule-strong);
-  height:1.15em;vertical-align:baseline}
+.callout{border-left:3px solid var(--rule-strong);padding:2px 0 2px 18px;margin:0 0 15px;
+  color:var(--muted);font-size:15px}
 
 /* ---------- signing ---------- */
-.sign{margin-top:46px;border-top:2px solid var(--ink);padding-top:30px}
+.sign{margin-top:52px;border-top:2px solid var(--ink);padding-top:32px}
 .sign h2{margin-top:0;border-bottom:0;padding-bottom:0;font-size:14px}
-.cols{display:grid;gap:26px;grid-template-columns:repeat(auto-fit,minmax(282px,1fr));margin-top:20px}
-.block{border:1px solid var(--rule);border-radius:8px;padding:20px 22px 22px;background:#fff}
+.cols{display:grid;gap:28px;grid-template-columns:repeat(auto-fit,minmax(292px,1fr));align-items:start;margin-top:22px}
+.block{border:1px solid var(--rule);border-radius:8px;padding:22px 24px 24px;background:#fff}
 .block h3{font-family:var(--sans);font-size:11.5px;font-weight:700;letter-spacing:.13em;
-  text-transform:uppercase;color:var(--muted);margin:0 0 16px}
-.f{margin-bottom:14px}
+  text-transform:uppercase;color:var(--muted);margin:0 0 6px}
+.block .org{font-family:var(--sans);font-size:15px;font-weight:700;color:var(--ink);
+  letter-spacing:.02em;margin:0 0 18px;padding-bottom:14px;border-bottom:1px solid var(--rule)}
+.f{margin-bottom:16px}
 .f label{display:block;font-family:var(--sans);font-size:11.5px;font-weight:600;
   letter-spacing:.07em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
 .f input[type=text],.f input[type=email]{width:100%;font-family:var(--sans);font-size:15px;
@@ -75,6 +92,7 @@ li{margin-bottom:7px}
 .f input:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:var(--accent)}
 .ro{font-family:var(--sans);font-size:15px;color:var(--ink);
   border-bottom:1px solid var(--rule);padding:9px 2px}
+.sigline{border-bottom:1px solid var(--rule-strong);height:40px}
 
 .padwrap{border:1px dashed var(--rule-strong);border-radius:6px;background:#FCFDFD;position:relative}
 #pad{display:block;width:100%;height:150px;touch-action:none;cursor:crosshair;border-radius:6px}
@@ -85,38 +103,45 @@ li{margin-bottom:7px}
 .lnk{font-family:var(--sans);font-size:12px;font-weight:600;color:var(--accent);
   background:none;border:0;padding:4px 2px;cursor:pointer;text-decoration:underline}
 
-.agree{display:flex;gap:11px;align-items:flex-start;margin:22px 0 0;
-  font-family:var(--sans);font-size:14px;line-height:1.6;color:var(--body)}
+.agree{display:flex;gap:12px;align-items:flex-start;margin:26px 0 0;
+  font-family:var(--sans);font-size:14px;line-height:1.65;color:var(--body)}
 .agree input{margin-top:3px;width:17px;height:17px;flex:0 0 17px;accent-color:var(--accent)}
-.actions{margin-top:24px;display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.actions{margin-top:26px;display:flex;flex-wrap:wrap;gap:12px;align-items:center}
 .btn{font-family:var(--sans);font-size:14px;font-weight:600;letter-spacing:.02em;
   padding:13px 26px;border-radius:6px;border:1px solid var(--accent);cursor:pointer;
   background:var(--accent);color:#fff}
 .btn[disabled]{opacity:.45;cursor:not-allowed}
 .btn-quiet{background:#fff;color:var(--accent)}
-.note{font-family:var(--sans);font-size:12.5px;line-height:1.6;color:var(--muted);margin:14px 0 0}
+.note{font-family:var(--sans);font-size:12.5px;line-height:1.65;color:var(--muted);margin:16px 0 0}
 .err{font-family:var(--sans);font-size:13.5px;color:#8A2222;margin:12px 0 0;display:none}
 
 .done{display:none;border:1px solid var(--accent);background:var(--accent-soft);
-  border-radius:8px;padding:22px 24px;margin-top:26px}
+  border-radius:8px;padding:24px 26px;margin-top:28px}
 .done h3{font-family:var(--sans);font-size:15px;color:var(--ink);margin:0 0 8px}
 .done p{font-family:var(--sans);font-size:14px;margin:0 0 10px;color:var(--body)}
-.execd{display:none;margin-top:26px;border-top:1px solid var(--rule);padding-top:22px}
+.execd{display:none;margin-top:28px;border-top:1px solid var(--rule);padding-top:24px}
 .execd img{max-width:300px;display:block;margin:8px 0 4px}
 .execd dl{font-family:var(--sans);font-size:14px;margin:0}
 .execd dt{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:12px}
 .execd dd{margin:3px 0 0;color:var(--ink)}
 
-.foot{margin-top:40px;padding-top:18px;border-top:1px solid var(--rule);
+.foot{margin-top:44px;padding-top:20px;border-top:1px solid var(--rule);
   font-family:var(--sans);font-size:11.5px;line-height:1.7;color:var(--muted)}
 
 @media print{
-  body{background:#fff;padding:0;font-size:11.5pt}
+  @page{margin:16mm 14mm}
+  body{background:#fff;padding:0;font-size:10.8pt;line-height:1.55}
   .sheet{box-shadow:none;max-width:none;padding:0}
   .noprint{display:none!important}
+  .toc{display:none}
   .block{break-inside:avoid}
-  h2{break-after:avoid}
-  .sign{break-before:auto}
+  h1{font-size:19pt}
+  h2{break-after:avoid;page-break-after:avoid;margin-top:16pt}
+  p,li{orphans:3;widows:3}
+  .parties{break-inside:avoid}
+  .sign{break-inside:auto}
+  .cols{display:block}
+  .block{margin-bottom:16pt}
   a[href]:after{content:""}
 }
 @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
@@ -131,132 +156,205 @@ li{margin-bottom:7px}
   </div>
 
   <h1>Mutual Confidentiality and Non Disclosure Agreement</h1>
-  <p class="sub">Please read in full. Sign at the foot of the page.</p>
+  <p class="sub">Please read in full. The signature section is at the foot of the page.</p>
 
   <div class="parties">
-    <p>This Mutual Confidentiality and Non Disclosure Agreement (&ldquo;NDA&rdquo;) is entered into between:</p>
-    <p><b>Neat Roots Inc.</b> (&ldquo;Service Provider&rdquo;)</p>
+    <p>This Mutual Confidentiality and Non Disclosure Agreement (the &ldquo;Agreement&rdquo;) is entered into between:</p>
+    <p><b>Neat Roots Inc.</b>, a corporation (the &ldquo;Service Provider&rdquo;)</p>
     <p>and</p>
-    <p><b>La Patrona</b> (&ldquo;Client&rdquo;).</p>
-    <p style="margin-top:10px">Effective Date: <span id="eff-print" class="fill"></span></p>
+    <p>the client identified in the signature section below, operating under the brand name <b>La Patrona</b> (the &ldquo;Client&rdquo;).</p>
+    <p style="margin-top:12px">Effective Date: <span id="eff-print" class="ro" style="display:inline-block;min-width:210px;border-bottom:1px solid var(--rule-strong);padding:0 2px"></span></p>
   </div>
 
-  <p class="lede">The Service Provider and Client may each be referred to as a &ldquo;Party&rdquo; and together as the &ldquo;Parties.&rdquo;</p>
-  <p>The Parties expect to share certain private, confidential, and commercially valuable information as part of their professional relationship. This NDA is intended to ensure that such information is handled responsibly and remains protected.</p>
+  <p class="lede">Each of the Service Provider and the Client may be referred to as a &ldquo;Party,&rdquo; and together as the &ldquo;Parties.&rdquo;</p>
+  <p>In the course of their professional relationship, the Parties expect to share information that is private, commercially sensitive, or otherwise not publicly available. This Agreement sets out how that information is to be handled. It is intended to be fair, mutual, and workable for both Parties, and to support a relationship built on professionalism and trust.</p>
 
-  <h2>1. Purpose</h2>
-  <p>The Parties may exchange confidential information in connection with social media management, Instagram and YouTube operations, content publishing, analytics, brand collaborations, business opportunities, advertising activities, commercial discussions, and related professional services.</p>
-  <p>Each Party agrees to protect confidential information received from the other Party and to use it only for legitimate purposes connected with their professional relationship.</p>
+  <!-- ================= CONTENTS ================= -->
+  <nav class="toc noprint" aria-label="Contents">
+    <h2>Contents</h2>
+    <ol>
+      <li><a href="#s1">Purpose</a></li>
+      <li><a href="#s2">Confidential Information</a></li>
+      <li><a href="#s3">Permitted Use</a></li>
+      <li><a href="#s4">Account Ownership and Security</a></li>
+      <li><a href="#s5">Brand and Commercial Information</a></li>
+      <li><a href="#s6">Permitted Disclosure</a></li>
+      <li><a href="#s7">Exclusions</a></li>
+      <li><a href="#s8">No Transfer of Ownership</a></li>
+      <li><a href="#s9">Return or Deletion</a></li>
+      <li><a href="#s10">Confidential Relationship Information</a></li>
+      <li><a href="#s11">Mutual Obligation</a></li>
+      <li><a href="#s12">Duration</a></li>
+      <li><a href="#s13">Protected Legal Rights</a></li>
+      <li><a href="#s14">Remedies</a></li>
+      <li><a href="#s15">Governing Law</a></li>
+      <li><a href="#s16">Severability</a></li>
+      <li><a href="#s17">Entire Agreement</a></li>
+      <li><a href="#s18">Amendments</a></li>
+      <li><a href="#s19">Electronic Signatures and Counterparts</a></li>
+      <li><a href="#s20">Acknowledgment</a></li>
+    </ol>
+  </nav>
 
-  <h2>2. What Is Confidential Information</h2>
-  <p>&ldquo;Confidential Information&rdquo; means non public information shared by either Party that a reasonable person would understand to be private, commercially sensitive, or confidential.</p>
+  <!-- ================= 1 ================= -->
+  <h2 id="s1">1. Purpose</h2>
+  <p>The Parties may exchange Confidential Information in connection with their business and professional relationship, which may include social media management, Instagram and YouTube operations, content publishing and scheduling, analytics and reporting, brand collaborations, advertising activities, commercial discussions, and related professional services.</p>
+  <p>Each Party agrees to protect Confidential Information received from the other Party and to use it only for purposes connected with that relationship.</p>
+
+  <!-- ================= 2 ================= -->
+  <h2 id="s2">2. Confidential Information</h2>
+  <p>&ldquo;Confidential Information&rdquo; means information disclosed by one Party (the &ldquo;Disclosing Party&rdquo;) to the other (the &ldquo;Receiving Party&rdquo;) that is not publicly available and that a reasonable person would understand to be private, commercially sensitive, or confidential, whether or not it is marked as such.</p>
   <p>Depending on the circumstances, Confidential Information may include:</p>
-  <ul>
-    <li>Instagram and YouTube account credentials and access information</li>
-    <li>Account analytics and performance information</li>
-    <li>Private messages and communications</li>
-    <li>Unpublished photographs, videos, content, and creative materials</li>
-    <li>Content plans and publishing schedules</li>
-    <li>Social media strategies, recommendations, processes, and working methods</li>
-    <li>Brand contacts and brand collaboration opportunities</li>
-    <li>Brand negotiations, proposals, contracts, campaign details, and compensation information</li>
-    <li>Financial information and payment information</li>
+  <ul class="cols2">
+    <li>Instagram account information</li>
+    <li>YouTube account information</li>
+    <li>Account credentials and login information</li>
+    <li>Security and authentication information</li>
+    <li>Account analytics and performance data</li>
+    <li>Private messages and direct messages</li>
+    <li>Unpublished content, photographs, and videos</li>
+    <li>Content calendars and content plans</li>
+    <li>Publishing schedules</li>
+    <li>Social media strategies and recommendations</li>
+    <li>Business processes and internal systems</li>
+    <li>Templates and workflows</li>
+    <li>Brand contacts and brand opportunities</li>
+    <li>Brand negotiations and proposals</li>
+    <li>Campaign information and campaign performance</li>
+    <li>Contracts and compensation information</li>
+    <li>Financial information and pricing</li>
     <li>Business plans and commercial information</li>
-    <li>Personal information shared for purposes of the professional relationship</li>
-    <li>Advertising information and campaign information</li>
-    <li>Client lists, business relationships, and contact information</li>
-    <li>Internal documents, systems, templates, and business processes</li>
-    <li>Any other non public information that is identified as confidential or should reasonably be understood to be confidential</li>
+    <li>Client lists and business relationships</li>
+    <li>Advertising information</li>
+    <li>Private communications between the Parties</li>
+    <li>Screenshots and recordings</li>
+    <li>Personal information shared for the relationship</li>
+    <li>Other nonpublic information disclosed in connection with the relationship</li>
   </ul>
-  <p>Confidential Information may be communicated verbally, electronically, in writing, visually, through online platforms, or through access to accounts and systems.</p>
+  <p>Confidential Information may be communicated verbally, electronically, visually, in writing, through shared files, through access to accounts or systems, or by any other reasonable means.</p>
 
-  <h2>3. Use of Confidential Information</h2>
-  <p>Each Party agrees to use the other Party&rsquo;s Confidential Information only as reasonably necessary to perform, manage, or support the professional relationship between the Parties.</p>
-  <p>Neither Party will use Confidential Information for an unrelated personal, commercial, competitive, or third party purpose without appropriate authorization.</p>
+  <!-- ================= 3 ================= -->
+  <h2 id="s3">3. Permitted Use</h2>
+  <p>The Receiving Party will use the Disclosing Party&rsquo;s Confidential Information only as reasonably necessary to perform, manage, or support the professional relationship between the Parties.</p>
+  <p>The Receiving Party will not use Confidential Information for an unrelated personal, commercial, or competitive purpose, and will not disclose it to a third party, except as permitted by this Agreement or as authorized by the Disclosing Party.</p>
+  <p>The Receiving Party may share Confidential Information with its own personnel or professional advisers who need it for the purposes of the relationship, provided they are bound by confidentiality obligations at least as protective as those in this Agreement, and the Receiving Party remains responsible for their handling of it.</p>
 
-  <h2>4. Protection of Account Information</h2>
-  <p>Any passwords, login credentials, authentication information, account access, security information, or other sensitive access details provided to the Service Provider will be treated as confidential.</p>
-  <p>The Service Provider will use such information only to perform the agreed services.</p>
+  <!-- ================= 4 ================= -->
+  <h2 id="s4">4. Account Ownership and Security</h2>
+  <h3 class="sh">Ownership</h3>
+  <p>The Client is and remains the owner of the Client&rsquo;s Instagram account, YouTube account, and any other social media or online accounts operated under the Client&rsquo;s brand. Nothing in this Agreement transfers ownership of, or any right in, those accounts to the Service Provider.</p>
+  <h3 class="sh">Access</h3>
+  <p>The Service Provider will receive only the access reasonably necessary to perform the agreed services. Any credentials, login details, authentication information, or other access information provided to the Service Provider are Confidential Information and will be used only to perform those services.</p>
+  <h3 class="sh">Safeguards</h3>
+  <p>Each Party will use reasonable safeguards to protect the other Party&rsquo;s Confidential Information, using at least the same degree of care it uses for its own confidential information of similar importance, and in no event less than reasonable care.</p>
+  <p>Neither Party will knowingly provide the other Party&rsquo;s credentials or access information to an unauthorized third party.</p>
+  <h3 class="sh">Security incidents</h3>
+  <p>If a Party becomes aware of a material unauthorized access to, or a security incident affecting, the other Party&rsquo;s Confidential Information, it will notify the other Party without undue delay and to the extent reasonably appropriate in the circumstances, and will cooperate reasonably in addressing it.</p>
   <p>The Client likewise agrees to keep confidential any account access information, internal systems, processes, or business information belonging to the Service Provider.</p>
 
-  <h2>5. Brand and Commercial Information</h2>
-  <p>Brand collaboration information is considered confidential unless it has already been publicly disclosed by the relevant Party or brand.</p>
-  <p>Neither Party will intentionally disclose private information regarding a proposed or ongoing brand collaboration, including negotiations, compensation, campaign requirements, contact information, proposals, or other commercially sensitive details, to unauthorized third parties.</p>
-  <p>This provision is intended to protect both Parties and the professional relationships developed during the engagement.</p>
+  <!-- ================= 5 ================= -->
+  <h2 id="s5">5. Brand and Commercial Information</h2>
+  <p>Information concerning brand relationships and brand collaborations is Confidential Information unless it has already been made public by the relevant Party or by the brand concerned.</p>
+  <p>This includes proposed and ongoing collaborations, negotiations, proposals, campaign requirements, campaign performance, contact information for brand representatives, contracts, compensation, and other commercially sensitive details.</p>
+  <p class="callout">This provision protects both Parties. The Client&rsquo;s commercial arrangements stay private, and the Service Provider&rsquo;s commercial relationships and working methods stay private.</p>
 
-  <h2>6. Permitted Disclosure</h2>
-  <p>A Party may disclose Confidential Information when disclosure is:</p>
+  <!-- ================= 6 ================= -->
+  <h2 id="s6">6. Permitted Disclosure</h2>
+  <p>A Party may disclose Confidential Information where disclosure is reasonably necessary to:</p>
   <ol>
-    <li>Required by law, court order, subpoena, or valid governmental request.</li>
-    <li>Necessary to obtain professional legal, accounting, tax, or other professional advice, provided the recipient is subject to appropriate confidentiality obligations.</li>
-    <li>Authorized in writing by the Party that owns the Confidential Information.</li>
-    <li>Reasonably necessary to perform an obligation under the Parties&rsquo; professional relationship.</li>
+    <li>comply with applicable law;</li>
+    <li>comply with a valid subpoena, court order, regulatory requirement, or other binding governmental request; or</li>
+    <li>obtain professional legal, accounting, tax, or similar advice, provided the adviser is subject to a duty of confidentiality.</li>
   </ol>
-  <p>Where legally permitted, a Party required to disclose Confidential Information will provide reasonable notice to the other Party before making the disclosure.</p>
+  <p>Where a Party is compelled to disclose Confidential Information, it will, to the extent legally permitted and reasonably practicable, give the other Party prompt notice before disclosing, so that the other Party may seek a protective order or other appropriate relief. The Party will disclose only the portion of Confidential Information that it is legally required to disclose.</p>
+  <p>Nothing in this Section requires a Party to act in a way that would conflict with applicable law.</p>
 
-  <h2>7. Information That Is Not Confidential</h2>
-  <p>Confidential Information does not include information that:</p>
+  <!-- ================= 7 ================= -->
+  <h2 id="s7">7. Exclusions</h2>
+  <p>Information is not Confidential Information, and the obligations in this Agreement do not apply to it, where the Receiving Party can show that the information:</p>
   <ol>
-    <li>Was already publicly available without violation of this NDA.</li>
-    <li>Becomes publicly available through no wrongful act of the receiving Party.</li>
-    <li>Was lawfully known to the receiving Party before it was provided by the other Party.</li>
-    <li>Is independently developed without using the other Party&rsquo;s Confidential Information.</li>
-    <li>Is lawfully received from a third party that is not under a confidentiality obligation regarding that information.</li>
+    <li>is or becomes publicly available through no act or omission of the Receiving Party in breach of this Agreement;</li>
+    <li>was lawfully known to the Receiving Party, without a confidentiality obligation, before it was disclosed by the Disclosing Party;</li>
+    <li>is independently developed by the Receiving Party without use of or reference to the Disclosing Party&rsquo;s Confidential Information; or</li>
+    <li>is lawfully received from a third party that was entitled to disclose it and did not impose a confidentiality obligation.</li>
   </ol>
 
-  <h2>8. No Ownership Transfer</h2>
-  <p>Sharing Confidential Information does not transfer ownership of that information.</p>
-  <p>Each Party retains ownership of its own pre existing intellectual property, business materials, content, systems, methods, processes, and other proprietary materials.</p>
-  <p>This NDA does not grant either Party any ownership interest, license, or other rights beyond what is reasonably necessary for the professional relationship unless separately agreed in writing.</p>
+  <!-- ================= 8 ================= -->
+  <h2 id="s8">8. No Transfer of Ownership</h2>
+  <p>Disclosure of Confidential Information under this Agreement does not transfer any ownership, intellectual property right, licence, or other right in that information. All Confidential Information remains the property of the Disclosing Party, except where the Parties agree otherwise in a separate written agreement.</p>
+  <p>This Agreement does not grant either Party a right to use the other Party&rsquo;s name, trade marks, logos, or content, except as separately agreed in writing.</p>
 
-  <h2>9. Return or Removal of Information</h2>
-  <p>Upon reasonable written request or upon completion of the professional relationship, each Party will take reasonable steps to return, delete, or discontinue use of Confidential Information belonging to the other Party, subject to information that must reasonably be retained for legal, accounting, compliance, backup, or record keeping purposes.</p>
-  <p>Information retained for such purposes will remain subject to the confidentiality obligations of this NDA.</p>
+  <!-- ================= 9 ================= -->
+  <h2 id="s9">9. Return or Deletion of Confidential Information</h2>
+  <p>On the reasonable written request of the Disclosing Party, or when the professional relationship ends, the Receiving Party will return or delete the Disclosing Party&rsquo;s Confidential Information where it is reasonably practicable to do so, and will discontinue further use of it.</p>
+  <p>A Party may retain Confidential Information to the extent reasonably required for legal, accounting, compliance, insurance, backup, or ordinary recordkeeping purposes, or where deletion is not technically practicable. Information retained on that basis remains subject to the confidentiality obligations of this Agreement for as long as it is retained.</p>
+  <p>Where the Service Provider holds access to the Client&rsquo;s accounts, that access will be removed or relinquished promptly on request or at the end of the relationship.</p>
 
-  <h2>10. No Public Disclosure of Private Relationship Information</h2>
-  <p>Neither Party will intentionally publish or disclose private business communications, confidential negotiations, private disagreements, account information, financial information, or other confidential matters concerning the professional relationship for the purpose of causing reputational or commercial harm to the other Party.</p>
-  <p>Nothing in this provision prevents either Party from making truthful statements required by law or exercising lawful legal rights.</p>
+  <!-- ================= 10 ================= -->
+  <h2 id="s10">10. Confidential Relationship Information</h2>
+  <p>Neither Party will publicly disclose the other Party&rsquo;s Confidential Information, including private business communications, account information, confidential negotiations, campaign or compensation details, or other confidential matters concerning the relationship, without the other Party&rsquo;s authorization.</p>
+  <p class="callout">This Section applies only to Confidential Information. It does not prevent either Party from discussing the relationship generally, from describing the services provided or received, from making truthful statements, or from exercising any right described in Section 13.</p>
 
-  <h2>11. Mutual Obligation</h2>
-  <p>This NDA is mutual.</p>
-  <p>The Client has an obligation to protect confidential information belonging to Neat Roots Inc., and Neat Roots Inc. has an obligation to protect confidential information belonging to the Client.</p>
-  <p>The Parties intend these obligations to operate fairly and equally.</p>
+  <!-- ================= 11 ================= -->
+  <h2 id="s11">11. Mutual Obligation</h2>
+  <p>This Agreement is mutual. The Client has an obligation to protect Confidential Information belonging to the Service Provider, and the Service Provider has an obligation to protect Confidential Information belonging to the Client. The Parties intend these obligations to apply equally and in the same way to each of them.</p>
 
-  <h2>12. Duration of Confidentiality</h2>
-  <p>The confidentiality obligations under this NDA will begin on the Effective Date and will continue throughout the Parties&rsquo; professional relationship.</p>
-  <p>The obligations concerning confidential information will continue after the professional relationship ends for as long as the information remains confidential and is not otherwise excluded under Section 7.</p>
-  <p>Trade secrets will remain protected for so long as they qualify as trade secrets under applicable law.</p>
+  <!-- ================= 12 ================= -->
+  <h2 id="s12">12. Duration</h2>
+  <p>This Agreement takes effect on the Effective Date and continues for as long as the Parties maintain a professional relationship.</p>
+  <p>The confidentiality obligations in this Agreement continue as follows:</p>
+  <ol>
+    <li><b>Ordinary Confidential Information.</b> Protected for a period of three (3) years following the end of the professional relationship.</li>
+    <li><b>Trade secrets.</b> Information that qualifies as a trade secret under applicable law remains protected for as long as it continues to qualify as a trade secret.</li>
+    <li><b>Account credentials and security information.</b> Protected for as long as the relevant credentials or security information remain in use, and in any event for the period in paragraph 1.</li>
+  </ol>
+  <p class="callout">A fixed three year period is used for ordinary information so that the obligation is clear and proportionate, rather than indefinite. Trade secrets are treated separately because the law already protects them for as long as they remain secret.</p>
 
-  <h2>13. No Waiver of Legal Rights</h2>
-  <p>Nothing in this NDA prevents either Party from reporting unlawful conduct to an appropriate government authority or exercising any legal right that cannot lawfully be waived.</p>
-  <p>Nothing in this NDA is intended to restrict legally protected communications or disclosures.</p>
+  <!-- ================= 13 ================= -->
+  <h2 id="s13">13. Protected Legal Rights</h2>
+  <p>Nothing in this Agreement prevents, limits, or penalizes either Party from:</p>
+  <ol>
+    <li>making a disclosure that is protected or required by applicable law;</li>
+    <li>reporting suspected unlawful conduct to a government agency or law enforcement authority, or participating in an investigation or proceeding conducted by such an authority;</li>
+    <li>cooperating with a government authority where legally required; or</li>
+    <li>exercising any right that cannot lawfully be waived or restricted by agreement.</li>
+  </ol>
+  <p>A Party is not required to give the other Party notice before making a disclosure of the kind described in this Section.</p>
 
-  <h2>14. Remedies</h2>
-  <p>Each Party acknowledges that unauthorized disclosure or misuse of Confidential Information may cause harm that may not be adequately compensated by monetary damages alone.</p>
-  <p>Accordingly, to the extent permitted by applicable law, the affected Party may seek appropriate legal remedies for an actual or threatened violation of this NDA, in addition to any other remedies available under applicable law.</p>
+  <!-- ================= 14 ================= -->
+  <h2 id="s14">14. Remedies</h2>
+  <p>The Parties acknowledge that unauthorized use or disclosure of Confidential Information may cause harm for which monetary damages alone may not be an adequate remedy.</p>
+  <p>Accordingly, and to the extent permitted by applicable law, a Party may seek injunctive or other equitable relief in addition to any other remedy available to it at law or in equity, without this limiting any other right or remedy.</p>
+  <p>This Agreement does not provide for liquidated damages, penalties, or automatic financial consequences. Any remedy is a matter for determination under applicable law.</p>
 
-  <h2>15. Governing Law</h2>
-  <p>This NDA will be governed by the laws of the State of New York, without regard to conflict of law principles.</p>
-  <p>Any dispute arising from this NDA will be handled in an appropriate court located in New York, subject to applicable law and the jurisdiction of the applicable court.</p>
+  <!-- ================= 15 ================= -->
+  <h2 id="s15">15. Governing Law</h2>
+  <p>This Agreement is governed by and construed in accordance with the laws of the State of New York, without regard to its conflict of laws principles.</p>
+  <p>The Parties submit to the exclusive jurisdiction of the state and federal courts located in the State of New York for any dispute arising out of or relating to this Agreement, and each Party waives any objection to venue in those courts.</p>
 
-  <h2>16. Severability</h2>
-  <p>If any provision of this NDA is determined to be invalid or unenforceable, the remaining provisions will remain effective to the extent permitted by law.</p>
-  <p>The Parties intend that any provision found to be unenforceable be interpreted or modified only to the minimum extent necessary to permit enforcement where legally permissible.</p>
+  <!-- ================= 16 ================= -->
+  <h2 id="s16">16. Severability</h2>
+  <p>If any provision of this Agreement is held to be invalid, unlawful, or unenforceable, that provision will be modified to the minimum extent necessary to make it enforceable, or, if it cannot be modified, severed. The remaining provisions continue in full force and effect.</p>
 
-  <h2>17. Entire Agreement</h2>
-  <p>This NDA represents the understanding between the Parties regarding confidentiality and protection of information exchanged in connection with their professional relationship.</p>
-  <p>If the Parties have a separate Social Media Management and Brand Collaboration Agreement, this NDA supplements that Agreement.</p>
-  <p>If there is a conflict between this NDA and the confidentiality provisions of the main Agreement, the provision providing the greater lawful protection of Confidential Information will apply to the extent permitted by law.</p>
+  <!-- ================= 17 ================= -->
+  <h2 id="s17">17. Entire Agreement</h2>
+  <p>This Agreement is the entire understanding between the Parties regarding the confidentiality and protection of information exchanged in connection with their professional relationship, and supersedes any earlier understanding on that subject.</p>
+  <p>This Agreement supplements, and does not replace, any separate services, management, or commercial agreement between the Parties. It does not set out, modify, or affect fees, payment terms, service scope, duration of services, termination rights, revenue arrangements, or any other commercial term, all of which are governed by that separate agreement.</p>
+  <p>If there is a conflict between this Agreement and the confidentiality provisions of a separate agreement, the provision giving the greater lawful protection to Confidential Information applies, to the extent permitted by law.</p>
 
-  <h2>18. Amendments</h2>
-  <p>Any amendment to this NDA must be made in writing and acknowledged by both Parties.</p>
+  <!-- ================= 18 ================= -->
+  <h2 id="s18">18. Amendments</h2>
+  <p>Any amendment to this Agreement must be in writing and agreed to by both Parties. An amendment agreed by electronic means, including by email or electronic signature, is effective to the extent permitted by applicable law.</p>
 
-  <h2>19. Electronic Signatures</h2>
-  <p>Electronic signatures and electronically delivered copies of this NDA may be used and will have the same intended effect as original signatures to the extent permitted by applicable law.</p>
+  <!-- ================= 19 ================= -->
+  <h2 id="s19">19. Electronic Signatures and Counterparts</h2>
+  <p>This Agreement may be signed electronically, and an electronic signature has the same effect as a handwritten signature to the extent permitted by applicable law.</p>
+  <p>This Agreement may be signed in counterparts, each of which is an original and all of which together form one agreement. A scanned, photographed, or electronically transmitted copy of a signature has the same effect as an original.</p>
 
-  <h2>20. Acknowledgment</h2>
-  <p>By signing below, each Party confirms that it understands the purpose of this NDA and agrees to handle the other Party&rsquo;s confidential information responsibly and professionally.</p>
-  <p>This NDA is intended to support a relationship built on trust, professionalism, transparency, and mutual respect.</p>
+  <!-- ================= 20 ================= -->
+  <h2 id="s20">20. Acknowledgment</h2>
+  <p>Each Party confirms that it has read this Agreement, understands its purpose, has had the opportunity to seek independent professional advice, and enters into it voluntarily.</p>
+  <p>The Parties intend this Agreement to support a professional relationship built on trust, transparency, and mutual respect, and to handle each other&rsquo;s confidential information responsibly.</p>
 
   <!-- ================= SIGNING ================= -->
   <div class="sign">
@@ -267,8 +365,9 @@ li{margin-bottom:7px}
 
         <div class="block">
           <h3>Client</h3>
-          <div class="f"><label>Creator / Brand Name</label><div class="ro">La Patrona</div></div>
+          <p class="org">La Patrona</p>
           <div class="f"><label for="n">Legal Name</label><input id="n" name="Client legal name" type="text" autocomplete="name" required></div>
+          <div class="f"><label>Brand / Professional Name</label><div class="ro">La Patrona</div></div>
           <div class="f"><label for="t">Title (optional)</label><input id="t" name="Client title" type="text" autocomplete="organization-title"></div>
           <div class="f"><label for="e">Email</label><input id="e" name="Client email" type="email" autocomplete="email" required></div>
           <div class="f"><label>Date</label><div class="ro" id="dshow"></div></div>
@@ -288,12 +387,12 @@ li{margin-bottom:7px}
 
         <div class="block">
           <h3>Service Provider</h3>
-          <div class="f"><label>Company</label><div class="ro">Neat Roots Inc.</div></div>
-          <div class="f"><label>Authorized Signatory</label><div class="ro" id="sp-name">Rana Tahir Bilal</div></div>
-          <div class="f"><label>Title</label><div class="ro" id="sp-title">Authorized Signatory</div></div>
-          <div class="f"><label>Signature</label><div class="ro" style="font-family:var(--serif);font-style:italic;font-size:19px">Rana Tahir Bilal</div></div>
-          <div class="f"><label>Date</label><div class="ro" id="sp-date"></div></div>
-          <p class="note" style="margin-top:18px">Neat Roots Inc. has executed this NDA. Your signature completes it.</p>
+          <p class="org">Neat Roots Inc.</p>
+          <div class="f"><label>Authorized Signatory</label><div class="sigline"></div></div>
+          <div class="f"><label>Title</label><div class="sigline"></div></div>
+          <div class="f"><label>Signature</label><div class="sigline"></div></div>
+          <div class="f" style="margin-bottom:0"><label>Date</label><div class="sigline"></div></div>
+          <p class="note">On receipt of the Client&rsquo;s signature, Neat Roots Inc. will countersign this Agreement and return a fully executed copy to the Client.</p>
         </div>
 
       </div>
@@ -308,18 +407,19 @@ li{margin-bottom:7px}
         <button type="button" class="btn btn-quiet" id="pr">Print or save a blank copy</button>
       </div>
       <p class="err" id="err" role="alert"></p>
-      <p class="note noprint">When you sign, a complete copy of this agreement with your details is sent to Neat Roots Inc., and you can save your own PDF on the next screen.</p>
+      <p class="note noprint">When you sign, a complete copy of this Agreement with your details is sent to Neat Roots Inc., and you can save your own PDF on the next screen.</p>
     </form>
 
     <div class="done" id="done" role="status">
       <h3>Signed. Thank you.</h3>
-      <p>A copy has been sent to Neat Roots Inc. Save your own copy now: choose <b>Save as PDF</b> as the destination.</p>
+      <p>A copy has been sent to Neat Roots Inc., who will countersign and return a fully executed copy. Save your own copy now: choose <b>Save as PDF</b> as the destination.</p>
       <p class="noprint"><button type="button" class="btn" id="pr2">Save my signed copy as PDF</button></p>
     </div>
 
     <div class="execd" id="execd">
       <dl>
         <dt>Signed by</dt><dd id="o-n"></dd>
+        <dt>Brand</dt><dd>La Patrona</dd>
         <dt>Title</dt><dd id="o-t"></dd>
         <dt>Email</dt><dd id="o-e"></dd>
         <dt>Date and time</dt><dd id="o-d"></dd>
@@ -331,7 +431,7 @@ li{margin-bottom:7px}
 
   <p class="foot">
     Neat Roots Inc. &middot; Mutual Confidentiality and Non Disclosure Agreement &middot; Governed by the laws of the State of New York.<br>
-    This page is not indexed and is intended only for the named Parties.
+    This page is not indexed and is intended only for the named Parties. This document has been prepared carefully for a professional business relationship. It is not legal advice, and each Party is free to seek independent legal review before signing.
   </p>
 </div>
 
@@ -342,7 +442,7 @@ li{margin-bottom:7px}
 
   var now = new Date();
   var human = now.toLocaleDateString(undefined,{year:'numeric',month:'long',day:'numeric'});
-  ['dshow','sp-date','eff-print'].forEach(function(id){var el=document.getElementById(id); if(el) el.textContent=human;});
+  ['dshow','eff-print'].forEach(function(id){var el=document.getElementById(id); if(el) el.textContent=human;});
 
   /* ---- signature pad ---- */
   var pad=document.getElementById('pad'), ctx=pad.getContext('2d'), drawn=false, drawing=false, last=null;
@@ -412,6 +512,7 @@ li{margin-bottom:7px}
       'Signed at local': human + ', ' + now.toLocaleTimeString(),
       'Time zone': Intl.DateTimeFormat().resolvedOptions().timeZone || 'unknown',
       'Reference': ref,
+      'Countersignature': 'Pending, to be completed by Neat Roots Inc.',
       'Browser': navigator.userAgent,
       'Page': location.href,
       'Signature image': sig
@@ -444,6 +545,5 @@ li{margin-bottom:7px}
   }
 })();
 </script>
-<!-- build retrigger 2026-10-05 -->
 </body>
 </html>
