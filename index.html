@@ -3226,7 +3226,11 @@ html.lit .stack .s3{ animation:fx-fig .95s cubic-bezier(.2,.7,.25,1) .54s both; 
     Array.prototype.forEach.call(document.querySelectorAll(rowSel), function(row){
       row.addEventListener('mouseenter', function(){
         var src = row.getAttribute('data-shot');
-        if (src && img.getAttribute('src') !== src) { img.setAttribute('src', src); }
+        if (src && img.getAttribute('src') !== src) {
+          /* srcset wins over src, so it has to move too or every row shows the first picture */
+          img.setAttribute('srcset', src.replace('img/', 'img/m/') + ' 1200w, ' + src + ' 1760w');
+          img.setAttribute('src', src);
+        }
         if (fill) { fill(panel, row); }
         on = true; panel.classList.add('on');
       });
@@ -3312,7 +3316,11 @@ html.lit .stack .s3{ animation:fx-fig .95s cubic-bezier(.2,.7,.25,1) .54s both; 
   Array.prototype.forEach.call(rows, function(row){
     function enter(){
       var src = row.getAttribute('data-shot');
-      if (src && img.getAttribute('src') !== src) { img.setAttribute('src', src); }
+      if (src && img.getAttribute('src') !== src) {
+          /* srcset wins over src, so it has to move too or every row shows the first picture */
+          img.setAttribute('srcset', src.replace('img/', 'img/m/') + ' 1200w, ' + src + ' 1760w');
+          img.setAttribute('src', src);
+        }
       on = true;
       if (!reduce) { pv.classList.add('on'); }
       cur.classList.add('big');
